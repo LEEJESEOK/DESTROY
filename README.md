@@ -1,1 +1,1 @@
-# DestoryAll
+# DestroyAll
