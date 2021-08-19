@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementBehavior : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 3f;
+    private float moveSpeed = 5f;
 
 
     public void Move(Vector3 dir)
@@ -15,6 +15,12 @@ public class MovementBehavior : MonoBehaviour
     }
 
     public void Shot()
+    {
+        GameObject weapon = Instantiate(WeaponManager.instance.activeWeapon);
+        weapon.transform.position = transform.position;
+    }
+
+    public void ChangeWeapon(int num)
     {
 
     }
