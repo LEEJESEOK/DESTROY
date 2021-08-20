@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3f0bdef2f6e1a47429d2d19730ab3295, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 92e17e35f665c1a4b862c89881e31c9e, type: 2}
 --- !u!1 &213304830
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +230,6 @@ GameObject:
   m_Component:
   - component: {fileID: 570121645}
   - component: {fileID: 570121647}
-  - component: {fileID: 570121646}
   - component: {fileID: 570121648}
   m_Layer: 0
   m_Name: RespawnRange
@@ -253,22 +252,6 @@ Transform:
   m_Father: {fileID: 213304834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &570121646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570121644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87feaca142a1e7043a077e5e81913734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangeObject: {fileID: 570121644}
-  rangeCollider: {fileID: 0}
-  Enemy: {fileID: 1202808293}
-  enemyCount: 0
 --- !u!65 &570121647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -516,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb5b60fdb1711a4a9a7c58cb8a614c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 832609466}
 --- !u!4 &957215934
 Transform:
   m_ObjectHideFlags: 0
@@ -662,7 +645,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1202808295}
-  - component: {fileID: 1202808294}
   - component: {fileID: 1202808296}
   m_Layer: 0
   m_Name: EnemyPos
@@ -671,22 +653,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1202808294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202808293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2719d4682918da43ad73b2bd5bd09b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyFactory: {fileID: 957215932}
-  Enemypos: {fileID: 1202808293}
-  rb: {fileID: 0}
-  power: 500
 --- !u!4 &1202808295
 Transform:
   m_ObjectHideFlags: 0
@@ -727,7 +693,6 @@ GameObject:
   - component: {fileID: 1872178558}
   - component: {fileID: 1872178557}
   - component: {fileID: 1872178556}
-  - component: {fileID: 1872178560}
   - component: {fileID: 1872178561}
   m_Layer: 0
   m_Name: Enemy
@@ -812,19 +777,6 @@ Transform:
   m_Father: {fileID: 957215934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1872178560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872178555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9050f4427f3dcde4a96f8e32055a3d44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotspeed: 50
 --- !u!114 &1872178561
 MonoBehaviour:
   m_ObjectHideFlags: 0
