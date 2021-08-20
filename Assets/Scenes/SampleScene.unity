@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8fd65724baf9ecf4ab3ed3e7c7c5b117, type: 2}
+  - {fileID: 2100000, guid: 94a135f5fae7e924d853a5ba5e4de01e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 570121645}
   - component: {fileID: 570121647}
   - component: {fileID: 570121646}
+  - component: {fileID: 570121648}
   m_Layer: 0
   m_Name: RespawnRange
   m_TagString: Untagged
@@ -265,7 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeObject: {fileID: 570121644}
+  rangeCollider: {fileID: 0}
   Enemy: {fileID: 1202808293}
+  enemyCount: 0
 --- !u!65 &570121647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -279,6 +282,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.85, y: 1, z: 8.69}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &570121648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570121644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea75ee5b149bab4f9ae06c26f89e039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeObject: {fileID: 570121644}
+  Enemy: {fileID: 1202808293}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,9 +494,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 957215934}
-  - component: {fileID: 957215933}
   - component: {fileID: 957215935}
   - component: {fileID: 957215936}
+  - component: {fileID: 957215933}
   m_Layer: 0
   m_Name: En
   m_TagString: Untagged
@@ -496,10 +513,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 957215932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3f54fdb7a2c5424db108308bd6b82cb, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb5b60fdb1711a4a9a7c58cb8a614c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 832609466}
+  Target: {fileID: 0}
 --- !u!4 &957215934
 Transform:
   m_ObjectHideFlags: 0
@@ -646,6 +663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202808295}
   - component: {fileID: 1202808294}
+  - component: {fileID: 1202808296}
   m_Layer: 0
   m_Name: EnemyPos
   m_TagString: Untagged
@@ -665,8 +683,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2719d4682918da43ad73b2bd5bd09b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemypos: {fileID: 1202808293}
   EnemyFactory: {fileID: 957215932}
+  Enemypos: {fileID: 1202808293}
+  rb: {fileID: 0}
+  power: 500
 --- !u!4 &1202808295
 Transform:
   m_ObjectHideFlags: 0
@@ -681,6 +701,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1202808296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202808293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafe75646c1c645408b183c02d421973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyFactory: {fileID: 957215932}
+  Enemypos: {fileID: 1202808293}
 --- !u!1 &1872178555
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +728,7 @@ GameObject:
   - component: {fileID: 1872178557}
   - component: {fileID: 1872178556}
   - component: {fileID: 1872178560}
+  - component: {fileID: 1872178561}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -733,7 +768,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ecf44252da903d24ab7b1a3a145f2f0c, type: 2}
+  - {fileID: 2100000, guid: 16ecfa1e6c73aea44a356bfeaea23b70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -787,5 +822,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9050f4427f3dcde4a96f8e32055a3d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotspeed: 50
+--- !u!114 &1872178561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872178555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23000643aa91c1449b184e3f43354a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
