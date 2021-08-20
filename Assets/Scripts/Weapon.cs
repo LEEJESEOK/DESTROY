@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     public float speed = 10f;
     public float coolDown = .1f;
 
+    public int Damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {

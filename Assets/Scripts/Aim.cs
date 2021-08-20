@@ -21,9 +21,13 @@ public class Aim : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+        // TODO
+        // Layermask 수정
         if (Physics.Raycast(ray, out hit))
         {
-            transform.position = new Vector3(hit.point.x, 0, hit.point.z);
+            transform.position = new Vector3(hit.point.x, 0.1f, hit.point.z);
+            
+            transform.eulerAngles = new Vector3(90, 0, 0);
         }
     }
 }
