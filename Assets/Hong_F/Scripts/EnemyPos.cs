@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPos : MonoBehaviour
 {
     public GameObject EnemyFactory;
+    public GameObject Enemypos;
     Rigidbody rb;
     float power = 500;
 
