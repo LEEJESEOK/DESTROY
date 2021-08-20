@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolMove : MonoBehaviour
+public class Pistol : MonoBehaviour
 {
     public float speed = 10f;
 

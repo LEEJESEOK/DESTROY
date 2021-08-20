@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 3408661025079420415, guid: dadfd30d43e5f154daf764d9b9dbeec0, type: 3}
+  - {fileID: 3408661025079420415, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
   activeWeapon: {fileID: 0}
 --- !u!1 &875833784
 GameObject:
