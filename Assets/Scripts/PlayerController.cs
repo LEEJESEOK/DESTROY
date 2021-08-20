@@ -17,10 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-
         Vector3 dir = new Vector3(h, 0, v);
-
-
         movementBehavior.Move(dir);
 
         if (Input.GetButton("Fire1"))
