@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public static Aim instance;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -17,7 +23,7 @@ public class Aim : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            transform.position = hit.point;
+            transform.position = new Vector3(hit.point.x, 0, hit.point.z);
         }
     }
 }

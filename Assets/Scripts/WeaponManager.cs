@@ -22,5 +22,4 @@ public class WeaponManager : MonoBehaviour
     {
         activeWeapon = weapons[0];
     }
-
 }
