@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public float speed = 10f;
+    public float coolDown = .1f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,10 @@ public class Pistol : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
+    public float getCoolDown()
+    {
+        return coolDown;
     }
 }

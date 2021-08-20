@@ -549,8 +549,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 3408661025079420415, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
+  - {fileID: 395838806709762645, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
+  - {fileID: 6112971655773510077, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
   activeWeapon: {fileID: 0}
+  coolDown: 0
 --- !u!1 &875833784
 GameObject:
   m_ObjectHideFlags: 0
