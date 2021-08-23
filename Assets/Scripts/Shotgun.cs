@@ -11,6 +11,7 @@ public class Shotgun : MonoBehaviour
 
     List<GameObject> bullets = new List<GameObject>();
 
+    // 한 번 공격할 때의 총알 수, 각도
     public int maxBullet;
     public int maxAngle = 10;
 
@@ -18,16 +19,16 @@ public class Shotgun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         for (int i = 0; i < maxBullet; i++)
         {
-            int randAngle = Random.Range(-maxAngle, maxAngle);
-            print(i);
-
             bullets.Add(Instantiate(originalBullet));
+
             originalBullet.transform.position = transform.position;
+            // 총알마다 임의의 각도 지정
+            int randAngle = Random.Range(-maxAngle, maxAngle);
             bullets[i].transform.Rotate(Vector3.up * randAngle);
 
+            // 총알의 속도, 데미지
             Bullet bulletComponent = bullets[i].GetComponent<Bullet>();
             bulletComponent.speed = speed;
             bulletComponent.damage = damage;

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
         // Attack
         if (Input.GetButton("Fire1"))
-            movementBehavior.Attack();
+            WeaponManager.instance.Attack();
 
         // TODO ChangeWeapon
 

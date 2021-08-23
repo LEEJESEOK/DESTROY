@@ -5,6 +5,7 @@ using UnityEngine;
 public class Handgun : MonoBehaviour
 {
     public float speed;
+    public float delay;
     public int damage;
 
     public GameObject bullet;
