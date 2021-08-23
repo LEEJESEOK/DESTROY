@@ -15,12 +15,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Move
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 dir = new Vector3(h, 0, v);
         movementBehavior.Move(dir);
 
+        // Attack
         if (Input.GetButton("Fire1"))
-            movementBehavior.Shot();
+            movementBehavior.Attack();
+
+        // TODO ChangeWeapon
+
     }
 }
