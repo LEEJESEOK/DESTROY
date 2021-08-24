@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class Laser : Weapon
 {
-    public float speed;
-    public int damage;
+    public GameObject bulletObj;
+
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 
     }
@@ -16,6 +16,16 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+    }
+
+    public override void Attack(Vector3 position)
+    {
+        GameObject bullet = Instantiate(bulletObj);
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        bullet.transform.position = position;
+        bulletComponent.speed = speed;
+        bulletComponent.damage = damage;
+
+        Destroy(bullet, range);
     }
 }

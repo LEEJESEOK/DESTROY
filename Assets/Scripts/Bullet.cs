@@ -5,10 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    [HideInInspector]
-    public float speed { get; set; }
-    [HideInInspector]
-    public int damage { get; set; }
+    public float speed = 3f;
+    public int damage = 1;
 
     Rigidbody rigidbody;
 

@@ -10,6 +10,7 @@ public class WeaponManager : MonoBehaviour
     public bool canAttack;
 
     public GameObject[] weapons;
+
     int activeWeaponIdx = 0;
     //TODO Weapon 클래스 상속으로 변경
     float attackDelay = 0.5f;
@@ -28,7 +29,7 @@ public class WeaponManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ChangeWeapon(activeWeaponIdx);
     }
 
     // Update is called once per frame
@@ -66,14 +67,17 @@ public class WeaponManager : MonoBehaviour
         if (canAttack == false)
             return;
 
-        GameObject range = Instantiate(weapons[activeWeaponIdx]);
-        range.transform.position = transform.position;
+        weapons[activeWeaponIdx].GetComponent<Weapon>().Attack(transform.position);
 
-        // Crosshair와 Player의 위치차이로 각도 계산
-        float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
-        float degree = Mathf.Rad2Deg * radian;
-        // 공격하는 각도 변경
-        range.transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
+        //TODO 객체를 새로 생성하는 것이 아니라 불러오는 것으로 변경
+        // GameObject range = Instantiate(weapons[activeWeaponIdx]);
+        // range.transform.position = transform.position;
+
+        // // Crosshair와 Player의 위치차이로 각도 계산
+        // float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
+        // float degree = Mathf.Rad2Deg * radian;
+        // // 공격하는 각도 변경
+        // range.transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
 
 
 
@@ -83,6 +87,8 @@ public class WeaponManager : MonoBehaviour
 
     void ChangeWeapon(int idx)
     {
+        activeWeaponIdx = idx;
+
         currTime = 0;
         canAttack = false;
     }

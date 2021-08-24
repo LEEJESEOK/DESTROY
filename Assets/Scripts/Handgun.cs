@@ -2,26 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Handgun : MonoBehaviour
+public class Handgun : Weapon
 {
-    public float speed;
-    public float delay;
-    public int damage;
-
-    public GameObject bullet;
+    public GameObject bulletObj;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Bullet bulletComponent = bullet.GetComponent<Bullet>();
-        bulletComponent.speed = speed;
-        bulletComponent.damage = damage;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Attack(Vector3 position)
     {
+        GameObject bullet = Instantiate(bulletObj);
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        bullet.transform.position = position;
+        bulletComponent.speed = speed;
+        bulletComponent.damage = damage;
 
+        Destroy(bullet, range);
     }
 }

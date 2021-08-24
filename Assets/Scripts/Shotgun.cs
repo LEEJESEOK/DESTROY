@@ -2,42 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shotgun : MonoBehaviour
+public class Shotgun : Weapon
 {
-    public float speed;
-    public int damage;
+    public GameObject bulletObj;
 
-    public GameObject originalBullet;
-
-    List<GameObject> bullets = new List<GameObject>();
 
     // 한 번 공격할 때의 총알 수, 각도
     public int maxBullet;
-    public int maxAngle = 10;
+    public float diffuseRange;
+    public int maxAngle;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        // bulletObj = Resources.Load("Prefabs/Bullet") as GameObject;
+    }
+
+    private void Start()
+    {
+    }
+
+    public override void Attack(Vector3 position)
     {
         for (int i = 0; i < maxBullet; i++)
         {
-            bullets.Add(Instantiate(originalBullet));
+            GameObject bullet = Instantiate(bulletObj);
 
-            originalBullet.transform.position = transform.position;
+            float randDiffuse = Random.Range(-diffuseRange, diffuseRange);
+            bullet.transform.position = position + transform.right * randDiffuse;
+
             // 총알마다 임의의 각도 지정
             int randAngle = Random.Range(-maxAngle, maxAngle);
-            bullets[i].transform.Rotate(Vector3.up * randAngle);
+            bullet.transform.Rotate(Vector3.up * randAngle);
 
             // 총알의 속도, 데미지
-            Bullet bulletComponent = bullets[i].GetComponent<Bullet>();
+            Bullet bulletComponent = bullet.GetComponent<Bullet>();
             bulletComponent.speed = speed;
             bulletComponent.damage = damage;
+
+            Destroy(bullet, range);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
