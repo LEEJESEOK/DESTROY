@@ -13,20 +13,14 @@ public class Shotgun : Weapon
     public int maxAngle;
 
 
-    private void Awake()
-    {
-        // bulletObj = Resources.Load("Prefabs/Bullet") as GameObject;
-    }
-
-    private void Start()
-    {
-    }
-
     public override void Attack(Vector3 position)
     {
+
         for (int i = 0; i < maxBullet; i++)
         {
-            GameObject bullet = Instantiate(bulletObj);
+        GameObject bullet = Instantiate(bulletObj);
+        bullet.transform.position = position;
+        bullet.transform.forward = transform.forward;
 
             float randDiffuse = Random.Range(-diffuseRange, diffuseRange);
             bullet.transform.position = position + transform.right * randDiffuse;

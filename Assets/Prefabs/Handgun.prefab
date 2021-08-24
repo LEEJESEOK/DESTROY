@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  range: 0.7
   damage: 0
   delay: 0.5
   bulletObj: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}

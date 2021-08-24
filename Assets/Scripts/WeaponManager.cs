@@ -50,14 +50,19 @@ public class WeaponManager : MonoBehaviour
         // 무기 교체(ChangeWeapon)
         // 마우스 휠
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-        if (wheelInput > 0)
+        if (wheelInput != 0)
         {
-            activeWeaponIdx = (activeWeaponIdx + 1) % weapons.Length;
-            ChangeWeapon(activeWeaponIdx);
-        }
-        else if (wheelInput < 0)
-        {
-            activeWeaponIdx = (activeWeaponIdx - 1 + weapons.Length) % weapons.Length;
+            weapons[activeWeaponIdx].SetActive(false);
+
+            if (wheelInput > 0)
+            {
+                activeWeaponIdx = (activeWeaponIdx + 1) % weapons.Length;
+            }
+            else if (wheelInput < 0)
+            {
+                activeWeaponIdx = (activeWeaponIdx - 1 + weapons.Length) % weapons.Length;
+            }
+
             ChangeWeapon(activeWeaponIdx);
         }
     }
@@ -67,19 +72,13 @@ public class WeaponManager : MonoBehaviour
         if (canAttack == false)
             return;
 
+        // Crosshair와 Player의 위치차이로 각도 계산
+        float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
+        float degree = Mathf.Rad2Deg * radian;
+        // 공격하는 각도 변경
+        transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
+
         weapons[activeWeaponIdx].GetComponent<Weapon>().Attack(transform.position);
-
-        //TODO 객체를 새로 생성하는 것이 아니라 불러오는 것으로 변경
-        // GameObject range = Instantiate(weapons[activeWeaponIdx]);
-        // range.transform.position = transform.position;
-
-        // // Crosshair와 Player의 위치차이로 각도 계산
-        // float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
-        // float degree = Mathf.Rad2Deg * radian;
-        // // 공격하는 각도 변경
-        // range.transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
-
-
 
         currTime = 0;
         canAttack = false;
@@ -87,7 +86,7 @@ public class WeaponManager : MonoBehaviour
 
     void ChangeWeapon(int idx)
     {
-        activeWeaponIdx = idx;
+        weapons[activeWeaponIdx].SetActive(true);
 
         currTime = 0;
         canAttack = false;

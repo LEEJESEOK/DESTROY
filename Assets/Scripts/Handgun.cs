@@ -7,17 +7,16 @@ public class Handgun : Weapon
     public GameObject bulletObj;
 
 
-    private void Start()
-    {
-    }
-
     public override void Attack(Vector3 position)
     {
         GameObject bullet = Instantiate(bulletObj);
-        Bullet bulletComponent = bullet.GetComponent<Bullet>();
         bullet.transform.position = position;
+        bullet.transform.forward = transform.forward;
+
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
         bulletComponent.speed = speed;
         bulletComponent.damage = damage;
+
 
         Destroy(bullet, range);
     }
