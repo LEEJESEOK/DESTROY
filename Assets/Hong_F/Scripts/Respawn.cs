@@ -38,7 +38,7 @@ public class Respawn : MonoBehaviour
 
         Vector3 respawnPosition = originPosition + RandomPostion;
         return respawnPosition;
-
+        
     }
 
     public IEnumerator RandomRespawn_Coroutine()
@@ -47,7 +47,7 @@ public class Respawn : MonoBehaviour
         {
             
                 yield return new WaitForSeconds(1f);
-                if (enemyCount < 10)
+                if (enemyCount < 1000)
                 { 
                      GameObject instantEnemy = Instantiate(Enemy, Return_RandomPosition(), Quaternion.identity);
                     enemyCount++;
