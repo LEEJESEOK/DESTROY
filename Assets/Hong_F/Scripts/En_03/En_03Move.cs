@@ -29,6 +29,7 @@ public class En_03Move : MonoBehaviour
             target = GameObject.Find("Player");
             Vector3 vec = target.transform.position - transform.position;
             vec.Normalize();
+        vec.y = 0;
             Quaternion q = Quaternion.LookRotation(vec);
             transform.rotation = q;
         
