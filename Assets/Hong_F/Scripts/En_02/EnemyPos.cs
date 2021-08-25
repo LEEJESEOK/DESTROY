@@ -6,29 +6,37 @@ public class EnemyPos : MonoBehaviour
 {
     public GameObject[] EnemyFactory = new GameObject[3];
     public GameObject Enemypos;
+    float currTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        int rand = Random.Range(0, 100);
-        float currTime = Time.deltaTime;
+       
+            int rand = Random.Range(0, 100);
 
-        if (rand < 70)
-        {
-            GameObject Enemy = Instantiate(EnemyFactory[0]);
-            Enemy.transform.position = Enemypos.transform.position;
-        }
-        else if (71 < rand || rand < 90)
-        {
-            GameObject Enemy = Instantiate(EnemyFactory[1]);
-            Enemy.transform.position = Enemypos.transform.position;
-        }
+            if (rand < 70)
+            {
+                GameObject Enemy = Instantiate(EnemyFactory[0]);
+                Enemy.transform.position = Enemypos.transform.position;
+            }
 
-        else if (91 < rand || rand < 100)
-        {
-            GameObject Enemy = Instantiate(EnemyFactory[2]);
-            Enemy.transform.position = Enemypos.transform.position;
-        }
+            else if (71 < rand && rand < 90)
+            {
+                GameObject Enemy = Instantiate(EnemyFactory[1]);
+                Enemy.transform.position = Enemypos.transform.position;
+            }
+
+            else if (91 < rand && rand < 100)
+            {
+                GameObject Enemy = Instantiate(EnemyFactory[2]);
+                Enemy.transform.position = Enemypos.transform.position;
+            }
+
+       
+
+
+
+
 
     }
 
