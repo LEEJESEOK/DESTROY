@@ -59,7 +59,7 @@ public class WeaponManager : MonoBehaviour
         if (isDelay == true)
             return;
 
-        // Crosshair와 Player의 위치차이로 각도 계산
+        // Crosshair - Aim과 Player의 위치차이로 각도 계산
         float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
         float degree = Mathf.Rad2Deg * radian;
         // 공격하는 각도 변경
@@ -75,6 +75,11 @@ public class WeaponManager : MonoBehaviour
     {
         weapons[activeWeaponIdx].SetActive(true);
         attackDelay = weapons[activeWeaponIdx].GetComponent<Weapon>().delay;
+    }
+    
+    void UpdateProps(float speed, float range, int damage, float delay)
+    {
+
     }
 
     IEnumerator CheckAttackDelay()

@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f414d6d57aa936b47962a0324ce163d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
   weapons:
   - {fileID: 5330443339819913214}
   - {fileID: 3545046834469695998}
   - {fileID: 2414989150469086920}
+  isDelay: 0
 --- !u!1001 &2948292029676694009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,6 +65,14 @@ PrefabInstance:
     - target: {fileID: 678262526573508401, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+      propertyPath: delay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6177072468068002145, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
       propertyPath: m_RootOrder
@@ -131,6 +139,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2759201122395333698, guid: eea08812bb5950442877e11103d278b0, type: 3}
       propertyPath: range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759201122395333698, guid: eea08812bb5950442877e11103d278b0, type: 3}
+      propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2759201122395333699, guid: eea08812bb5950442877e11103d278b0, type: 3}
@@ -247,6 +259,22 @@ PrefabInstance:
     - target: {fileID: 6809907062824305029, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809907062824305030, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
+      propertyPath: delay
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809907062824305030, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809907062824305030, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
+      propertyPath: maxAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809907062824305030, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
+      propertyPath: diffuseRange
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6809907062824305031, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
       propertyPath: m_Name

@@ -4,11 +4,16 @@ using UnityEngine;
 
 abstract public class Weapon : MonoBehaviour
 {
+    // bullet 원형
     public GameObject bulletObj;
 
+    // bullet 속도
     public float speed;
+    // 사거리
     public float range;
+    // 데미지
     public int damage;
+    // 공격 딜레이(속도)
     public float delay;
 
     public bool hasWeapon { get; set; }

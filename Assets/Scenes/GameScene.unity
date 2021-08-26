@@ -533,29 +533,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1819079150}
     m_Modifications:
-    - target: {fileID: 3545046834469695999, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
-      propertyPath: delay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3545046834469695999, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
-      propertyPath: maxAngle
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3545046834469695999, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
-      propertyPath: diffuseRange
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7611194001315215135, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
-      propertyPath: delay
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8048828861862747826, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: m_Name
       value: WeaponManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048828861862747836, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
-      propertyPath: isDelay
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8048828861862747837, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: m_RootOrder
