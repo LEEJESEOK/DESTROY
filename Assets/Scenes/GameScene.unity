@@ -784,7 +784,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1819079150}
-  height: 0
+  height: 12
+  distance: 8
 --- !u!81 &1218427878
 AudioListener:
   m_ObjectHideFlags: 0
