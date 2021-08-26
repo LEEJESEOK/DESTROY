@@ -15,6 +15,7 @@ abstract public class Weapon : MonoBehaviour
     public int damage;
     // 공격 딜레이(속도)
     public float delay;
+    public int currentBulletCnt;
 
     public bool hasWeapon { get; set; }
 

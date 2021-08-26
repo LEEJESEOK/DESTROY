@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public float speed = 3f;
     public int damage = 1;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
 
     protected void Start()
     {
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     }
 
     protected void FixedUpdate()
-    {
+    {        
         rigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
         // 적에 명중
         if (other.gameObject.tag.Contains("Enemy"))
         {
-            // 명중한 적의 체력 감소
+
+            //TODO 명중한 적의 체력 감소
         }
     }
 }
