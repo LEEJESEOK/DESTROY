@@ -533,6 +533,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1819079150}
     m_Modifications:
+    - target: {fileID: 769365639, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
+      propertyPath: delay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 769365639, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
+      propertyPath: fireAngle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8048828861862747826, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: m_Name
       value: WeaponManager
@@ -882,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeObject: {fileID: 1223590412}
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 1081619371}
 --- !u!65 &1223590415
 BoxCollider:
   m_ObjectHideFlags: 0

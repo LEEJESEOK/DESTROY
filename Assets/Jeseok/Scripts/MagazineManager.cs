@@ -9,7 +9,7 @@ public class MagazineManager : MonoBehaviour
 
     public Text magazineText;
 
-    public int maxMagazine = 100;
+    public int maxMagazine;
     public int currentMagazine;
     
     private void Awake()

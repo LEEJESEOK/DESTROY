@@ -12,7 +12,7 @@ public class WeaponManager : MonoBehaviour
     int activeWeaponIdx = 0;
     //TODO Weapon 클래스 상속으로 변경
     float attackDelay;
-    public bool isDelay = false;
+    bool isDelay = false;
 
 
     private void Awake()
@@ -29,6 +29,8 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         ChangeWeapon(activeWeaponIdx);
+
+        StartCoroutine(CheckAttackDelay());
     }
 
     // Update is called once per frame
@@ -68,7 +70,6 @@ public class WeaponManager : MonoBehaviour
         weapons[activeWeaponIdx].GetComponent<Weapon>().Attack(transform.position);
 
         isDelay = true;
-        StartCoroutine(CheckAttackDelay());
     }
 
     void ChangeWeapon(int idx)
@@ -76,7 +77,7 @@ public class WeaponManager : MonoBehaviour
         weapons[activeWeaponIdx].SetActive(true);
         attackDelay = weapons[activeWeaponIdx].GetComponent<Weapon>().delay;
     }
-    
+
     void UpdateProps(float speed, float range, int damage, float delay)
     {
 
@@ -84,7 +85,15 @@ public class WeaponManager : MonoBehaviour
 
     IEnumerator CheckAttackDelay()
     {
-        yield return new WaitForSecondsRealtime(attackDelay);
-        isDelay = false;
+        while (true)
+        {
+            yield return null;
+
+            if (isDelay == true)
+            {
+                yield return new WaitForSeconds(attackDelay);
+                isDelay = false;
+            }
+        }
     }
 }

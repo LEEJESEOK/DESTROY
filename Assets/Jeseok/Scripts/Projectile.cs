@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float speed = 3f;
     public int damage = 1;
@@ -13,11 +13,12 @@ public class Bullet : MonoBehaviour
     protected void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        
+        rigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
     protected void FixedUpdate()
     {        
-        rigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
     protected void OnCollisionEnter2D(Collision2D other)

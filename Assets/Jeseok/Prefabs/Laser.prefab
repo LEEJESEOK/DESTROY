@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6177072468068002145
 Transform:
   m_ObjectHideFlags: 0
@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b312379a11648634097828e9d36c6140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObj: {fileID: 8838351596224679557, guid: d6b52648c948d5b4a920d6e5dfa51eaf, type: 3}
-  speed: 10
+  projectileObj: {fileID: 8838351596224679557, guid: d6b52648c948d5b4a920d6e5dfa51eaf, type: 3}
+  speed: 100
   range: 0.5
   damage: 1
   delay: 0.5
+  maxProjectileCnt: 0
+  currentProjectileCnt: 0
