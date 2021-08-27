@@ -13,6 +13,8 @@ public class WeaponManager : MonoBehaviour
     float attackDelay;
     bool isDelay = false;
 
+    IEnumerator checkAttackDelayCoroutine;
+
 
     private void Awake()
     {
@@ -22,18 +24,16 @@ public class WeaponManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+
+        checkAttackDelayCoroutine = CheckAttackDelay();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // TODO
-        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
-        attackDelay = weaponComponent.delay;
-        weapons[activeWeaponIdx].SetActive(true);
+        InitActiveWeapon();
 
-
-        StartCoroutine(CheckAttackDelay());
     }
 
     // Update is called once per frame
@@ -65,15 +65,22 @@ public class WeaponManager : MonoBehaviour
         activeWeaponIdx += (idx > 0 ? 1 : -1) + weapons.Length;
         activeWeaponIdx %= weapons.Length;
 
-        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
-        attackDelay = weaponComponent.delay;
-
-        weapons[activeWeaponIdx].SetActive(true);
+        StopCoroutine(checkAttackDelayCoroutine);
+        InitActiveWeapon();
     }
 
     void UpdateProps(float speed, float range, int damage, float delay)
     {
 
+    }
+
+    void InitActiveWeapon()
+    {
+        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
+        attackDelay = weaponComponent.delay;
+
+        StartCoroutine(checkAttackDelayCoroutine);
+        weapons[activeWeaponIdx].SetActive(true);
     }
 
     IEnumerator CheckAttackDelay()
@@ -85,6 +92,7 @@ public class WeaponManager : MonoBehaviour
             if (isDelay == true)
             {
                 yield return new WaitForSeconds(attackDelay);
+
                 isDelay = false;
             }
         }
