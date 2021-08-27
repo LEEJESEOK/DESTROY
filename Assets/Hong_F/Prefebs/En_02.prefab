@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2405046821700110240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7741039, y: -0.46661043, z: -0.3194492}
+  m_LocalPosition: {x: 2.7741039, y: 3, z: -0.3194492}
   m_LocalScale: {x: 0.97913, y: 4.1130843, z: 0.4941168}
   m_Children:
   - {fileID: 2405046822312208247}
@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2405046822094699329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3757582, y: 2.4766104, z: 0.3194492}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2405046821700110241}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c9129bc9fec94ab793db08faba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletFactory: {fileID: 167785097430533012, guid: 851f20a3f6edc9a4a9e49f0daa74de04, type: 3}
+  BulletFactory: {fileID: 2008993377258957261, guid: a6bf4025b2cdf83498a2056f9b1ac320, type: 3}
   FirePos: {fileID: 2405046822108015395}
 --- !u!1 &2405046822312208246
 GameObject:
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c9129bc9fec94ab793db08faba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletFactory: {fileID: 167785097430533012, guid: 851f20a3f6edc9a4a9e49f0daa74de04, type: 3}
+  BulletFactory: {fileID: 2008993377258957261, guid: a6bf4025b2cdf83498a2056f9b1ac320, type: 3}
   FirePos: {fileID: 2405046822489142049}
 --- !u!1 &2405046822520288513
 GameObject:
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c9129bc9fec94ab793db08faba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletFactory: {fileID: 167785097430533012, guid: 851f20a3f6edc9a4a9e49f0daa74de04, type: 3}
+  BulletFactory: {fileID: 2008993377258957261, guid: a6bf4025b2cdf83498a2056f9b1ac320, type: 3}
   FirePos: {fileID: 2405046822789235914}
 --- !u!1 &2405046823265230556
 GameObject:
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25c9129bc9fec94ab793db08faba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletFactory: {fileID: 167785097430533012, guid: 851f20a3f6edc9a4a9e49f0daa74de04, type: 3}
+  BulletFactory: {fileID: 2008993377258957261, guid: a6bf4025b2cdf83498a2056f9b1ac320, type: 3}
   FirePos: {fileID: 2405046823277066223}
 --- !u!1 &2405046823554516924
 GameObject:

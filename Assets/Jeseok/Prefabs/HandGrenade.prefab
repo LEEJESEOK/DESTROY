@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2759201122395333699
+--- !u!1 &7956498849112640245
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2759201122395333701}
-  - component: {fileID: 2759201122395333698}
-  m_Layer: 9
-  m_Name: Handgun
+  - component: {fileID: 7956498849112640246}
+  - component: {fileID: 7956498849112640247}
+  m_Layer: 0
+  m_Name: HandGrenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &2759201122395333701
+--- !u!4 &7956498849112640246
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2759201122395333699}
+  m_GameObject: {fileID: 7956498849112640245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,22 +31,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2759201122395333698
+--- !u!114 &7956498849112640247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2759201122395333699}
+  m_GameObject: {fileID: 7956498849112640245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27991cca57595a141b780e681374de93, type: 3}
+  m_Script: {fileID: 11500000, guid: 25819d0693dadd04e8eabc0ffd029269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileObj: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
-  speed: 50
-  range: 1
-  damage: 1
-  delay: 0.3
+  projectileObj: {fileID: 1051204792675732655, guid: 951b2152f0377bd499164b2549c1d7e8, type: 3}
+  speed: 15
+  range: 0
+  damage: 3
+  delay: 3
   maxProjectileCnt: 0
   currentProjectileCnt: 0
+  fireAngle: 30

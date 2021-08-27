@@ -15,12 +15,12 @@ public class Respawn : MonoBehaviour
         rangeCollider = rangeObject.GetComponent<BoxCollider>();
     }
 
-   public   void Start()
+    public void Start()
     {
-        
-           StartCoroutine(RandomRespawn_Coroutine());
 
-        
+        StartCoroutine(RandomRespawn_Coroutine());
+
+
     }
 
     // Update is called once per frame
@@ -38,22 +38,22 @@ public class Respawn : MonoBehaviour
 
         Vector3 respawnPosition = originPosition + RandomPostion;
         return respawnPosition;
-        
+
     }
 
     public IEnumerator RandomRespawn_Coroutine()
     {
         while (true)
         {
-            
-                yield return new WaitForSeconds(1f);
-                if (enemyCount < 1000)
-                { 
-                     GameObject instantEnemy = Instantiate(Enemy, Return_RandomPosition(), Quaternion.identity);
-                    enemyCount++;
-                }
 
-            
+            yield return new WaitForSeconds(1f);
+            if (enemyCount < 1000)
+            {
+                GameObject instantEnemy = Instantiate(Enemy, Return_RandomPosition(), Quaternion.identity);
+                enemyCount++;
+            }
+
+
 
         }
     }

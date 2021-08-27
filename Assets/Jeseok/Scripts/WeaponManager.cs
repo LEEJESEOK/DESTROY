@@ -6,14 +6,13 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-    float currTime = 0f;
-    public bool canAttack;
 
     public GameObject[] weapons;
 
     int activeWeaponIdx = 0;
     //TODO Weapon 클래스 상속으로 변경
-    float attackDelay = 0.5f;
+    float attackDelay;
+    bool isDelay = false;
 
 
     private void Awake()
@@ -30,23 +29,13 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         ChangeWeapon(activeWeaponIdx);
+
+        StartCoroutine(CheckAttackDelay());
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(weapons[activeWeaponIdx].name);
-
-        if (canAttack == false)
-            currTime += Time.deltaTime;
-
-        if (currTime > attackDelay)
-        {
-            canAttack = true;
-            currTime = 0;
-        }
-
-
         // 무기 교체(ChangeWeapon)
         // 마우스 휠
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
@@ -69,10 +58,10 @@ public class WeaponManager : MonoBehaviour
 
     public void Attack()
     {
-        if (canAttack == false)
+        if (isDelay == true)
             return;
 
-        // Crosshair와 Player의 위치차이로 각도 계산
+        // Crosshair - Aim과 Player의 위치차이로 각도 계산
         float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
         float degree = Mathf.Rad2Deg * radian;
         // 공격하는 각도 변경
@@ -80,15 +69,31 @@ public class WeaponManager : MonoBehaviour
 
         weapons[activeWeaponIdx].GetComponent<Weapon>().Attack(transform.position);
 
-        currTime = 0;
-        canAttack = false;
+        isDelay = true;
     }
 
     void ChangeWeapon(int idx)
     {
         weapons[activeWeaponIdx].SetActive(true);
+        attackDelay = weapons[activeWeaponIdx].GetComponent<Weapon>().delay;
+    }
 
-        currTime = 0;
-        canAttack = false;
+    void UpdateProps(float speed, float range, int damage, float delay)
+    {
+
+    }
+
+    IEnumerator CheckAttackDelay()
+    {
+        while (true)
+        {
+            yield return null;
+
+            if (isDelay == true)
+            {
+                yield return new WaitForSeconds(attackDelay);
+                isDelay = false;
+            }
+        }
     }
 }
