@@ -183,9 +183,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7956498849112640247, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956498849112640247, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
       propertyPath: bulletObj
       value: 
       objectReference: {fileID: 1051204792675732655, guid: 951b2152f0377bd499164b2549c1d7e8, type: 3}
+    - target: {fileID: 7956498849112640247, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
+      propertyPath: fireAngle
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
 --- !u!1 &769365637 stripped
