@@ -28,6 +28,6 @@ public class Grenade : Projectile
         base.OnTriggerEnter(other);
 
         //TODO 수류탄 폭발 효과
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
