@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Shotgun : Weapon
 {
-    // 한 번 공격할 때의 총알 수
-    public int bulletCnt;
     // x축으로 확산되는 범위(랜덤)
     public float diffuseRange;
     // 발사되는 각도(랜덤)

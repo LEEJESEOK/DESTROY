@@ -7,6 +7,7 @@ public class MagazineManager : MonoBehaviour
 {
     public static MagazineManager instance;
 
+
     public Text magazineText;
 
     public int maxMagazine;
@@ -26,12 +27,21 @@ public class MagazineManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentMagazine = maxMagazine;
     }
 
     // Update is called once per frame
     void Update()
     {
         magazineText.text = "" + currentMagazine;
+    }
+
+    public void AddBullet(int bulletCnt)
+    {
+
+    }
+
+    public void SpendBullet(int bulletCnt)
+    {
+        currentMagazine -= bulletCnt;
     }
 }

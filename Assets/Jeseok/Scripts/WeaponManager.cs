@@ -80,6 +80,8 @@ public class WeaponManager : MonoBehaviour
 
         StartCoroutine(checkAttackDelayCoroutine);
         weapons[activeWeaponIdx].SetActive(true);
+
+        MagazineManager.instance.currentMagazine = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()

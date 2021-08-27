@@ -7,6 +7,9 @@ abstract public class Weapon : MonoBehaviour
     // projectile 원형
     public GameObject bulletObj;
 
+    // 한 번 공격할 때의 총알 수
+    public int bulletCnt;
+
     // projectile 속도
     public float speed;
     // 사거리, 이후에 인스터늣 제거
@@ -18,9 +21,15 @@ abstract public class Weapon : MonoBehaviour
 
     public int maxBulletCnt;
     public int currentBulletCnt;
+    [HideInInspector]
+    public int spendBulletCnt;
 
     public bool hasWeapon { get; set; }
 
+    private void Start()
+    {
+        spendBulletCnt = bulletCnt;
+    }
 
     virtual public void Attack(Vector3 position)
     {
@@ -29,6 +38,8 @@ abstract public class Weapon : MonoBehaviour
         bullet.transform.forward = transform.forward;
 
         InitBulletProps(bullet, speed, damage, remainTime);
+
+        MagazineManager.instance.SpendBullet(spendBulletCnt);
     }
 
     protected void InitBulletProps(GameObject bullet, float speed, int damage)
