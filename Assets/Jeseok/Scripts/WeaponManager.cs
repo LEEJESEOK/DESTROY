@@ -8,9 +8,8 @@ public class WeaponManager : MonoBehaviour
 
 
     public GameObject[] weapons;
-
+    Weapon weaponComponent;
     int activeWeaponIdx = 0;
-    //TODO Weapon 클래스 상속으로 변경
     float attackDelay;
     bool isDelay = false;
 
@@ -28,7 +27,11 @@ public class WeaponManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ChangeWeapon(activeWeaponIdx);
+        // TODO
+        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
+        attackDelay = weaponComponent.delay;
+        weapons[activeWeaponIdx].SetActive(true);
+
 
         StartCoroutine(CheckAttackDelay());
     }
@@ -36,24 +39,7 @@ public class WeaponManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 무기 교체(ChangeWeapon)
-        // 마우스 휠
-        float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-        if (wheelInput != 0)
-        {
-            weapons[activeWeaponIdx].SetActive(false);
 
-            if (wheelInput > 0)
-            {
-                activeWeaponIdx = (activeWeaponIdx + 1) % weapons.Length;
-            }
-            else if (wheelInput < 0)
-            {
-                activeWeaponIdx = (activeWeaponIdx - 1 + weapons.Length) % weapons.Length;
-            }
-
-            ChangeWeapon(activeWeaponIdx);
-        }
     }
 
     public void Attack()
@@ -67,15 +53,22 @@ public class WeaponManager : MonoBehaviour
         // 공격하는 각도 변경
         transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
 
-        weapons[activeWeaponIdx].GetComponent<Weapon>().Attack(transform.position);
+        weaponComponent.Attack(transform.position);
 
         isDelay = true;
     }
 
-    void ChangeWeapon(int idx)
+    public void ChangeWeapon(float idx)
     {
+        weapons[activeWeaponIdx].SetActive(false);
+
+        activeWeaponIdx += (idx > 0 ? 1 : -1) + weapons.Length;
+        activeWeaponIdx %= weapons.Length;
+
+        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
+        attackDelay = weaponComponent.delay;
+
         weapons[activeWeaponIdx].SetActive(true);
-        attackDelay = weapons[activeWeaponIdx].GetComponent<Weapon>().delay;
     }
 
     void UpdateProps(float speed, float range, int damage, float delay)
