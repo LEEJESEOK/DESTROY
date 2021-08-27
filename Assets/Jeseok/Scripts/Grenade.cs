@@ -5,7 +5,7 @@ using UnityEngine;
 public class Grenade : Projectile
 {
     [SerializeField]
-     SphereCollider sphereCollider;
+    SphereCollider sphereCollider;
 
     private void OnTriggerEnter(Collider other)
     {

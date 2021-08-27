@@ -13,12 +13,12 @@ public class Projectile : MonoBehaviour
     protected void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        
+
         rigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
     protected void FixedUpdate()
-    {        
+    {
     }
 
     protected void OnCollisionEnter2D(Collision2D other)

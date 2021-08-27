@@ -13,7 +13,6 @@ public class CameraMovement : MonoBehaviour
     {
 
     }
-
     private void LateUpdate()
     {
         transform.position = new Vector3(target.position.x, height, target.position.z - distance);
