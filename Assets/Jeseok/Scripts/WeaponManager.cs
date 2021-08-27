@@ -6,7 +6,6 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-
     public GameObject[] weapons;
     Weapon weaponComponent;
     int activeWeaponIdx = 0;

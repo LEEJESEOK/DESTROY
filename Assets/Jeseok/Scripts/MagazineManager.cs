@@ -12,6 +12,7 @@ public class MagazineManager : MonoBehaviour
     public int maxMagazine;
     public int currentMagazine;
 
+
     private void Awake()
     {
         if (instance == null)

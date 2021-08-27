@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private MovementBehavior movementBehavior;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour
 
         // ChangeWeapon
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-        print(wheelInput);
         if (wheelInput != 0)
         {
             WeaponManager.instance.ChangeWeapon(wheelInput);

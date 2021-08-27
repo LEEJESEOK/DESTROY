@@ -4,11 +4,30 @@ using UnityEngine;
 
 public class Grenade : Projectile
 {
-    [SerializeField]
-    SphereCollider sphereCollider;
+    LayerMask mapLayer;
+    LayerMask groundLayer;
+    LayerMask buildingLayer;
 
-    private void OnTriggerEnter(Collider other)
+
+    protected new void Awake()
     {
-        sphereCollider.radius = 3f;
+        base.Awake();
+        groundLayer = 1 << LayerMask.NameToLayer("Ground");
+        buildingLayer = 1 << LayerMask.NameToLayer("Building");
+
+        mapLayer = (groundLayer | buildingLayer);
+    }
+
+    protected new void OnTriggerEnter(Collider other)
+    {
+        LayerMask otherLayer = 1 << other.gameObject.layer;
+
+        if ((otherLayer & (enemyLayer | mapLayer)) != 0)
+            transform.localScale = Vector3.one * damageRange;
+
+        base.OnTriggerEnter(other);
+
+        //TODO 수류탄 폭발 효과
+        // Destroy(gameObject);
     }
 }

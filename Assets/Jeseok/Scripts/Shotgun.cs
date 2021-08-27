@@ -21,7 +21,7 @@ public class Shotgun : Weapon
             projectile.transform.position = position;
             projectile.transform.forward = transform.forward;
 
-            InitBulletProps(projectile, speed, damage, range);
+            InitBulletProps(projectile, speed, damage, remainTime);
 
             float randDiffuse = Random.Range(-diffuseRange, diffuseRange);
             projectile.transform.position = position + transform.right * randDiffuse;

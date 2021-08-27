@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6149104155773162433}
   - component: {fileID: 6149104155773162432}
   - component: {fileID: 6149104155773162437}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: En_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6149104154700101859}
   - component: {fileID: 6149104154700101858}
   - component: {fileID: 6149104154700101857}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firePos(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
