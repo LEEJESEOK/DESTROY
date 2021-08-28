@@ -9,11 +9,15 @@ public class Shotgun : Weapon
     // 발사되는 각도(랜덤)
     public int maxAngle;
 
-
     public override void Attack(Vector3 position)
     {
+        if (currentBulletCnt < spendBulletCnt)
+            return;
+            
+        currentBulletCnt -= spendBulletCnt;
+        BulletManager.instance.SpendBullet(spendBulletCnt);
 
-        for (int i = 0; i < bulletCnt; i++)
+        for (int i = 0; i < spendBulletCnt; i++)
         {
             GameObject projectile = Instantiate(bulletObj);
             projectile.transform.position = position;

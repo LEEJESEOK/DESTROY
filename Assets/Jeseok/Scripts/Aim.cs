@@ -6,6 +6,7 @@ public class Aim : MonoBehaviour
 {
     public static Aim instance;
 
+
     LayerMask groundLayer;
 
 

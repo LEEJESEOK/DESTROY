@@ -9,7 +9,8 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            MagazineManager.instance.AddBullet(10);
+            print("Get Bullet");
+            WeaponManager.instance.AddBullet(10);
         }
 
     }

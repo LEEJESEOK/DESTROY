@@ -7,39 +7,39 @@ abstract public class Weapon : MonoBehaviour
     // projectile 원형
     public GameObject bulletObj;
 
-    // 한 번 공격할 때의 총알 수
-    public int bulletCnt;
-
     // projectile 속도
     public float speed;
-    // 사거리, 이후에 인스터늣 제거
+    // 사거리, 이후에 인스턴스 제거
     public float remainTime;
     // 데미지
     public int damage;
     // 공격 딜레이(속도)
     public float delay;
 
-    public int maxBulletCnt;
-    public int currentBulletCnt;
-    [HideInInspector]
-    public int spendBulletCnt;
+    // 소지 가능한 최대 Bullet 개수
+    public float maxBulletCnt;
+    // 현재 소지중인 Bullet 개수
+    public float currentBulletCnt;
+
+    // 한 번 공격할 때의 소모하는 Bullet 개수
+    public int spendBulletCnt = 1;
 
     public bool hasWeapon { get; set; }
 
-    private void Start()
-    {
-        spendBulletCnt = bulletCnt;
-    }
 
     virtual public void Attack(Vector3 position)
     {
+        if (currentBulletCnt < spendBulletCnt)
+            return;
+            
+        currentBulletCnt -= spendBulletCnt;
+        BulletManager.instance.SpendBullet(spendBulletCnt);
+
         GameObject bullet = Instantiate(bulletObj);
         bullet.transform.position = position;
         bullet.transform.forward = transform.forward;
 
         InitBulletProps(bullet, speed, damage, remainTime);
-
-        MagazineManager.instance.SpendBullet(spendBulletCnt);
     }
 
     protected void InitBulletProps(GameObject bullet, float speed, int damage)

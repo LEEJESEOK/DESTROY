@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class MovementBehavior : MonoBehaviour
+public class MovementBehaviour : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 5f;

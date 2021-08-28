@@ -81,7 +81,21 @@ public class WeaponManager : MonoBehaviour
         StartCoroutine(checkAttackDelayCoroutine);
         weapons[activeWeaponIdx].SetActive(true);
 
-        MagazineManager.instance.currentMagazine = weaponComponent.currentBulletCnt;
+        BulletManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+    }
+
+    public void AddBullet(int bulletCnt)
+    {
+        if (weaponComponent.currentBulletCnt + bulletCnt >= weaponComponent.maxBulletCnt)
+        {
+            weaponComponent.currentBulletCnt = weaponComponent.maxBulletCnt;
+        }
+        else
+        {
+            weaponComponent.currentBulletCnt += bulletCnt;
+        }
+
+        BulletManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()

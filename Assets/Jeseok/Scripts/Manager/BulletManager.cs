@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MagazineManager : MonoBehaviour
+public class BulletManager : MonoBehaviour
 {
-    public static MagazineManager instance;
+    public static BulletManager instance;
 
+    public float currentBullet;
 
-    public Text magazineText;
-
-    public int maxMagazine;
-    public int currentMagazine;
+    public Text bulletText;
 
 
     private void Awake()
@@ -27,21 +25,17 @@ public class MagazineManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        magazineText.text = "" + currentMagazine;
-    }
-
-    public void AddBullet(int bulletCnt)
-    {
-
+        bulletText.text = "" + currentBullet;
     }
 
     public void SpendBullet(int bulletCnt)
     {
-        currentMagazine -= bulletCnt;
+        currentBullet -= bulletCnt;
     }
 }
