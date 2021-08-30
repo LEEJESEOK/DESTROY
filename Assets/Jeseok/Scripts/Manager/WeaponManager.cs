@@ -6,13 +6,13 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-
     public GameObject[] weapons;
-
+    Weapon weaponComponent;
     int activeWeaponIdx = 0;
-    //TODO Weapon 클래스 상속으로 변경
     float attackDelay;
     bool isDelay = false;
+
+    IEnumerator checkAttackDelayCoroutine;
 
 
     private void Awake()
@@ -23,37 +23,22 @@ public class WeaponManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+
+        checkAttackDelayCoroutine = CheckAttackDelay();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        ChangeWeapon(activeWeaponIdx);
+        InitActiveWeapon();
 
-        StartCoroutine(CheckAttackDelay());
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 무기 교체(ChangeWeapon)
-        // 마우스 휠
-        float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-        if (wheelInput != 0)
-        {
-            weapons[activeWeaponIdx].SetActive(false);
 
-            if (wheelInput > 0)
-            {
-                activeWeaponIdx = (activeWeaponIdx + 1) % weapons.Length;
-            }
-            else if (wheelInput < 0)
-            {
-                activeWeaponIdx = (activeWeaponIdx - 1 + weapons.Length) % weapons.Length;
-            }
-
-            ChangeWeapon(activeWeaponIdx);
-        }
     }
 
     public void Attack()
@@ -67,20 +52,50 @@ public class WeaponManager : MonoBehaviour
         // 공격하는 각도 변경
         transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
 
-        weapons[activeWeaponIdx].GetComponent<Weapon>().Attack(transform.position);
+        weaponComponent.Attack(transform.position);
 
         isDelay = true;
     }
 
-    void ChangeWeapon(int idx)
+    public void ChangeWeapon(float idx)
     {
-        weapons[activeWeaponIdx].SetActive(true);
-        attackDelay = weapons[activeWeaponIdx].GetComponent<Weapon>().delay;
+        weapons[activeWeaponIdx].SetActive(false);
+
+        activeWeaponIdx += (idx > 0 ? 1 : -1) + weapons.Length;
+        activeWeaponIdx %= weapons.Length;
+
+        StopCoroutine(checkAttackDelayCoroutine);
+        InitActiveWeapon();
     }
 
     void UpdateProps(float speed, float range, int damage, float delay)
     {
 
+    }
+
+    void InitActiveWeapon()
+    {
+        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
+        attackDelay = weaponComponent.delay;
+
+        StartCoroutine(checkAttackDelayCoroutine);
+        weapons[activeWeaponIdx].SetActive(true);
+
+        BulletManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+    }
+
+    public void AddBullet(int bulletCnt)
+    {
+        if (weaponComponent.currentBulletCnt + bulletCnt >= weaponComponent.maxBulletCnt)
+        {
+            weaponComponent.currentBulletCnt = weaponComponent.maxBulletCnt;
+        }
+        else
+        {
+            weaponComponent.currentBulletCnt += bulletCnt;
+        }
+
+        BulletManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()
@@ -92,6 +107,7 @@ public class WeaponManager : MonoBehaviour
             if (isDelay == true)
             {
                 yield return new WaitForSeconds(attackDelay);
+
                 isDelay = false;
             }
         }

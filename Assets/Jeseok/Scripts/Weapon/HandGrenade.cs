@@ -6,14 +6,14 @@ public class HandGrenade : Weapon
 {
     public float fireAngle;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public override void Attack(Vector3 position)
     {
+        if (currentBulletCnt < spendBulletCnt)
+            return;
+
+        currentBulletCnt -= spendBulletCnt;
+        BulletManager.instance.SpendBullet(spendBulletCnt);
 
         GameObject projectile = Instantiate(bulletObj);
         projectile.transform.position = position;
