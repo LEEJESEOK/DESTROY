@@ -7,6 +7,8 @@ public class HP : MonoBehaviour
     public int maxHP;
     int currentHP;
 
+    public GameObject destroyEffect;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +31,24 @@ public class HP : MonoBehaviour
             print(currentHP);
 
             if (currentHP <= 0)
-                Destroy(gameObject);
+            {
+                Die();
+            }
         }
+    }
+
+    void Die()
+    {
+        GameObject destroyEft = Instantiate(destroyEffect);
+        destroyEft.transform.position = gameObject.transform.position;
+
+        Collider[] cols = Physics.OverlapSphere(transform.position, 5f, ~LayerMask.NameToLayer("Ground"));
+        for (int i = cols.Length - 1; i >= 0; --i)
+        {
+            Destroy(cols[i].gameObject);
+        }
+
+        Destroy(gameObject);
     }
 
 }

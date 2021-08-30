@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 213304834}
   - component: {fileID: 213304833}
   - component: {fileID: 213304832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 94a135f5fae7e924d853a5ba5e4de01e, type: 2}
+  - {fileID: 2100000, guid: 1d4c7868b89b76941adcb5fc572d2a91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1350,6 +1350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 5
+  destroyEffect: {fileID: 4050284574884786677, guid: 9f117fbd661bd2540ada3d513a085b98, type: 3}
 --- !u!1 &1886313601
 GameObject:
   m_ObjectHideFlags: 0
