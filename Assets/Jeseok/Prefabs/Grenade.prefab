@@ -245,4 +245,4 @@ MonoBehaviour:
   speed: 3
   damage: 1
   damageRange: 5
-  explosionEffect: {fileID: 4050284574884786677, guid: 9f117fbd661bd2540ada3d513a085b98, type: 3}
+  explosionEffect: {fileID: 4050284574884786677, guid: 2d242b34797fef14085b6700ff26e06d, type: 3}
