@@ -7,6 +7,8 @@ public class BulletManager : MonoBehaviour
 {
     public static BulletManager instance;
 
+
+    [HideInInspector]
     public float currentBullet;
 
     public Text bulletText;

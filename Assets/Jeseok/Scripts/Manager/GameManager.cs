@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject floor;
     float xRange, zRange;
 
-    public int buildCnt;
+    public int buildingCnt;
+
+    public GameObject bulletItemObj;
+    public int initBulletItemCnt = 30;
+
 
     private void Awake()
     {
@@ -29,11 +33,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < buildCnt; i++)
+        for (int i = 0; i < buildingCnt; i++)
         {
             Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0, Random.Range(-zRange, zRange) * 5);
             float randHeight = Random.Range(1f, 10f);
             CreateBuilding(randPos, randHeight);
+        }
+
+        for (int i = 0; i < initBulletItemCnt; i++)
+        {
+            Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0.5f, Random.Range(-zRange, zRange) * 5);
+            CreateBulletItem(randPos);
         }
     }
 
@@ -51,5 +61,14 @@ public class GameManager : MonoBehaviour
 
         building.name = "Building";
         building.layer = LayerMask.NameToLayer("Building");
+    }
+
+    void CreateBulletItem(Vector3 position)
+    {
+        GameObject bulletItem = Instantiate(bulletItemObj);
+        bulletItem.transform.position = position + transform.up * transform.localScale.y * 0.5f; ;
+
+        bulletItem.name = "BulletItem";
+        bulletItem.layer = LayerMask.NameToLayer("Item");
     }
 }

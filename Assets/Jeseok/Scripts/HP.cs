@@ -7,7 +7,8 @@ public class HP : MonoBehaviour
     public int maxHP;
     int currentHP;
 
-    public GameObject destroyEffect;
+    public GameObject explosionEffect;
+    public float explosionRange = 20f;
 
 
     // Start is called before the first frame update
@@ -39,12 +40,14 @@ public class HP : MonoBehaviour
 
     void Die()
     {
-        GameObject destroyEft = Instantiate(destroyEffect);
-        destroyEft.transform.position = gameObject.transform.position;
+        GameObject explosion = Instantiate(explosionEffect);
+        explosion.transform.position = gameObject.transform.position;
+        explosion.transform.localScale *= explosionRange;
 
-        Collider[] cols = Physics.OverlapSphere(transform.position, 5f, ~LayerMask.NameToLayer("Ground"));
+        Collider[] cols = Physics.OverlapSphere(transform.position, explosionRange, ~LayerMask.NameToLayer("Ground"));
         for (int i = cols.Length - 1; i >= 0; --i)
         {
+            //TODO 폭발 물리 효과
             Destroy(cols[i].gameObject);
         }
 

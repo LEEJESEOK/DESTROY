@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
         {
             print("Get Bullet");
             WeaponManager.instance.AddBullet(10);
+            Destroy(gameObject);
         }
 
     }

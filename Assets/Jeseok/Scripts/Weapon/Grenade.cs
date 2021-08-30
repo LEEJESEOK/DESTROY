@@ -8,6 +8,8 @@ public class Grenade : Projectile
     LayerMask groundLayer;
     LayerMask buildingLayer;
 
+    public GameObject explosionEffect;
+
 
     protected new void Awake()
     {
@@ -26,6 +28,10 @@ public class Grenade : Projectile
             transform.localScale = Vector3.one * damageRange;
 
         base.OnTriggerEnter(other);
+
+        GameObject explosion = Instantiate(explosionEffect);
+        explosion.transform.position = transform.position;
+
 
         //TODO 수류탄 폭발 효과
         Destroy(gameObject);
