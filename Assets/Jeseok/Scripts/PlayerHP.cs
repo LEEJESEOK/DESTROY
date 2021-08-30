@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(Rigidbody))]
-public class HP : MonoBehaviour
+public class PlayerHP : MonoBehaviour
 {
     public int maxHP;
     int currentHP;
 
     public GameObject explosionEffect;
     public float explosionRange = 20f;
+
+    public Image hPUI;
 
 
     // Start is called before the first frame update
@@ -30,8 +33,12 @@ public class HP : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Destroy(other.gameObject);
+            //TODO 데미지 수치 적용
             --currentHP;
-            print(currentHP);
+            print(currentHP / maxHP);
+
+            hPUI.fillAmount = (float)currentHP / maxHP;
+
 
             if (currentHP <= 0)
             {
