@@ -251,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
     - target: {fileID: 2759201122395333698, guid: eea08812bb5950442877e11103d278b0, type: 3}
       propertyPath: remainTime
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2759201122395333698, guid: eea08812bb5950442877e11103d278b0, type: 3}
       propertyPath: maxBulletCnt

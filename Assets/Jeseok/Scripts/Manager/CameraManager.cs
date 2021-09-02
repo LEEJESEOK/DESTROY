@@ -10,6 +10,8 @@ public class CameraManager : MonoBehaviour
     public float height;
     public float distance;
 
+    public float trackingSpeed = 1f;
+
 
     private void Awake()
     {
@@ -23,7 +25,16 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        // 카메라 위치
         transform.position = new Vector3(target.position.x, height, target.position.z - distance);
-        transform.LookAt(target);
+
+        // target 방향 회전
+        // Vector3 dir = (target.transform.position - transform.position);
+        // dir.Normalize();
+        // transform.forward = Vector3.Lerp(transform.forward, dir, trackingSpeed * Time.deltaTime);
+
+        Vector3 dir = target.transform.position - transform.position;
+        dir.Normalize();
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), trackingSpeed * Time.deltaTime);
     }
 }

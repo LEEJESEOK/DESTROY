@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
 
     protected void Awake()
     {
-        enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+        enemyLayer = LayerMask.GetMask("Enemy");
     }
 
     protected void Start()

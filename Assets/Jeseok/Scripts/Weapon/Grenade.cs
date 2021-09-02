@@ -14,8 +14,8 @@ public class Grenade : Projectile
     protected new void Awake()
     {
         base.Awake();
-        groundLayer = 1 << LayerMask.NameToLayer("Ground");
-        buildingLayer = 1 << LayerMask.NameToLayer("Building");
+        groundLayer = LayerMask.GetMask("Ground");
+        buildingLayer = LayerMask.GetMask("Building");
 
         mapLayer = (groundLayer | buildingLayer);
     }
