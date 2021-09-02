@@ -20,14 +20,13 @@ public class Grenade : Projectile
         mapLayer = (groundLayer | buildingLayer);
     }
 
-    protected new void OnTriggerEnter(Collider other)
-    {
+    protected new void OnCollisionEnter(Collision other) {
         LayerMask otherLayer = 1 << other.gameObject.layer;
 
         if ((otherLayer & (enemyLayer | mapLayer)) != 0)
             transform.localScale = Vector3.one * damageRange;
 
-        base.OnTriggerEnter(other);
+        base.OnCollisionEnter(other);
 
         GameObject explosion = Instantiate(explosionEffect);
         explosion.transform.position = transform.position;

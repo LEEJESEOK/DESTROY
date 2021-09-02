@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
         transform.position += transform.forward * (sphereCollider.radius + 0.5f);
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected void OnCollisionEnter(Collision other)
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, damageRange, enemyLayer);
         for (int i = cols.Length - 1; i >= 0; --i)
@@ -41,5 +41,7 @@ public class Projectile : MonoBehaviour
             //TODO damage 판정 함수 호출
             Destroy(cols[i].gameObject);
         }
+
+        Destroy(gameObject);
     }
 }

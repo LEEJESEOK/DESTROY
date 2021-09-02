@@ -750,6 +750,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5330443339819913215, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
+      propertyPath: delay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330443339819913215, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: maxBulletCnt
       value: Infinity
       objectReference: {fileID: 0}
