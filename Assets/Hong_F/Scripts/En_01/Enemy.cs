@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     GameObject player;
     // Start is called before the first frame update
 
-    int enemyHP = 3;
+    float enemyHP = 3;
     GameObject fractureObj;
     void Start()
     {
@@ -29,20 +29,39 @@ public class Enemy : MonoBehaviour
     {
         nav.SetDestination(player.transform.position);
 
-        DestoryEn_01();
 
     }
 
-    public void DestoryEn_01()
-    {
-        if (enemyHP <= 0)
-        {
-            //gameObject.GetComponent<FractureThis>().enabled = true;
-            //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            Destroy(gameObject);
-            fractureObj.SetActive(true);
 
-            //fractureObj.transform.position = transform.position;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("Bullet"))
+        {
+            enemyHP -= 4;
+
+            if (enemyHP <= 0)
+            {
+
+                //gameObject.GetComponent<FractureThis>().enabled = true;
+                //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                Destroy(gameObject);
+
+                fractureObj.SetActive(true);
+                if (fractureObj)
+                {
+                    fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(1000, gameObject.transform.position, 100);
+                    fractureObj.transform.position = transform.position;
+
+
+                }
+
+            }
+
+
+
+
+
 
         }
     }

@@ -105,7 +105,7 @@ namespace Project.Scripts.Fractures
             //frozen = true;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             rb.useGravity = false;
-            rb.gameObject.layer = LayerMask.NameToLayer("FrozenChunks");
+            //rb.gameObject.layer = LayerMask.NameToLayer("FrozenChunks");
             frozenPos = rb.transform.position;
             forzenRot = rb.transform.rotation;
         }

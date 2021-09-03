@@ -39,6 +39,7 @@ namespace Project.Scripts.Fractures
             AnchorChunks(gameObject, anchor);
 
             var fractureGameObject = new GameObject("Fracture");
+            fractureGameObject.transform.position = gameObject.transform.position;
             foreach (var chunk in chunks)
             {
                 chunk.transform.SetParent(fractureGameObject.transform, true);

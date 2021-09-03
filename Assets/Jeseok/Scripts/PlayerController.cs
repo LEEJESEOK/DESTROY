@@ -32,5 +32,8 @@ public class PlayerController : MonoBehaviour
         {
             WeaponManager.instance.ChangeWeapon(wheelInput);
         }
+    
+
     }
+
 }

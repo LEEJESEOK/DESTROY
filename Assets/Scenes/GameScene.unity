@@ -877,6 +877,7 @@ MonoBehaviour:
   buildingCnt: 0
   bulletItemObj: {fileID: 7675776622767142927, guid: f6288e8608ff3b448b65c62c6aeed1ba, type: 3}
   initBulletItemCnt: 0
+  explosionEffect: {fileID: 0}
 --- !u!4 &1107123346
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,6 +1095,7 @@ MonoBehaviour:
   target: {fileID: 1819079150}
   height: 12
   distance: 8
+  trackingSpeed: 1
 --- !u!81 &1218427878
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1162,7 +1164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5476461258139789768, guid: 2e54b40e99c83954282c303b85dca1c4, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5476461259438600436, guid: 2e54b40e99c83954282c303b85dca1c4, type: 3}
       propertyPath: m_Enabled
@@ -1178,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5476461259438600438, guid: 2e54b40e99c83954282c303b85dca1c4, type: 3}
       propertyPath: m_Speed
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5476461259438600438, guid: 2e54b40e99c83954282c303b85dca1c4, type: 3}
       propertyPath: m_Enabled
@@ -1460,7 +1462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 5
-  explosionEffect: {fileID: 4050284574884786677, guid: 2d242b34797fef14085b6700ff26e06d, type: 3}
   explosionRange: 20
   hPUI: {fileID: 942505111}
 --- !u!1 &1824051931
