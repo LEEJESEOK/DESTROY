@@ -10,8 +10,8 @@ public class PlayerHP : MonoBehaviour
     public int maxHP;
     int currentHP;
 
-    public GameObject explosionEffect;
-    public float explosionRange = 20f;
+
+    public float explosionRange = 10f;
 
     public Image hPUI;
 
@@ -25,7 +25,6 @@ public class PlayerHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void OnCollisionEnter(Collision other)
@@ -49,17 +48,7 @@ public class PlayerHP : MonoBehaviour
 
     void Die()
     {
-        GameObject explosion = Instantiate(explosionEffect);
-        explosion.transform.position = gameObject.transform.position;
-        explosion.transform.localScale *= explosionRange;
-
-        Collider[] cols = Physics.OverlapSphere(transform.position, explosionRange, ~LayerMask.NameToLayer("Ground"));
-        for (int i = cols.Length - 1; i >= 0; --i)
-        {
-            //TODO 폭발 물리 효과
-            Destroy(cols[i].gameObject);
-        }
-
+        GameManager.instance.Explose(transform.position, explosionRange);
         Destroy(gameObject);
     }
 
