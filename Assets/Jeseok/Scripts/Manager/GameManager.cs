@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject bulletItemObj;
     public int initBulletItemCnt = 30;
 
-    public GameObject explosionEffect;
 
+
+    public GameObject explosionEffect;
 
     private void Awake()
     {
@@ -74,19 +75,28 @@ public class GameManager : MonoBehaviour
         bulletItem.layer = LayerMask.NameToLayer("Item");
     }
 
-    public void Explose(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
+    public void ExploseWithEffect(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
     {
         GameObject explosion = Instantiate(explosionEffect);
         explosion.transform.position = position;
         explosion.transform.localScale *= explosionRange;
 
-        print(layer);
+        Explose(position, explosionRange, layer);
+    }
 
-        Collider[] cols = Physics.OverlapSphere(position, explosionRange, ~LayerMask.NameToLayer("Ground"));
+    public void Explose(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
+    {
+        Collider[] cols = Physics.OverlapSphere(position, explosionRange, layer);
         for (int i = cols.Length - 1; i >= 0; --i)
         {
-            //TODO 폭발 물리 효과
-            Destroy(cols[i].gameObject);
+            Rigidbody tempRb = cols[i].gameObject.GetComponent<Rigidbody>();
+            if (tempRb != null)
+            {
+                Vector3 dir = cols[i].gameObject.transform.position - position;
+                dir.Normalize();
+                tempRb.AddExplosionForce(10000, position, explosionRange);
+            }
         }
+
     }
 }

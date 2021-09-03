@@ -35,13 +35,8 @@ public class Projectile : MonoBehaviour
 
     protected void OnCollisionEnter(Collision other)
     {
-        Collider[] cols = Physics.OverlapSphere(transform.position, damageRange, enemyLayer);
-        for (int i = cols.Length - 1; i >= 0; --i)
-        {
-            //TODO damage 판정 함수 호출
-            Destroy(cols[i].gameObject);
-        }
-
+        GameManager.instance.Explose(transform.position, damageRange, enemyLayer);
+        
         Destroy(gameObject);
     }
 }

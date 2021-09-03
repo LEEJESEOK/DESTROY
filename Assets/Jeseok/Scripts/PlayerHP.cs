@@ -13,13 +13,16 @@ public class PlayerHP : MonoBehaviour
 
     public float explosionRange = 10f;
 
-    public Image hPUI;
+    public Image hPBarUI;
+    public Text hpTextUI;
 
 
     // Start is called before the first frame update
     void Start()
     {
         currentHP = maxHP;
+        hpTextUI.text = "" + currentHP;
+
     }
 
     // Update is called once per frame
@@ -34,9 +37,10 @@ public class PlayerHP : MonoBehaviour
             Destroy(other.gameObject);
             //TODO 데미지 수치 적용
             --currentHP;
-            print(currentHP / maxHP);
 
-            hPUI.fillAmount = (float)currentHP / maxHP;
+            hPBarUI.fillAmount = (float)currentHP / maxHP;
+            hpTextUI.text = "" + currentHP;
+
 
 
             if (currentHP <= 0)
@@ -48,8 +52,9 @@ public class PlayerHP : MonoBehaviour
 
     void Die()
     {
-        GameManager.instance.Explose(transform.position, explosionRange);
-        Destroy(gameObject);
+        LayerMask layer = LayerMask.GetMask("Ground");
+
+        GameManager.instance.Explose(transform.position, explosionRange, ~layer);
     }
 
 }
