@@ -47,13 +47,16 @@ public class Enemy : MonoBehaviour
                 //gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
                 Destroy(gameObject);
 
-                fractureObj.SetActive(true);
                 if (fractureObj)
                 {
+                    fractureObj.SetActive(true);
+
+
                     fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(1000, gameObject.transform.position, 100);
                     fractureObj.transform.position = transform.position;
 
 
+                    //fractureObj.AddComponent<script>();
                 }
 
             }

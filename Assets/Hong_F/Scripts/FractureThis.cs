@@ -31,6 +31,8 @@ namespace Project.Scripts.Fractures
 
         public GameObject CreateFracture(GameObject gameObject)
         {
+            //여기서 메테리얼 정해주셈
+
             GameObject fractureObj = FractureGameobject(gameObject).fractureObj;
             fractureObj.SetActive(false);
             return fractureObj;
