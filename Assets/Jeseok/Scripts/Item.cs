@@ -12,6 +12,5 @@ public class Item : MonoBehaviour
             WeaponManager.instance.AddBullet(10);
             Destroy(gameObject);
         }
-
     }
 }

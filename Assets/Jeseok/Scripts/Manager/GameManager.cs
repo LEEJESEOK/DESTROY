@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     public int initBulletItemCnt = 30;
 
 
-
     public GameObject explosionEffect;
+
 
     private void Awake()
     {

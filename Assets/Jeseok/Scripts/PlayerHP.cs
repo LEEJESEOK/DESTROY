@@ -22,7 +22,6 @@ public class PlayerHP : MonoBehaviour
     {
         currentHP = maxHP;
         hpTextUI.text = "" + currentHP;
-
     }
 
     // Update is called once per frame
@@ -41,8 +40,6 @@ public class PlayerHP : MonoBehaviour
             hPBarUI.fillAmount = (float)currentHP / maxHP;
             hpTextUI.text = "" + currentHP;
 
-
-
             if (currentHP <= 0)
             {
                 Die();
@@ -54,7 +51,6 @@ public class PlayerHP : MonoBehaviour
     {
         LayerMask layer = LayerMask.GetMask("Ground");
 
-        GameManager.instance.Explose(transform.position, explosionRange, ~layer);
+        GameManager.instance.ExploseWithEffect(transform.position, explosionRange, ~layer);
     }
-
 }

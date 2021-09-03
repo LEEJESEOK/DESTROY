@@ -9,6 +9,7 @@ public class MovementBehaviour : MonoBehaviour
     new Rigidbody rigidbody;
     Vector3 speed;
 
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -18,7 +19,6 @@ public class MovementBehaviour : MonoBehaviour
     {
         rigidbody.MovePosition(rigidbody.position + speed * Time.deltaTime);
     }
-
 
     public void Move(Vector3 dir)
     {
