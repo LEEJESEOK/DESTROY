@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private MovementBehavior movementBehavior;
+    private MovementBehaviour movementBehavior;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        movementBehavior = GetComponent<MovementBehavior>();
+        movementBehavior = GetComponent<MovementBehaviour>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1"))
             WeaponManager.instance.Attack();
 
-        // TODO ChangeWeapon
-
+        // ChangeWeapon
+        float wheelInput = Input.GetAxis("Mouse ScrollWheel");
+        if (wheelInput != 0)
+        {
+            WeaponManager.instance.ChangeWeapon(wheelInput);
+        }
     }
 }

@@ -6,6 +6,10 @@ public class Aim : MonoBehaviour
 {
     public static Aim instance;
 
+
+    LayerMask groundLayer;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -16,6 +20,11 @@ public class Aim : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        groundLayer = 1 << LayerMask.NameToLayer("Ground");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,10 +32,10 @@ public class Aim : MonoBehaviour
         RaycastHit hit;
         // TODO
         // Layermask 수정
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, float.PositiveInfinity, groundLayer))
         {
             transform.position = new Vector3(hit.point.x, 0.1f, hit.point.z);
-            
+
             transform.eulerAngles = new Vector3(90, 0, 0);
         }
     }

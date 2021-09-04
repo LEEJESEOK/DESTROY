@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2405046821700110255}
   - component: {fileID: 2405046821700110254}
   - component: {fileID: 2405046821700110253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2405046822094699343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: En_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 2405046822108015393}
   - component: {fileID: 2405046822108015392}
   - component: {fileID: 2405046822108015407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firePos (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 2405046822312208242}
   - component: {fileID: 2405046822312208245}
   - component: {fileID: 2405046822312208244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: En_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 2405046822489142063}
   - component: {fileID: 2405046822489142062}
   - component: {fileID: 2405046822489142061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firePos (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 2405046822520288525}
   - component: {fileID: 2405046822520288524}
   - component: {fileID: 2405046822520288527}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: En_02(4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 2405046822789235912}
   - component: {fileID: 2405046822789235915}
   - component: {fileID: 2405046822789235766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firePos(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 2405046823265230552}
   - component: {fileID: 2405046823265230555}
   - component: {fileID: 2405046823265230554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: En_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 2405046823277066221}
   - component: {fileID: 2405046823277066220}
   - component: {fileID: 2405046823277066219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firePos (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 2405046823554516920}
   - component: {fileID: 2405046823554516923}
   - component: {fileID: 2405046823554516922}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: En_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

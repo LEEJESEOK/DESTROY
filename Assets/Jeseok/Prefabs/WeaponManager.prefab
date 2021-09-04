@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 5330443339819913214}
-  - {fileID: 3545046834469695998}
-  - {fileID: 2414989150469086920}
   - {fileID: 769365637}
+  - {fileID: 2414989150469086920}
+  - {fileID: 3545046834469695998}
 --- !u!1001 &2948292029676694009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,9 +68,17 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
       propertyPath: bulletObj
       value: 
       objectReference: {fileID: 8838351596224679557, guid: d6b52648c948d5b4a920d6e5dfa51eaf, type: 3}
+    - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+      propertyPath: remainTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6177072468068002145, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -194,6 +202,10 @@ PrefabInstance:
       propertyPath: fireAngle
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 7956498849112640247, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
+      propertyPath: remainTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
 --- !u!1 &769365637 stripped
@@ -217,6 +229,10 @@ PrefabInstance:
       propertyPath: bulletObj
       value: 
       objectReference: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
+    - target: {fileID: 2759201122395333698, guid: eea08812bb5950442877e11103d278b0, type: 3}
+      propertyPath: remainTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2759201122395333699, guid: eea08812bb5950442877e11103d278b0, type: 3}
       propertyPath: m_Name
       value: Handgun
@@ -340,6 +356,10 @@ PrefabInstance:
       propertyPath: bulletObj
       value: 
       objectReference: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
+    - target: {fileID: 6809907062824305030, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
+      propertyPath: remainTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6809907062824305031, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
       propertyPath: m_Name
       value: Shotgun
