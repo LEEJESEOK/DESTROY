@@ -22,7 +22,7 @@ public class Aim : MonoBehaviour
 
     private void Start()
     {
-        groundLayer = 1 << LayerMask.NameToLayer("Ground");
+        groundLayer = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame

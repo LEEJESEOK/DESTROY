@@ -14,23 +14,25 @@ public class Grenade : Projectile
     protected new void Awake()
     {
         base.Awake();
-        groundLayer = 1 << LayerMask.NameToLayer("Ground");
-        buildingLayer = 1 << LayerMask.NameToLayer("Building");
+        groundLayer = LayerMask.GetMask("Ground");
+        buildingLayer = LayerMask.GetMask("Building");
 
         mapLayer = (groundLayer | buildingLayer);
     }
 
-    protected new void OnTriggerEnter(Collider other)
+    protected new void OnCollisionEnter(Collision other)
     {
+        // 충돌한 오브젝트의 레이어
         LayerMask otherLayer = 1 << other.gameObject.layer;
 
+        // 충돌한 오브젝트가 Enemy or Map(지형, 건물)에 해당
         if ((otherLayer & (enemyLayer | mapLayer)) != 0)
             transform.localScale = Vector3.one * damageRange;
 
-        base.OnTriggerEnter(other);
+        LayerMask layer = LayerMask.GetMask("Enemy") | LayerMask.GetMask("Building");
 
-        GameObject explosion = Instantiate(explosionEffect);
-        explosion.transform.position = transform.position;
+        GameManager.instance.ExploseWithEffect(transform.position, damageRange, layer);
+
 
 
         //TODO 수류탄 폭발 효과

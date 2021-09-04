@@ -5,7 +5,8 @@ using UnityEngine;
 public class Shotgun : Weapon
 {
     // x축으로 확산되는 범위(랜덤)
-    public float diffuseRange;
+    float diffuseXRange = 0.1f;
+    public float diffuseYRange;
     // 발사되는 각도(랜덤)
     public int maxAngle;
 
@@ -13,7 +14,7 @@ public class Shotgun : Weapon
     {
         if (currentBulletCnt < spendBulletCnt)
             return;
-            
+
         currentBulletCnt -= spendBulletCnt;
         BulletManager.instance.SpendBullet(spendBulletCnt);
 
@@ -25,8 +26,9 @@ public class Shotgun : Weapon
 
             InitBulletProps(projectile, speed, damage, remainTime);
 
-            float randDiffuse = Random.Range(-diffuseRange, diffuseRange);
-            projectile.transform.position = position + transform.right * randDiffuse;
+            float randDiffuseX = Random.Range(-diffuseXRange, diffuseXRange);
+            float randDiffuseY = Random.Range(-diffuseYRange, diffuseYRange);
+            projectile.transform.position = position + transform.right * randDiffuseX + transform.forward * randDiffuseY;
 
             // 총알마다 임의의 각도 지정
             int randAngle = Random.Range(-maxAngle, maxAngle);

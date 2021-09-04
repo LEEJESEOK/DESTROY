@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public int initBulletItemCnt = 30;
 
 
+    public GameObject explosionEffect;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -36,7 +39,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < buildingCnt; i++)
         {
             Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0, Random.Range(-zRange, zRange) * 5);
-            float randHeight = Random.Range(1f, 10f);
+            float randHeight = Random.Range(1f, 5f);
             CreateBuilding(randPos, randHeight);
         }
 
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject building = GameObject.CreatePrimitive(PrimitiveType.Cube);
         building.transform.localScale = new Vector3(1, height, 1);
-        building.transform.position = position + transform.up * transform.localScale.y * 0.5f;
+        building.transform.position = position + transform.up * height * 0.5f;
 
         building.name = "Building";
         building.layer = LayerMask.NameToLayer("Building");
@@ -70,5 +73,30 @@ public class GameManager : MonoBehaviour
 
         bulletItem.name = "BulletItem";
         bulletItem.layer = LayerMask.NameToLayer("Item");
+    }
+
+    public void ExploseWithEffect(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
+    {
+        GameObject explosion = Instantiate(explosionEffect);
+        explosion.transform.position = position;
+        explosion.transform.localScale *= explosionRange;
+
+        Explose(position, explosionRange, layer);
+    }
+
+    public void Explose(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
+    {
+        Collider[] cols = Physics.OverlapSphere(position, explosionRange, layer);
+        for (int i = cols.Length - 1; i >= 0; --i)
+        {
+            Rigidbody tempRb = cols[i].gameObject.GetComponent<Rigidbody>();
+            if (tempRb != null)
+            {
+                Vector3 dir = cols[i].gameObject.transform.position - position;
+                dir.Normalize();
+                tempRb.AddExplosionForce(10000, position, explosionRange);
+            }
+        }
+
     }
 }
