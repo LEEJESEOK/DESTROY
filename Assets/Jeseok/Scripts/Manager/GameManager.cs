@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject explosionEffect;
 
+    public Material whiteMat;
+
 
     private void Awake()
     {

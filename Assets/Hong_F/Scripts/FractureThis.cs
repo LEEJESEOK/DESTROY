@@ -10,8 +10,8 @@ namespace Project.Scripts.Fractures
         [SerializeField] private float density = 50;
         [SerializeField] private float internalStrength = 100;
 
-        [SerializeField] private Material insideMaterial;
-        [SerializeField] private Material outsideMaterial;
+        private Material insideMaterial;
+        private Material outsideMaterial;
 
         private Random rng = new Random();
 
@@ -31,7 +31,7 @@ namespace Project.Scripts.Fractures
 
         public GameObject CreateFracture(GameObject gameObject)
         {
-            //¿©±â¼­ ¸ÞÅ×¸®¾ó Á¤ÇØÁÖ¼À
+            //ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
 
             GameObject fractureObj = FractureGameobject(gameObject).fractureObj;
             fractureObj.SetActive(false);
@@ -41,6 +41,8 @@ namespace Project.Scripts.Fractures
         public ChunkGraphManager FractureGameobject(GameObject gameObject)
         {
             var seed = rng.Next();
+            insideMaterial = GameManager.instance.whiteMat;
+            outsideMaterial = GameManager.instance.whiteMat;
             return Fracture.FractureGameObject(
                 gameObject,
                 anchor,
