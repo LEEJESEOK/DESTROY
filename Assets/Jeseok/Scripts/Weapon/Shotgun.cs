@@ -16,7 +16,7 @@ public class Shotgun : Weapon
             return;
 
         currentBulletCnt -= spendBulletCnt;
-        BulletManager.instance.SpendBullet(spendBulletCnt);
+        AimManager.instance.SpendBullet(spendBulletCnt);
 
         for (int i = 0; i < spendBulletCnt; i++)
         {

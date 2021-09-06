@@ -36,6 +36,8 @@ public class Projectile : MonoBehaviour
     protected void OnCollisionEnter(Collision other)
     {
         GameManager.instance.Explose(transform.position, damageRange, enemyLayer);
+
+        print(other.gameObject.name);
         
         Destroy(gameObject);
     }

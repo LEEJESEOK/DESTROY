@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
         zRange = floor.transform.localScale.z;
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < initBulletItemCnt; i++)
         {
-            Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0.5f, Random.Range(-zRange, zRange) * 5);
+            Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0, Random.Range(-zRange, zRange) * 5);
             CreateBulletItem(randPos);
         }
     }
@@ -69,7 +68,7 @@ public class GameManager : MonoBehaviour
     void CreateBulletItem(Vector3 position)
     {
         GameObject bulletItem = Instantiate(bulletItemObj);
-        bulletItem.transform.position = position + transform.up * transform.localScale.y * 0.5f; ;
+        bulletItem.transform.position = position + transform.up * bulletItem.transform.localScale.y * 0.5f;
 
         bulletItem.name = "BulletItem";
         bulletItem.layer = LayerMask.NameToLayer("Item");
@@ -97,6 +96,5 @@ public class GameManager : MonoBehaviour
                 tempRb.AddExplosionForce(10000, position, explosionRange);
             }
         }
-
     }
 }

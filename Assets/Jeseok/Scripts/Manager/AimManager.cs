@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BulletManager : MonoBehaviour
+public class AimManager : MonoBehaviour
 {
-    public static BulletManager instance;
+    public static AimManager instance;
 
 
     [HideInInspector]
     public float currentBullet;
 
     public Text bulletText;
+
+    public Image Overheat;
+    
 
 
     private void Awake()

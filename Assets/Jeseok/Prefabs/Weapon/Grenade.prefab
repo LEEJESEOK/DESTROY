@@ -244,5 +244,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   damage: 1
-  damageRange: 5
+  damageRange: 10
   explosionEffect: {fileID: 4050284574884786677, guid: 2d242b34797fef14085b6700ff26e06d, type: 3}
