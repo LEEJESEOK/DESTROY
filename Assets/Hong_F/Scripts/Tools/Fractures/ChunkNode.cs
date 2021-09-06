@@ -18,9 +18,11 @@ namespace Project.Scripts.Fractures
         public bool IsStatic => rb.isKinematic;
         public Color Color { get; set; } = Color.black;
         public bool HasBrokenLinks { get; private set; }
+        public Material color;
 
         private bool Contains(ChunkNode chunkNode)
         {
+
             return Neighbours.Contains(chunkNode);
         }
 
@@ -32,12 +34,16 @@ namespace Project.Scripts.Fractures
                 transform.position = frozenPos;
                 transform.rotation = forzenRot;
             }
+           gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+
+
         }
 
         public void Setup()
         {
             rb = GetComponent<Rigidbody>();
-            Freeze();
+           Freeze();
+
 
             JointToChunk.Clear();
             ChunkToJoint.Clear();
@@ -46,6 +52,8 @@ namespace Project.Scripts.Fractures
                 var chunk = joint.connectedBody.GetOrAddComponent<ChunkNode>();
                 JointToChunk[joint] = chunk;
                 ChunkToJoint[chunk] = joint;
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
+
             }
 
             foreach (var chunkNode in ChunkToJoint.Keys)
@@ -65,6 +73,8 @@ namespace Project.Scripts.Fractures
         {
             HasBrokenLinks = true;
             rb.AddForce(Random.insideUnitSphere * 1000);
+
+
         }
 
         public void CleanBrokenLinks()
@@ -90,6 +100,7 @@ namespace Project.Scripts.Fractures
             ChunkToJoint.Remove(chunkNode);
             Neighbours.Remove(chunkNode);
             NeighboursArray = Neighbours.ToArray();
+
         }
 
         public void Unfreeze()
@@ -141,6 +152,7 @@ namespace Project.Scripts.Fractures
         {
             foreach (var node in Neighbours)
             {
+
                 var mesh = node.GetComponent<MeshFilter>().mesh;
                 Gizmos.color = Color.yellow.SetAlpha(.2f);
                 Gizmos.DrawMesh(mesh, node.transform.position, node.transform.rotation);

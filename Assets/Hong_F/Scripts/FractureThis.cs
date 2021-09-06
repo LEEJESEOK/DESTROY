@@ -10,8 +10,8 @@ namespace Project.Scripts.Fractures
         [SerializeField] private float density = 50;
         [SerializeField] private float internalStrength = 100;
 
-        [SerializeField] private Material insideMaterial;
-        [SerializeField] private Material outsideMaterial;
+        [SerializeField] private static Material insideMaterial;
+        [SerializeField] private static Material outsideMaterial;
 
         private Random rng = new Random();
 
@@ -24,6 +24,7 @@ namespace Project.Scripts.Fractures
             if (Instance == null)
             {
                 Instance = new FractureThis();
+
             }
 
             return Instance;
@@ -52,5 +53,7 @@ namespace Project.Scripts.Fractures
                 density
             );
         }
+
+       
     }
 }
