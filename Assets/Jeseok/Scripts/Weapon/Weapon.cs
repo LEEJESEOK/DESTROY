@@ -33,7 +33,7 @@ abstract public class Weapon : MonoBehaviour
             return;
             
         currentBulletCnt -= spendBulletCnt;
-        BulletManager.instance.SpendBullet(spendBulletCnt);
+        AimManager.instance.SpendBullet(spendBulletCnt);
 
         GameObject bullet = Instantiate(bulletObj);
         bullet.transform.position = position;
