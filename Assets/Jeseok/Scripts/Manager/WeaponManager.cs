@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class WeaponManager : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class WeaponManager : MonoBehaviour
     bool isDelay = false;
 
     IEnumerator checkAttackDelayCoroutine;
+
+    public Text mainWeaponText, subWeaponText;
+    public Image mainWeaponGauge, subWeaponGauge;
+
 
 
     private void Awake()
@@ -81,7 +87,7 @@ public class WeaponManager : MonoBehaviour
         StartCoroutine(checkAttackDelayCoroutine);
         weapons[activeWeaponIdx].SetActive(true);
 
-        BulletManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     public void AddBullet(int bulletCnt)
@@ -95,7 +101,7 @@ public class WeaponManager : MonoBehaviour
             weaponComponent.currentBulletCnt += bulletCnt;
         }
 
-        BulletManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()

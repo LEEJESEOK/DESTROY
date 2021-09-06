@@ -29,13 +29,13 @@ public class Grenade : Projectile
         if ((otherLayer & (enemyLayer | mapLayer)) != 0)
             transform.localScale = Vector3.one * damageRange;
 
-        LayerMask layer = LayerMask.GetMask("Enemy") | LayerMask.GetMask("Building");
+        LayerMask layer = LayerMask.GetMask("Enemy");
 
         GameManager.instance.ExploseWithEffect(transform.position, damageRange, layer);
 
 
 
         //TODO 수류탄 폭발 효과
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 }

@@ -7,13 +7,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerHP : MonoBehaviour
 {
+    public float explosionRange = 10f;
+
     public int maxHP;
     int currentHP;
 
 
-    public float explosionRange = 10f;
-
-    public Image hPBarUI;
+    public Image hpGauge;
     public Text hpTextUI;
 
 
@@ -37,7 +37,7 @@ public class PlayerHP : MonoBehaviour
             //TODO 데미지 수치 적용
             --currentHP;
 
-            hPBarUI.fillAmount = (float)currentHP / maxHP;
+            hpGauge.fillAmount = (float)currentHP / maxHP;
             hpTextUI.text = "" + currentHP;
 
             if (currentHP <= 0)

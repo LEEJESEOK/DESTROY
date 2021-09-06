@@ -13,7 +13,7 @@ public class HandGrenade : Weapon
             return;
 
         currentBulletCnt -= spendBulletCnt;
-        BulletManager.instance.SpendBullet(spendBulletCnt);
+        AimManager.instance.SpendBullet(spendBulletCnt);
 
         GameObject projectile = Instantiate(bulletObj);
         projectile.transform.position = position;

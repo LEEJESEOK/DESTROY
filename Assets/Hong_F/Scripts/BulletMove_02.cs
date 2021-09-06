@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BulletMove_02 : MonoBehaviour
 {
-
-    int speed = 4;
+    public int speed = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +15,5 @@ public class BulletMove_02 : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
-
     }
 }
