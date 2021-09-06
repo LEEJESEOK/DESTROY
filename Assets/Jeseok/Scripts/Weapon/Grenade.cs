@@ -36,6 +36,6 @@ public class Grenade : Projectile
 
 
         //TODO 수류탄 폭발 효과
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
