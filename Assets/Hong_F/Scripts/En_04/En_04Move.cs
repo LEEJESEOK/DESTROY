@@ -8,7 +8,7 @@ public class En_04Move : MonoBehaviour
     public GameObject target;
     public float rotspeed = 100f;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
 
     Vector3 dir;
 
@@ -25,14 +25,13 @@ public class En_04Move : MonoBehaviour
 
         rigidbody = GetComponent<Rigidbody>();
        
-        //ÀÌµ¿ÇÏ´Â ¹æÇâÀ» ¹Ù¶óº¸°Ô ÇÏ°í
+        //ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸°ï¿½ ï¿½Ï°ï¿½
     }
 
     // Update is called once per frame
     void Update()
     {
-        float rotx;
-        // ÀÏ´Ü ÇÃ·¹ÀÌ¾î°¡ ÀÖ´Â ¹æÇâÀ¸·Î ÀÌµ¿ÇÒ²¨¾ß 
+        // ï¿½Ï´ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ò²ï¿½ï¿½ï¿½ 
         transform.position += dir * 10 * Time.deltaTime;
 
         //transform.Rotate(axis, 500*Time.deltaTime);
@@ -41,8 +40,6 @@ public class En_04Move : MonoBehaviour
         //Quaternion.Euler(dir * 500 * Time.deltaTime);
         dir.Normalize();
 
-        // ¹Ù¶óº»ÂÊÀ¸·Î È¸Àü
-
-
+        // ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
     }
 }

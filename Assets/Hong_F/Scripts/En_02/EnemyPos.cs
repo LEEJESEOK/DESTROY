@@ -11,7 +11,6 @@ public class EnemyPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
             int rand = Random.Range(0, 100);
 
             if (rand < 60)
