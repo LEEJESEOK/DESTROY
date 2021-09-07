@@ -32,12 +32,10 @@ public class EnmeyFracture : MonoBehaviour
 
     public void OnHit(float damage)
     {
-        print("OnHit, " + damage);
         hp -= damage;
 
         if (hp <= 0)
         {
-            print("die");
             fractureObj.transform.position = transform.position;
             fractureObj.SetActive(true);
             fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, fractureObj.transform.position, 1);

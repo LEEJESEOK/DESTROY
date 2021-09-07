@@ -37,8 +37,6 @@ public class Projectile : MonoBehaviour
     {
         GameManager.instance.Explose(transform.position, damageRange, enemyLayer);
 
-        print(other.gameObject.name);
-        
         Destroy(gameObject);
     }
 }

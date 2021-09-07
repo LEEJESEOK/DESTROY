@@ -103,7 +103,6 @@ public class GameManager : MonoBehaviour
             EnmeyFracture enmeyFracture = cols[i].gameObject.GetComponentInParent<EnmeyFracture>();
             if (enmeyFracture != null)
             {
-                print("start onhit");
                 enmeyFracture.OnHit(WeaponManager.instance.weaponComponent.damage);
             }
         }
