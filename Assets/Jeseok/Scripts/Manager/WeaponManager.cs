@@ -17,15 +17,10 @@ public class WeaponManager : MonoBehaviour
     bool isDelay = false;
     public GameObject defaultWeapon;
 
-    float maxUsingTime;
-    float currentUsingTime;
-
-
     IEnumerator checkAttackDelayCoroutine;
 
     public Text mainWeaponText, subWeaponText;
     public Image mainWeaponGauge, subWeaponGauge;
-
 
 
     private void Awake()
@@ -36,7 +31,6 @@ public class WeaponManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
 
         checkAttackDelayCoroutine = CheckAttackDelay();
     }
@@ -57,12 +51,6 @@ public class WeaponManager : MonoBehaviour
     {
         if (isDelay == true)
             return;
-
-        // // Crosshair - Aim과 Player의 위치차이로 각도 계산
-        // float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
-        // float degree = Mathf.Rad2Deg * radian;
-        // // 공격하는 각도 변경
-        // transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
 
         weaponComponent.Attack(transform.position);
 
