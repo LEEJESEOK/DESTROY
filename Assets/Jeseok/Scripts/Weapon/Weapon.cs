@@ -37,7 +37,7 @@ abstract public class Weapon : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletObj);
         bullet.transform.position = position;
-        bullet.transform.forward = transform.forward;
+        bullet.transform.rotation = transform.rotation;
 
         InitBulletProps(bullet, speed, damage, remainTime);
     }

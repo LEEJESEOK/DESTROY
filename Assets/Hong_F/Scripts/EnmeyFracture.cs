@@ -6,7 +6,7 @@ using Project.Scripts.Fractures;
 
 public class EnmeyFracture : MonoBehaviour
 {
-    float enemyHP = 3;
+    public float hp = 1;
     GameObject fractureObj;
 
     // Start is called before the first frame update
@@ -26,18 +26,25 @@ public class EnmeyFracture : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
-            enemyHP -= 4;
+            hp -= 4;
+        }
+    }
 
-            if (enemyHP <= 0)
-            {
-                fractureObj.transform.position = transform.position;
-                fractureObj.SetActive(true);
-                fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, fractureObj.transform.position, 1);
+    public void OnHit(float damage)
+    {
+        print("OnHit, " + damage);
+        hp -= damage;
 
-                Destroy(fractureObj, 4);
+        if (hp <= 0)
+        {
+            print("die");
+            fractureObj.transform.position = transform.position;
+            fractureObj.SetActive(true);
+            fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, fractureObj.transform.position, 1);
 
-                Destroy(gameObject);
-            }
+            Destroy(fractureObj, 4);
+
+            Destroy(gameObject);
         }
     }
 }

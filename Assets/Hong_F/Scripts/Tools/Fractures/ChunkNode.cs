@@ -34,7 +34,7 @@ namespace Project.Scripts.Fractures
                 transform.position = frozenPos;
                 transform.rotation = forzenRot;
             }
-           gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
 
 
         }
@@ -42,7 +42,7 @@ namespace Project.Scripts.Fractures
         public void Setup()
         {
             rb = GetComponent<Rigidbody>();
-           Freeze();
+            Freeze();
 
 
             JointToChunk.Clear();
@@ -72,9 +72,7 @@ namespace Project.Scripts.Fractures
         private void OnJointBreak(float breakForce)
         {
             HasBrokenLinks = true;
-            rb.AddForce(Random.insideUnitSphere * 1000);
-
-
+            rb.AddForce(Random.insideUnitSphere * 10, ForceMode.VelocityChange);
         }
 
         public void CleanBrokenLinks()
@@ -108,7 +106,7 @@ namespace Project.Scripts.Fractures
             frozen = false;
             rb.constraints = RigidbodyConstraints.None;
             rb.useGravity = true;
-            rb.gameObject.layer = LayerMask.NameToLayer("Default");
+            rb.gameObject.layer = LayerMask.NameToLayer("Fracture");
         }
 
         private void Freeze()
@@ -116,7 +114,7 @@ namespace Project.Scripts.Fractures
             //frozen = true;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             rb.useGravity = false;
-            //rb.gameObject.layer = LayerMask.NameToLayer("FrozenChunks");
+            // rb.gameObject.layer = LayerMask.NameToLayer("Fracture");
             frozenPos = rb.transform.position;
             forzenRot = rb.transform.rotation;
         }
@@ -124,7 +122,7 @@ namespace Project.Scripts.Fractures
         private void OnDrawGizmos()
         {
             var worldCenterOfMass = transform.TransformPoint(transform.GetComponent<Rigidbody>().centerOfMass);
-            
+
             if (IsStatic)
             {
                 Gizmos.color = Color.red;
@@ -135,7 +133,7 @@ namespace Project.Scripts.Fractures
                 Gizmos.color = Color.SetAlpha(0.5f);
                 Gizmos.DrawSphere(worldCenterOfMass, 0.1f);
             }
-            
+
             foreach (var joint in JointToChunk.Keys)
             {
                 if (joint)

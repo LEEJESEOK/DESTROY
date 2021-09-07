@@ -8,11 +8,18 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
+
     public GameObject[] weapons;
-    Weapon weaponComponent;
+    [HideInInspector]
+    public Weapon weaponComponent;
     int activeWeaponIdx = 0;
     float attackDelay;
     bool isDelay = false;
+    public GameObject defaultWeapon;
+
+    float maxUsingTime;
+    float currentUsingTime;
+
 
     IEnumerator checkAttackDelayCoroutine;
 
@@ -38,7 +45,6 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         InitActiveWeapon();
-
     }
 
     // Update is called once per frame
@@ -52,11 +58,11 @@ public class WeaponManager : MonoBehaviour
         if (isDelay == true)
             return;
 
-        // Crosshair - Aim과 Player의 위치차이로 각도 계산
-        float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
-        float degree = Mathf.Rad2Deg * radian;
-        // 공격하는 각도 변경
-        transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
+        // // Crosshair - Aim과 Player의 위치차이로 각도 계산
+        // float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
+        // float degree = Mathf.Rad2Deg * radian;
+        // // 공격하는 각도 변경
+        // transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
 
         weaponComponent.Attack(transform.position);
 
@@ -88,6 +94,8 @@ public class WeaponManager : MonoBehaviour
         weapons[activeWeaponIdx].SetActive(true);
 
         AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+
+        mainWeaponText.text = weapons[activeWeaponIdx].name;
     }
 
     public void AddBullet(int bulletCnt)

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
 
+    public GameObject player;
+
     public GameObject floor;
     float xRange, zRange;
 
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
         GameObject building = GameObject.CreatePrimitive(PrimitiveType.Cube);
         building.transform.localScale = new Vector3(1, height, 1);
         building.transform.position = position + transform.up * height * 0.5f;
+        building.transform.Rotate(Vector3.up * 45);
 
         building.name = "Building";
         building.layer = LayerMask.NameToLayer("Building");
@@ -94,7 +97,14 @@ public class GameManager : MonoBehaviour
             {
                 Vector3 dir = cols[i].gameObject.transform.position - position;
                 dir.Normalize();
-                tempRb.AddExplosionForce(10000, position, explosionRange);
+                tempRb.AddExplosionForce(5000, position, explosionRange);
+            }
+
+            EnmeyFracture enmeyFracture = cols[i].gameObject.GetComponentInParent<EnmeyFracture>();
+            if (enmeyFracture != null)
+            {
+                print("start onhit");
+                enmeyFracture.OnHit(WeaponManager.instance.weaponComponent.damage);
             }
         }
     }
