@@ -6,7 +6,8 @@ public class Respawn : MonoBehaviour
 {
     public GameObject player;
 
-    public GameObject[] enemy;
+    public GameObject[] enemyObj;
+    List<GameObject> enemyList;
     int enemyCount;
     int idx;
     int rand;
@@ -20,6 +21,15 @@ public class Respawn : MonoBehaviour
 
     public void Start()
     {
+        enemyList = new List<GameObject>();
+        for (int i = 0; i < 1000; i++)
+        {
+            rand = rng.Next(4);
+            GameObject enemy = Instantiate(enemyObj[rand]);
+            enemy.SetActive(false);
+            enemyList.Add(enemy);
+        }
+
         StartCoroutine(RandomRespawn_Coroutine());
     }
 
@@ -37,30 +47,16 @@ public class Respawn : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            if (enemyCount < 1000)
+
+            if (enemyList.Count > 0)
             {
-                rand = rng.Next(100);
+                GameObject enemy = enemyList[0];
+                enemy.transform.position = RandomPosition();
+                enemy.SetActive(true);
 
-                if (rand <= 60)
-                {
-                    idx = 0;
-                }
-                else if (61 < rand && rand <= 80)
-                {
-                    idx = 1;
-                }
-                else if (81 < rand && rand <= 90)
-                {
-                    idx = 2;
-                }
-                else
-                {
-                    idx = 3;
-                }
-
-                GameObject instantEnemy = Instantiate(enemy[idx], RandomPosition(), Quaternion.identity);
-                enemyCount++;
+                enemyList.RemoveAt(0);
             }
+
         }
     }
 }

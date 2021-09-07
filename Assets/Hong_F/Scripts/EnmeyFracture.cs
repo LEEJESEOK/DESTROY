@@ -8,12 +8,12 @@ public class EnmeyFracture : MonoBehaviour
 {
     public float hp = 1;
     GameObject fractureObj;
-
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         fractureObj = FractureThis.GetInstance().CreateFracture(gameObject);
-
     }
 
     // Update is called once per frame
