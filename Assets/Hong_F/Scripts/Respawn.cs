@@ -5,19 +5,22 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public GameObject rangeObject;
-    BoxCollider rangeCollider;
 
-    public GameObject Enemy;
+    GameObject player;
+
+    public GameObject[] Enemy;
     int enemyCount;
     // Start is called before the first frame update
     private void Awake()
     {
-        rangeCollider = rangeObject.GetComponent<BoxCollider>();
+        // rangeCollider = rangeObject.GetComponent<BoxCollider>();
     }
 
     public void Start()
     {
 
+
+        player = GameObject.Find("Player");
         StartCoroutine(RandomRespawn_Coroutine());
 
 
@@ -28,11 +31,19 @@ public class Respawn : MonoBehaviour
     {
         Vector3 originPosition = rangeObject.transform.position;
 
-        float range_X = rangeCollider.bounds.size.x;
-        float range_Z = rangeCollider.bounds.size.z;
+        // float range_X = rangeCollider.bounds.size.x;
+        //   float range_Z = rangeCollider.bounds.size.z;
+        float range_X = player.transform.position.x;
+        float range_Z = player.transform.position.z;
 
-        range_X = Random.Range((range_X / 2) * -1, range_X / 2);
-        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
+        
+        //   range_X = Random.Range((range_X / 2) * -1, range_X / 2);
+        //   range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
+        range_X = Random.Range(((range_X + 100) / 2) * -1, (range_X + 100) / 2);
+        range_Z = Random.Range(((range_Z + 100) / 2) * -1, (range_Z + 100) / 2);
+
+       
+
 
         Vector3 RandomPostion = new Vector3(range_X, 0f, range_Z);
 
@@ -46,10 +57,33 @@ public class Respawn : MonoBehaviour
         while (true)
         {
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             if (enemyCount < 1000)
             {
-                GameObject instantEnemy = Instantiate(Enemy, Return_RandomPosition(), Quaternion.identity);
+                int rand = Random.Range(0, 100);
+                int idx;
+                if (rand < 60)
+                {
+                    idx = 0;
+                }
+
+                else if (61 < rand && rand < 80)
+                {
+                    idx = 1;
+                }
+
+                else if (81 < rand && rand < 90)
+                {
+                    idx = 2;
+                }
+
+                else
+                {
+                    idx = 3;
+                }
+
+
+                GameObject instantEnemy = Instantiate(Enemy[idx], Return_RandomPosition(), Quaternion.identity);
                 enemyCount++;
             }
 
