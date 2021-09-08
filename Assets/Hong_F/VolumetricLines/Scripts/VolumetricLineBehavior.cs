@@ -49,13 +49,13 @@ namespace VolumetricLines
 		/// The start position relative to the GameObject's origin
 		/// </summary>
 		[SerializeField] 
-		private Vector3 m_startPos;
+		public Vector3 m_startPos;
 		
 		/// <summary>
 		/// The end position relative to the GameObject's origin
 		/// </summary>
 		[SerializeField] 
-		private Vector3 m_endPos = new Vector3(0f, 0f, 100f);
+		public  Vector3 m_endPos = new Vector3(0f, 0f, 100f);
 
 		/// <summary>
 		/// Line Color
