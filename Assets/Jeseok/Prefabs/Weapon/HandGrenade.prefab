@@ -43,11 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25819d0693dadd04e8eabc0ffd029269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileObj: {fileID: 1051204792675732655, guid: 951b2152f0377bd499164b2549c1d7e8, type: 3}
+  bulletObj: {fileID: 1051204792675732655, guid: 951b2152f0377bd499164b2549c1d7e8, type: 3}
   speed: 15
-  range: 0
+  remainTime: 0.5
   damage: 3
   delay: 3
-  maxProjectileCnt: 0
-  currentProjectileCnt: 0
-  fireAngle: 30
+  maxBulletCnt: 0
+  currentBulletCnt: 0
+  spendBulletCnt: 1
+  maxUsingTime: 10
+  remainUsingTime: 10
+  isActive: 0
+  fireAngle: 80
