@@ -535,10 +535,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea75ee5b149bab4f9ae06c26f89e039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnCount: 1
+  respawnCount: 100
   respawnDelay: 0.2
   enemyObj:
+  - {fileID: 5476461259438600437, guid: 2e54b40e99c83954282c303b85dca1c4, type: 3}
   - {fileID: 5495062189143519773, guid: d7b99a46943849341986d94dbeb4d98e, type: 3}
+  - {fileID: 1907938145007125212, guid: 4c9a248ed14cce143a66ed7b409bf8db, type: 3}
 --- !u!1 &602712595
 GameObject:
   m_ObjectHideFlags: 0

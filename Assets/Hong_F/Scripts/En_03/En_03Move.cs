@@ -60,14 +60,14 @@ public class En_03Move : MonoBehaviour
 
     public void rotation()
     {
-        //Vector3 dir = target.transform.position - transform.position;
-        //dir.y = 0;
-        //dir.Normalize();
+        Vector3 dir = target.transform.position - transform.position;
+        dir.y = 0;
+        dir.Normalize();
 
         //Quaternion q = Quaternion.Euler(dir);
 
-        Quaternion dir = Quaternion.LookRotation(target.transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, dir, 2 * Time.deltaTime); ;
+        Quaternion q = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, 2 * Time.deltaTime); ;
 
         nav.SetDestination(target.transform.position);
     }
