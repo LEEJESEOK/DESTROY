@@ -24,15 +24,7 @@ abstract public class Weapon : MonoBehaviour
     // 한 번 공격할 때의 생성하는 Bullet 개수
     public int spendBulletCnt = 1;
 
-    public float maxUsingTime;
-    public float remainUsingTime;
-
-    public bool hasWeapon { get; set; }
-
-
-    private void OnEnable() {
-                
-    }
+    public bool isActive = false;
 
 
     virtual public void Attack(Vector3 position)
@@ -48,6 +40,7 @@ abstract public class Weapon : MonoBehaviour
         bullet.transform.rotation = transform.rotation;
 
         InitBulletProps(bullet, speed, damage, remainTime);
+
     }
 
     protected void InitBulletProps(GameObject bullet, float speed, int damage)
@@ -66,6 +59,6 @@ abstract public class Weapon : MonoBehaviour
 
     IEnumerator CheckUsingTime()
     {
-        yield return new WaitForSeconds(remainUsingTime);
+        yield return new WaitForSeconds(0);
     }
 }

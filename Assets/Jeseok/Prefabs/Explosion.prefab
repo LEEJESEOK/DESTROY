@@ -9453,7 +9453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4050284574885146717}
   - component: {fileID: 4050284574870981161}
-  - component: {fileID: 8980096132660704365}
+  - component: {fileID: -1374295425111225567}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -9491,7 +9491,7 @@ ParticleSystem:
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -14195,7 +14195,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &8980096132660704365
+--- !u!114 &-1374295425111225567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14204,6 +14204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4050284574884786677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae650660f9a9c18499ed2f69db6d6023, type: 3}
+  m_Script: {fileID: 11500000, guid: 997e0678a36340245a4df239970a66de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
