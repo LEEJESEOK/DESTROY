@@ -57,7 +57,7 @@ public class Respawn : MonoBehaviour
         while (true)
         {
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             if (enemyCount < 1000)
             {
                 int rand = Random.Range(0, 100);

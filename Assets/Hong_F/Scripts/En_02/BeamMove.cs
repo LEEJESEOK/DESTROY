@@ -9,9 +9,19 @@ public class BeamMove : MonoBehaviour
 {
     float currTime;
     GameObject Player;
-    GameObject beam;
+    public GameObject beam;
     Vector3 one;
     Vector3 two;
+
+    float z = 70;
+
+    public enum ShotState
+    {
+        Shot,
+        Back,
+        Idle,
+    }
+    public ShotState state;
 
     // Start is called before the first frame update
     void Start()
@@ -20,41 +30,72 @@ public class BeamMove : MonoBehaviour
         beam = GameObject.Find("SingleLine-LightSaber");
 
         beam.SetActive(false);
-
+        state = ShotState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
-        float DistanceX = Player.transform.position.x - transform.position.x;
-        float DistanceZ = Player.transform.position.z - transform.position.z;
-
-        if ((DistanceX <= 15 && DistanceZ <= 15) && (DistanceX > -15 && DistanceZ > -15))
+        switch (state)
         {
-            currTime += Time.deltaTime;
-            if (currTime > 2f)
-            {
+            case ShotState.Idle:
+                float DistanceX = Player.transform.position.x - transform.position.x;
+                float DistanceZ = Player.transform.position.z - transform.position.z;
+                if ((DistanceX <= 15 && DistanceZ <= 15) && (DistanceX > -15 && DistanceZ > -15))
+                {
+                    currTime += Time.deltaTime;
 
-                beam.SetActive(true);
+                    if (currTime > 2f)
+                    {
 
+                        currTime = 0f;
+                        state = ShotState.Shot;
+                    }
+                }
 
-                //transform.LookAt(Player.transform.position);
-                one = Vector3.Lerp(one, new Vector3(0, 0, 50), 10 * Time.deltaTime);
-                       beam.GetComponent<VolumetricLineBehavior>().
-                       SetStartAndEndPoints(one, new Vector3(0, 0, 0));
-
-                //two = Vector3.Lerp(two, new Vector3(0, 0, 50), 10 * Time.deltaTime);
-                //     beam.GetComponent<VolumetricLineBehavior>().
-                //       SetStartAndEndPoints(one, two);
-
-
-
-
-
-            }
+                break;
+            case ShotState.Shot:
+                ShotBeam();
+                break;
+            case ShotState.Back:
+                BeamBack();
+                break;
         }
+    }
+
+    public void ShotBeam()
+    {
+        currTime += Time.deltaTime;
+
+        if (currTime >= 2f)
+        {
+            currTime = 0f;
+            state = ShotState.Back;
+            return;
+        }
+
+        beam.SetActive(true);
+        //transform.LookAt(Player.transform.position);
+        one = Vector3.Lerp(one, new Vector3(0, -6, z), 10 * Time.deltaTime);
+        beam.GetComponent<VolumetricLineBehavior>().
+        SetStartAndEndPoints(one, new Vector3(0, 0, 0));
+    }
+
+    public void BeamBack()
+    {
+        currTime += Time.deltaTime;
+
+        if (currTime >= 2f)
+        {
+            beam.SetActive(false);
+            currTime = 0f;
+            state = ShotState.Idle;
+            return;
+        }
+
+        //transform.LookAt(Player.transform.position);
+        one = Vector3.Lerp(one, new Vector3(0, 0, 0.1f), 10 * Time.deltaTime);
+        beam.GetComponent<VolumetricLineBehavior>().
+        SetStartAndEndPoints(one, new Vector3(0, 0, 0));
     }
 }
