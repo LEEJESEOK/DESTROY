@@ -48,9 +48,7 @@ MonoBehaviour:
   remainTime: 0.4
   damage: 1
   delay: 0.5
-  maxBulletCnt: 0
-  currentBulletCnt: 0
+  maxBulletCnt: Infinity
+  currentBulletCnt: Infinity
   spendBulletCnt: 1
-  maxUsingTime: 10
-  remainUsingTime: 0
   isActive: 0

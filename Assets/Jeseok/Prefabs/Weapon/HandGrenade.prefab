@@ -47,11 +47,9 @@ MonoBehaviour:
   speed: 15
   remainTime: 0.5
   damage: 3
-  delay: 3
-  maxBulletCnt: 0
-  currentBulletCnt: 0
+  delay: 0.5
+  maxBulletCnt: Infinity
+  currentBulletCnt: Infinity
   spendBulletCnt: 1
-  maxUsingTime: 10
-  remainUsingTime: 10
   isActive: 0
   fireAngle: 80
