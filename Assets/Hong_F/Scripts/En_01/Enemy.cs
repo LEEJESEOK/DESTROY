@@ -5,22 +5,30 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
 
+
+    public Transform Target;
     NavMeshAgent nav;
     GameObject player;
+    // Start is called before the first frame update
 
+  
     void Start()
     {
         player = GameObject.Find("Player");
 
         nav = GetComponent<NavMeshAgent>();
-        nav.speed = speed;
+        //gameObject.GetComponent<FractureThis>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         nav.SetDestination(player.transform.position);
+
+
     }
+
+
+   
 }

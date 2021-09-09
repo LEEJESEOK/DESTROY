@@ -40,7 +40,7 @@ public class EnmeyFracture : MonoBehaviour
             fractureObj.SetActive(true);
             fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, fractureObj.transform.position, 1);
 
-            Destroy(fractureObj, 4);
+            Destroy(fractureObj, 3);
 
             Destroy(gameObject);
         }

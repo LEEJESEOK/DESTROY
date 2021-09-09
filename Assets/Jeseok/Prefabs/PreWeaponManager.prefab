@@ -51,16 +51,11 @@ MonoBehaviour:
   - {fileID: 1733210584439236157}
   - {fileID: 7431108105094635611}
   - {fileID: 3569877841883332072}
-  - {fileID: 4336709544981469209}
-  mainWeaponComponent: {fileID: 0}
-  subWeaponComponent: {fileID: 0}
+  weaponComponent: {fileID: 0}
   defaultWeapon: {fileID: 2759201122395333699, guid: eea08812bb5950442877e11103d278b0, type: 3}
-  mainWeaponUI: {fileID: 0}
-  subWeaponUI: {fileID: 0}
-  mainWeaponText: {fileID: 0}
-  subWeaponText: {fileID: 0}
-  mainWeaponGauge: {fileID: 0}
-  subWeaponGauge: {fileID: 0}
+  weaponUI: {fileID: 0}
+  weaponText: {fileID: 0}
+  weaponGauge: {fileID: 0}
 --- !u!1001 &4099239756781652697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,6 +66,14 @@ PrefabInstance:
     - target: {fileID: 678262526573508401, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+      propertyPath: maxBulletCnt
+      value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704585288054513382, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+      propertyPath: currentBulletCnt
+      value: Infinity
       objectReference: {fileID: 0}
     - target: {fileID: 6177072468068002145, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
       propertyPath: m_RootOrder
@@ -317,13 +320,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7956498849112640247, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
+      propertyPath: maxBulletCnt
+      value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956498849112640247, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
+      propertyPath: currentBulletCnt
+      value: Infinity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
---- !u!1 &4336709544981469209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7956498849112640245, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}
-  m_PrefabInstance: {fileID: 5927933202034545388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4336709544981469210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7956498849112640246, guid: ea7a1459d74930a4f9e1bf4969022e42, type: 3}

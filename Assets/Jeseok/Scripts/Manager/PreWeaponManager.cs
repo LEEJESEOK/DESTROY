@@ -13,7 +13,7 @@ public class PreWeaponManager : MonoBehaviour
     Stack<GameObject> weapons;
 
     [HideInInspector]
-    public Weapon mainWeaponComponent, subWeaponComponent;
+    public Weapon weaponComponent;
     int activeWeaponIdx = 0;
     float attackDelay;
     bool isDelay = false;
@@ -21,9 +21,9 @@ public class PreWeaponManager : MonoBehaviour
 
     IEnumerator checkAttackDelayCoroutine;
 
-    public GameObject mainWeaponUI, subWeaponUI;
-    public Text mainWeaponText, subWeaponText;
-    public Image mainWeaponGauge, subWeaponGauge;
+    public GameObject weaponUI;
+    public Text weaponText;
+    public Image weaponGauge;
 
 
     private void Awake()
@@ -55,7 +55,7 @@ public class PreWeaponManager : MonoBehaviour
         if (isDelay == true)
             return;
 
-        mainWeaponComponent.Attack(transform.position);
+        weaponComponent.Attack(transform.position);
 
         isDelay = true;
     }
@@ -74,7 +74,7 @@ public class PreWeaponManager : MonoBehaviour
     public void ChangeWeapon(int idx)
     {
         weaponsObj[activeWeaponIdx].SetActive(false);
-        mainWeaponComponent.isActive = false;
+        weaponComponent.isActive = false;
 
         activeWeaponIdx = idx;
 
@@ -89,30 +89,30 @@ public class PreWeaponManager : MonoBehaviour
 
     void InitActiveWeapon()
     {
-        mainWeaponComponent = weaponsObj[activeWeaponIdx].GetComponent<Weapon>();
+        weaponComponent = weaponsObj[activeWeaponIdx].GetComponent<Weapon>();
 
-        attackDelay = mainWeaponComponent.delay;
+        attackDelay = weaponComponent.delay;
 
         StartCoroutine(checkAttackDelayCoroutine);
         weaponsObj[activeWeaponIdx].SetActive(true);
 
-        AimManager.instance.currentBullet = mainWeaponComponent.currentBulletCnt;
+        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
 
-        mainWeaponText.text = weaponsObj[activeWeaponIdx].name;
+        weaponText.text = weaponsObj[activeWeaponIdx].name;
     }
 
     public void AddBullet(int bulletCnt)
     {
-        if (mainWeaponComponent.currentBulletCnt + bulletCnt >= mainWeaponComponent.maxBulletCnt)
+        if (weaponComponent.currentBulletCnt + bulletCnt >= weaponComponent.maxBulletCnt)
         {
-            mainWeaponComponent.currentBulletCnt = mainWeaponComponent.maxBulletCnt;
+            weaponComponent.currentBulletCnt = weaponComponent.maxBulletCnt;
         }
         else
         {
-            mainWeaponComponent.currentBulletCnt += bulletCnt;
+            weaponComponent.currentBulletCnt += bulletCnt;
         }
 
-        AimManager.instance.currentBullet = mainWeaponComponent.currentBulletCnt;
+        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()

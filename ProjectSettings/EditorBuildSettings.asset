@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/JeseokScene.unity
     guid: 2a36de456a607244ca9a7bc811e743b7
   m_configObjects: {}

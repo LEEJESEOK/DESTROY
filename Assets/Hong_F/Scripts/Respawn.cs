@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    public GameObject player;
+    GameObject target;
+
+    public int respawnCount;
+    public float respawnDelay;
 
     public GameObject[] enemyObj;
     List<GameObject> enemyList;
@@ -22,13 +25,15 @@ public class Respawn : MonoBehaviour
     public void Start()
     {
         enemyList = new List<GameObject>();
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < respawnCount; i++)
         {
-            rand = rng.Next(4);
+            rand = rng.Next(enemyObj.Length);
             GameObject enemy = Instantiate(enemyObj[rand]);
             enemy.SetActive(false);
             enemyList.Add(enemy);
         }
+
+        target = GameObject.Find("Player");
 
         StartCoroutine(RandomRespawn_Coroutine());
     }
@@ -38,8 +43,9 @@ public class Respawn : MonoBehaviour
     {
         Vector3 randPosition = Random.insideUnitCircle;
         Vector3 position = new Vector3(randPosition.x, 0, randPosition.y);
+        position.Normalize();
 
-        return player.transform.position + position * 30f;
+        return target.transform.position + position * 30f;
     }
 
     public IEnumerator RandomRespawn_Coroutine()

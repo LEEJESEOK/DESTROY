@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
 
-    public GameObject player;
-
     public GameObject floor;
     float xRange, zRange;
 
@@ -103,7 +101,7 @@ public class GameManager : MonoBehaviour
             EnmeyFracture enmeyFracture = cols[i].gameObject.GetComponentInParent<EnmeyFracture>();
             if (enmeyFracture != null)
             {
-                enmeyFracture.OnHit(PreWeaponManager.instance.mainWeaponComponent.damage);
+                enmeyFracture.OnHit(PreWeaponManager.instance.weaponComponent.damage);
             }
         }
     }
