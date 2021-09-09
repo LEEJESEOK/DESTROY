@@ -36,13 +36,13 @@ public class Respawn : MonoBehaviour
         float range_X = player.transform.position.x;
         float range_Z = player.transform.position.z;
 
-        
+
         //   range_X = Random.Range((range_X / 2) * -1, range_X / 2);
         //   range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
         range_X = Random.Range(((range_X + 100) / 2) * -1, (range_X + 100) / 2);
         range_Z = Random.Range(((range_Z + 100) / 2) * -1, (range_Z + 100) / 2);
 
-       
+
 
 
         Vector3 RandomPostion = new Vector3(range_X, 0f, range_Z);
@@ -72,15 +72,15 @@ public class Respawn : MonoBehaviour
                     idx = 1;
                 }
 
-                else if (81 < rand && rand < 90)
+                else
                 {
                     idx = 2;
                 }
 
-                else
-                {
-                    idx = 3;
-                }
+                // else
+                // {
+                //     idx = 3;
+                // }
 
 
                 GameObject instantEnemy = Instantiate(Enemy[idx], Return_RandomPosition(), Quaternion.identity);
