@@ -6,7 +6,7 @@ namespace Project.Scripts.Fractures
     public class FractureThis
     {
         [SerializeField] private Anchor anchor = Anchor.None;
-        [SerializeField] private int chunks = 10;
+        [SerializeField] private int chunks = 20;
         [SerializeField] private float density = 50;
         [SerializeField] private float internalStrength = 100;
 

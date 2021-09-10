@@ -32,7 +32,7 @@ public class En_04Move : MonoBehaviour
     void Update()
     {
         // �ϴ� �÷��̾ �ִ� �������� �̵��Ҳ��� 
-        transform.position += dir * Time.deltaTime;
+        transform.position += dir * 10 * Time.deltaTime;
 
         //transform.Rotate(axis, 500*Time.deltaTime);
         rigidbody.AddTorque(axis * 50);

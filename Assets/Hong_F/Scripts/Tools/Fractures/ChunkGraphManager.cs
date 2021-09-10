@@ -80,6 +80,7 @@ namespace Project.Scripts.Fractures
                     var neighbour = o.NeighboursArray[i];
                     Traverse(neighbour, search, visited);
                 }
+                gameObject.GetComponent<Renderer>().material.color = Color.white;
 
             }
         }

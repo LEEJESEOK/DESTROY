@@ -17,10 +17,6 @@ public class PlayerHP : MonoBehaviour
     public Text hpTextUI;
 
 
-    // private void Awake() {
-    //     Die();
-    // }
-
     // Start is called before the first frame update
     void Start()
     {
