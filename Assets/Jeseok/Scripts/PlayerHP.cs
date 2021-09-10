@@ -101,7 +101,8 @@ public class PlayerHP : MonoBehaviour
     {
         LayerMask layer = LayerMask.GetMask("Ground");
 
-        GameManager.instance.ExploseWithEffect(transform.position, explosionRange, EffectDieExplosion, ~layer);
+        // GameManager.instance.ExploseWithEffect(transform.position, explosionRange, EffectDieExplosion, ~layer);
+        GameManager.instance.ExploseInDie(transform.position, explosionRange, EffectDieExplosion, ~layer);
 
         Destroy(gameObject);
     }
