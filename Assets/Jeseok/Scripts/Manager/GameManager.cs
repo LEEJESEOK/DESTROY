@@ -93,6 +93,14 @@ public class GameManager : MonoBehaviour
 
         Explose(position, explosionRange, layer);
     }
+    public void ExploseWithEffect(Vector3 position, float explosionRange, GameObject effectObj, LayerMask layer = new LayerMask())
+    {
+        GameObject explosion = Instantiate(effectObj);
+        explosion.transform.position = position;
+        explosion.transform.localScale *= explosionRange;
+
+        Explose(position, explosionRange, layer);
+    }
 
     public void Explose(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
     {

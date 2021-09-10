@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8048828861862747837}
   - component: {fileID: 8048828861862747836}
   m_Layer: 0
-  m_Name: PreWeaponManager
+  m_Name: AlphaWeaponManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,9 +53,6 @@ MonoBehaviour:
   - {fileID: 3569877841883332072}
   weaponComponent: {fileID: 0}
   defaultWeapon: {fileID: 2759201122395333699, guid: eea08812bb5950442877e11103d278b0, type: 3}
-  weaponUI: {fileID: 0}
-  weaponText: {fileID: 0}
-  weaponGauge: {fileID: 0}
 --- !u!1001 &4099239756781652697
 PrefabInstance:
   m_ObjectHideFlags: 0

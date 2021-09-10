@@ -23,6 +23,8 @@ public class PlayerHP : MonoBehaviour
     Vignette Vig;
     GameObject process;
 
+    public GameObject EffectDieExplosion;
+
     float diff = 10f;
 
 
@@ -95,6 +97,8 @@ public class PlayerHP : MonoBehaviour
     {
         LayerMask layer = LayerMask.GetMask("Ground");
 
-        GameManager.instance.ExploseWithEffect(transform.position, explosionRange, ~layer);
+        GameManager.instance.ExploseWithEffect(transform.position, explosionRange, EffectDieExplosion, ~layer);
+
+        Destroy(gameObject);
     }
 }
