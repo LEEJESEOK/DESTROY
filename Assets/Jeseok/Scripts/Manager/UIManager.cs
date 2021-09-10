@@ -14,14 +14,11 @@ public class UIManager : MonoBehaviour
     public float currentBullet;
 
     public Image overheatGauge;
-    public float maxHeat = 100;
+    public float maxOverheat = 100;
     public float currentOverheat;
-    public float cooldownRate = 1f;
 
     public Text weaponText;
     public Image weaponGauge;
-
-
 
 
     private void Awake()
@@ -32,19 +29,6 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-        // overheat cooldown
-        currentOverheat -= Time.deltaTime * cooldownRate;
-        currentOverheat = Mathf.Clamp(currentOverheat, 0, 100);
-    }
-
     // Update is called once per frame
     void LateUpdate()
     {
@@ -52,7 +36,7 @@ public class UIManager : MonoBehaviour
         bulletText.text = "" + currentBullet;
 
         // overheat gauge
-        overheatGauge.fillAmount = currentOverheat / maxHeat;
+        overheatGauge.fillAmount = currentOverheat / maxOverheat;
 
         // weapon bullet gauge
         weaponGauge.fillAmount = currentBullet / maxBullet;
@@ -61,10 +45,9 @@ public class UIManager : MonoBehaviour
     public void SpendBullet(float bulletCnt)
     {
         currentBullet -= bulletCnt;
-        AddHeat(bulletCnt);
     }
 
-    void AddHeat(float heat)
+    public void AddHeat(float heat)
     {
         currentOverheat += heat;
     }
@@ -75,5 +58,7 @@ public class UIManager : MonoBehaviour
 
         maxBullet = weaponComponent.maxBulletCnt;
         currentBullet = weaponComponent.currentBulletCnt;
+        maxOverheat = weaponComponent.maxOverheat;
+        currentOverheat = weaponComponent.currentOverheat;
     }
 }

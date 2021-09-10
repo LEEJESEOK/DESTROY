@@ -12,7 +12,7 @@ public class Shotgun : Weapon
 
     public override void Attack(Vector3 position)
     {
-        if (currentBulletCnt < spendBulletCnt)
+        if ((currentBulletCnt < spendBulletCnt) || isOverheat == true)
             return;
 
         currentBulletCnt -= spendBulletCnt;
@@ -33,6 +33,18 @@ public class Shotgun : Weapon
             // 총알마다 임의의 각도 지정
             int randAngle = Random.Range(-maxAngle, maxAngle);
             projectile.transform.Rotate(Vector3.up * randAngle);
+        }
+
+        
+
+        // TODO 무기당 overheat 증가치 별도 적용
+        currentOverheat += spendBulletCnt;
+        UIManager.instance.AddHeat(spendBulletCnt);
+
+        if (currentOverheat >= maxOverheat)
+        {
+            isOverheat = true;
+            StartCoroutine(Cooldown(cooldownRate));
         }
     }
 }

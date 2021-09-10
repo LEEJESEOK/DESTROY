@@ -74,7 +74,6 @@ public class PreWeaponManager : MonoBehaviour
     public void ChangeWeapon(int idx)
     {
         weaponsObj[activeWeaponIdx].SetActive(false);
-        weaponComponent.isActive = false;
 
         activeWeaponIdx = idx;
 
@@ -101,14 +100,8 @@ public class PreWeaponManager : MonoBehaviour
 
     public void AddBullet(int bulletCnt)
     {
-        if (weaponComponent.currentBulletCnt + bulletCnt >= weaponComponent.maxBulletCnt)
-        {
-            weaponComponent.currentBulletCnt = weaponComponent.maxBulletCnt;
-        }
-        else
-        {
-            weaponComponent.currentBulletCnt += bulletCnt;
-        }
+        weaponComponent.currentBulletCnt += bulletCnt;
+        weaponComponent.currentBulletCnt = Mathf.Min(weaponComponent.currentBulletCnt, weaponComponent.maxBulletCnt);
 
         UIManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }

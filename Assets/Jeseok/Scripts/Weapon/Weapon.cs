@@ -24,12 +24,23 @@ abstract public class Weapon : MonoBehaviour
     // 한 번 공격할 때의 생성하는 Bullet 개수
     public float spendBulletCnt = 1;
 
-    public bool isActive = false;
 
+    public float maxOverheat = 100f;
+    public float currentOverheat = 0f;
+    public float cooldownRate = .2f;
+    [HideInInspector]
+    public bool isOverheat = false;
+
+    private void Update()
+    {
+        // overheat cooldown
+        currentOverheat -= Time.deltaTime * cooldownRate * 10;
+        UIManager.instance.currentOverheat = currentOverheat;
+    }
 
     virtual public void Attack(Vector3 position)
     {
-        if (currentBulletCnt < spendBulletCnt)
+        if ((currentBulletCnt < spendBulletCnt) || isOverheat == true)
             return;
 
         currentBulletCnt -= spendBulletCnt;
@@ -41,6 +52,16 @@ abstract public class Weapon : MonoBehaviour
 
         InitBulletProps(bullet, speed, damage, remainTime);
 
+
+        // TODO 무기당 overheat 증가치 별도 적용
+        currentOverheat += spendBulletCnt;
+        UIManager.instance.AddHeat(spendBulletCnt);
+
+        if (currentOverheat >= maxOverheat)
+        {
+            isOverheat = true;
+            StartCoroutine(Cooldown(cooldownRate));
+        }
     }
 
     protected void InitBulletProps(GameObject bullet, float speed, int damage)
@@ -56,5 +77,16 @@ abstract public class Weapon : MonoBehaviour
         InitBulletProps(bullet, speed, damage);
 
         Destroy(bullet, remainTime);
+    }
+
+    protected IEnumerator Cooldown(float cooldownRate)
+    {
+        while (currentOverheat > 0)
+        {
+            // yield return new WaitForSeconds(maxOverheat / cooldownRate);
+            yield return new WaitForSeconds(1f);
+            currentOverheat -= maxOverheat * cooldownRate;
+        }
+        isOverheat = false;
     }
 }
