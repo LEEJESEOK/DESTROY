@@ -28,8 +28,7 @@ public class PostM : MonoBehaviour
 
         if(currtime >= 2)
         {
-            bloom.enabled.Override(true);
-            Vig.enabled.Override(true);
+           
 
 
         }

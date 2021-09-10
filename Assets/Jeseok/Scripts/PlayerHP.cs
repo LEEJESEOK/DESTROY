@@ -11,8 +11,8 @@ public class PlayerHP : MonoBehaviour
 {
     public float explosionRange = 10f;
 
-    public int maxHP;
-    int currentHP;
+    public float maxHP;
+    float currentHP;
 
 
     public Image hpGauge;
@@ -22,6 +22,8 @@ public class PlayerHP : MonoBehaviour
     Bloom bloom;
     Vignette Vig;
     GameObject process;
+
+    float diff = 10f;
 
 
     // private void Awake() {
@@ -34,7 +36,7 @@ public class PlayerHP : MonoBehaviour
         currentHP = maxHP;
         hpTextUI.text = "" + currentHP;
         process = GameObject.Find("Post process Volume");
-        Vol =process.GetComponent<PostProcessVolume>();
+        Vol = process.GetComponent<PostProcessVolume>();
         Vol.profile.TryGetSettings<Bloom>(out bloom);
         Vol.profile.TryGetSettings<Vignette>(out Vig);
     }
@@ -42,19 +44,30 @@ public class PlayerHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if((currentHP/maxHP)*100 <= 20)
+        if ((currentHP / maxHP) * 100 <= 20 && currentHP != 0)
         {
+            //bloom
             bloom.enabled.Override(true);
+            bloom.diffusion.value = 2;
+
+
+            //Vig
             Vig.enabled.Override(true);
         }
-       else
+        else if (currentHP <= 0)
+        {
+            bloom.diffusion.value = 10;
+
+
+        }
+        else
         {
             bloom.enabled.Override(false);
             Vig.enabled.Override(false);
         }
 
-        
-     
+
+
 
     }
 
@@ -71,7 +84,9 @@ public class PlayerHP : MonoBehaviour
 
             if (currentHP <= 0)
             {
+
                 Die();
+
             }
         }
     }
