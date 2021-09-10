@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2759201122395333701}
   - component: {fileID: 2759201122395333698}
   m_Layer: 9
-  m_Name: Pistol
+  m_Name: Handgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,14 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27991cca57595a141b780e681374de93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObj: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
+  projectileObj: {fileID: 9128183219630153515, guid: 82030466b03bce94e9888fcba12e0894, type: 3}
   speed: 50
-  remainTime: 0.4
+  range: 1
   damage: 1
-  delay: 0.1
-  maxBulletCnt: Infinity
-  currentBulletCnt: Infinity
-  spendBulletCnt: 1
-  maxUsingTime: Infinity
-  remainUsingTime: Infinity
-  isActive: 0
+  delay: 0.3
+  maxProjectileCnt: 0
+  currentProjectileCnt: 0

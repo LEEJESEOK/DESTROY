@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            PreWeaponManager.instance.AddBullet(10);
+            WeaponManager.instance.AddBullet(10);
             Destroy(gameObject);
         }
     }

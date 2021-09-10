@@ -24,13 +24,13 @@ public class PlayerController : MonoBehaviour
 
         // Attack
         if (Input.GetButton("Fire1"))
-            PreWeaponManager.instance.Attack();
+            WeaponManager.instance.Attack();
 
         // ChangeWeapon
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
         if (wheelInput != 0)
         {
-            PreWeaponManager.instance.ChangeWeapon(wheelInput);
+            WeaponManager.instance.ChangeWeapon(wheelInput);
         }
     }
 

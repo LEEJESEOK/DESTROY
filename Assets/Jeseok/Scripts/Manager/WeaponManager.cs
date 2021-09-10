@@ -8,30 +8,37 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-
-    public List<GameObject> hasWeaponList;
-    [HideInInspector]
-    public Weapon activeWeapon;
-    public Weapon defaultWeapon;
-
-    public GameObject[] weaponObj;
-    public GameObject weaponUIObj;
-
-    bool isDelay = false;
+    public GameObject[] weapons;
+    Weapon weaponComponent;
+    int activeWeaponIdx = 0;
     float attackDelay;
+    bool isDelay = false;
+
+    IEnumerator checkAttackDelayCoroutine;
+
+    public Text mainWeaponText, subWeaponText;
+    public Image mainWeaponGauge, subWeaponGauge;
+
+
 
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+        }
         else
             Destroy(gameObject);
+
+
+        checkAttackDelayCoroutine = CheckAttackDelay();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        InitWeapon();
+        InitActiveWeapon();
+
     }
 
     // Update is called once per frame
@@ -40,36 +47,61 @@ public class WeaponManager : MonoBehaviour
 
     }
 
-    void ChangeWeapon()
-    {
-        StopCoroutine(CheckAttackDelay());
-
-        InitWeapon();
-    }
-
-    void InitWeapon()
-    {
-        // change active weapon component
-        // activeWeapon = GetComponent<Weapon>();
-        // update attack delay
-
-        // attackDelay = ;
-        StartCoroutine(CheckAttackDelay());
-    }
-
     public void Attack()
     {
         if (isDelay == true)
             return;
 
-        // activeWeaponComponent.Attack(transform.position);
+        // Crosshair - Aim과 Player의 위치차이로 각도 계산
+        float radian = Mathf.Atan2(Aim.instance.transform.localPosition.z, Aim.instance.transform.localPosition.x);
+        float degree = Mathf.Rad2Deg * radian;
+        // 공격하는 각도 변경
+        transform.rotation = Quaternion.Euler(0, 90 + degree * (-1), 0);
+
+        weaponComponent.Attack(transform.position);
 
         isDelay = true;
     }
 
+    public void ChangeWeapon(float idx)
+    {
+        weapons[activeWeaponIdx].SetActive(false);
+
+        activeWeaponIdx += (idx > 0 ? 1 : -1) + weapons.Length;
+        activeWeaponIdx %= weapons.Length;
+
+        StopCoroutine(checkAttackDelayCoroutine);
+        InitActiveWeapon();
+    }
+
+    void UpdateProps(float speed, float range, int damage, float delay)
+    {
+
+    }
+
+    void InitActiveWeapon()
+    {
+        weaponComponent = weapons[activeWeaponIdx].GetComponent<Weapon>();
+        attackDelay = weaponComponent.delay;
+
+        StartCoroutine(checkAttackDelayCoroutine);
+        weapons[activeWeaponIdx].SetActive(true);
+
+        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+    }
+
     public void AddBullet(int bulletCnt)
     {
-        
+        if (weaponComponent.currentBulletCnt + bulletCnt >= weaponComponent.maxBulletCnt)
+        {
+            weaponComponent.currentBulletCnt = weaponComponent.maxBulletCnt;
+        }
+        else
+        {
+            weaponComponent.currentBulletCnt += bulletCnt;
+        }
+
+        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()

@@ -4,64 +4,56 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    GameObject target;
+    public GameObject rangeObject;
+    BoxCollider rangeCollider;
 
-    public int respawnCount;
-    public float respawnDelay;
-
-    public GameObject[] enemyObj;
-    List<GameObject> enemyList;
+    public GameObject Enemy;
     int enemyCount;
-    int idx;
-    int rand;
-    private System.Random rng = new System.Random();
-
-
     // Start is called before the first frame update
     private void Awake()
     {
+        rangeCollider = rangeObject.GetComponent<BoxCollider>();
     }
 
     public void Start()
     {
-        enemyList = new List<GameObject>();
-        for (int i = 0; i < respawnCount; i++)
-        {
-            rand = rng.Next(enemyObj.Length);
-            GameObject enemy = Instantiate(enemyObj[rand]);
-            enemy.SetActive(false);
-            enemyList.Add(enemy);
-        }
-
-        target = GameObject.Find("Player");
 
         StartCoroutine(RandomRespawn_Coroutine());
+
+
     }
 
     // Update is called once per frame
-    Vector3 RandomPosition()
+    Vector3 Return_RandomPosition()
     {
-        Vector3 randPosition = Random.insideUnitCircle;
-        Vector3 position = new Vector3(randPosition.x, 0, randPosition.y);
-        position.Normalize();
+        Vector3 originPosition = rangeObject.transform.position;
 
-        return target.transform.position + position * 30f;
+        float range_X = rangeCollider.bounds.size.x;
+        float range_Z = rangeCollider.bounds.size.z;
+
+        range_X = Random.Range((range_X / 2) * -1, range_X / 2);
+        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
+
+        Vector3 RandomPostion = new Vector3(range_X, 0f, range_Z);
+
+        Vector3 respawnPosition = originPosition + RandomPostion;
+        return respawnPosition;
+
     }
 
     public IEnumerator RandomRespawn_Coroutine()
     {
         while (true)
         {
+
             yield return new WaitForSeconds(1f);
-
-            if (enemyList.Count > 0)
+            if (enemyCount < 1000)
             {
-                GameObject enemy = enemyList[0];
-                enemy.transform.position = RandomPosition();
-                enemy.SetActive(true);
-
-                enemyList.RemoveAt(0);
+                GameObject instantEnemy = Instantiate(Enemy, Return_RandomPosition(), Quaternion.identity);
+                enemyCount++;
             }
+
+
 
         }
     }
