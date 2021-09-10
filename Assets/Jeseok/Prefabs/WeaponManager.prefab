@@ -47,7 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afdd8590d87c9b4080150490e33e9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponUI: {fileID: 0}
+  hasWeaponList: []
+  activeWeapon: {fileID: 0}
+  defaultWeapon: {fileID: 2759201122395333698, guid: eea08812bb5950442877e11103d278b0, type: 3}
+  weaponObj:
+  - {fileID: 2759201122395333699, guid: eea08812bb5950442877e11103d278b0, type: 3}
+  - {fileID: 6809907062824305031, guid: 5806f5856bffcb24793c71a9eaba1650, type: 3}
+  - {fileID: 678262526573508401, guid: 8edc13be5fe0dc24f9805d4d4a83bcfc, type: 3}
+  weaponUIObj: {fileID: 0}
 --- !u!1001 &4654162605825743047
 PrefabInstance:
   m_ObjectHideFlags: 0
