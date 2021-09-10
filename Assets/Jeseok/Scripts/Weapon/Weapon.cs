@@ -22,7 +22,7 @@ abstract public class Weapon : MonoBehaviour
     public float currentBulletCnt;
 
     // 한 번 공격할 때의 생성하는 Bullet 개수
-    public int spendBulletCnt = 1;
+    public float spendBulletCnt = 1;
 
     public bool isActive = false;
 
@@ -33,7 +33,7 @@ abstract public class Weapon : MonoBehaviour
             return;
 
         currentBulletCnt -= spendBulletCnt;
-        AimManager.instance.SpendBullet(spendBulletCnt);
+        UIManager.instance.SpendBullet(spendBulletCnt);
 
         GameObject bullet = Instantiate(bulletObj);
         bullet.transform.position = position;
@@ -50,15 +50,11 @@ abstract public class Weapon : MonoBehaviour
         projectile.speed = speed;
         projectile.damage = damage;
     }
+
     protected void InitBulletProps(GameObject bullet, float speed, int damage, float remainTime)
     {
         InitBulletProps(bullet, speed, damage);
 
         Destroy(bullet, remainTime);
-    }
-
-    IEnumerator CheckUsingTime()
-    {
-        yield return new WaitForSeconds(0);
     }
 }

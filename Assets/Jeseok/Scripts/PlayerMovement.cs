@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField]
+    private float moveForce = 5f;
+    [SerializeField]
+    private float rotateSpeed = 2f;
+
+    new Rigidbody rigidbody;
+    Vector3 velocity;
+
+    public GameObject aim;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        Vector3 dir = (aim.transform.position - transform.position);
+        Quaternion qDir = Quaternion.LookRotation(dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, qDir, rotateSpeed * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime);
+    }
+
+    public void Move(Vector3 dir)
+    {
+        velocity = dir * moveForce;
+    }
+}

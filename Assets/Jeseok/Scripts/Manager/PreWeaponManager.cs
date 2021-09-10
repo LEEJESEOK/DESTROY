@@ -96,9 +96,7 @@ public class PreWeaponManager : MonoBehaviour
         StartCoroutine(checkAttackDelayCoroutine);
         weaponsObj[activeWeaponIdx].SetActive(true);
 
-        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
-
-        weaponText.text = weaponsObj[activeWeaponIdx].name;
+        UIManager.instance.ChangeWeapon(weaponComponent);
     }
 
     public void AddBullet(int bulletCnt)
@@ -112,7 +110,7 @@ public class PreWeaponManager : MonoBehaviour
             weaponComponent.currentBulletCnt += bulletCnt;
         }
 
-        AimManager.instance.currentBullet = weaponComponent.currentBulletCnt;
+        UIManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
     IEnumerator CheckAttackDelay()

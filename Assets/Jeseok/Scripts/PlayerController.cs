@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private MovementBehaviour movementBehavior;
+    private PlayerMovement movementBehavior;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        movementBehavior = GetComponent<MovementBehaviour>();
+        movementBehavior = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame

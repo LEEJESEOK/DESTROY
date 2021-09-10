@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public enum GameState{
+        Idle,
+        Play,
+        Die
+    }
+
 
     public GameObject floor;
     float xRange, zRange;
@@ -29,6 +35,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Enemy spawn Range
         xRange = floor.transform.localScale.x;
         zRange = floor.transform.localScale.z;
     }
@@ -36,6 +43,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // create building
         for (int i = 0; i < buildingCnt; i++)
         {
             Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0, Random.Range(-zRange, zRange) * 5);
@@ -43,6 +51,7 @@ public class GameManager : MonoBehaviour
             CreateBuilding(randPos, randHeight);
         }
 
+        // create bullet item
         for (int i = 0; i < initBulletItemCnt; i++)
         {
             Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0, Random.Range(-zRange, zRange) * 5);

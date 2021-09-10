@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Aim : MonoBehaviour
+public class AimManager : MonoBehaviour
 {
-    public static Aim instance;
+    public static AimManager instance;
 
 
     LayerMask groundLayer;
