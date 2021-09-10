@@ -1628,7 +1628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819079147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 18057054}
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRange: 5
-  maxHP: 5
+  maxHP: 1
   hpGauge: {fileID: 942505111}
   hpTextUI: {fileID: 1738186416}
   EffectDieExplosion: {fileID: 4050284574884786677, guid: 1e2a1f96036dc1b4cab60c06e794ca47, type: 3}
