@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
+
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -16,6 +18,11 @@ public class PlayerHP : MonoBehaviour
     public Image hpGauge;
     public Text hpTextUI;
 
+    PostProcessVolume Vol;
+    Bloom bloom;
+    Vignette Vig;
+    GameObject process;
+
 
     // private void Awake() {
     //     Die();
@@ -26,11 +33,29 @@ public class PlayerHP : MonoBehaviour
     {
         currentHP = maxHP;
         hpTextUI.text = "" + currentHP;
+        process = GameObject.Find("Post process Volume");
+        Vol =process.GetComponent<PostProcessVolume>();
+        Vol.profile.TryGetSettings<Bloom>(out bloom);
+        Vol.profile.TryGetSettings<Vignette>(out Vig);
     }
 
     // Update is called once per frame
     void Update()
     {
+       if((currentHP/maxHP)*100 <= 20)
+        {
+            bloom.enabled.Override(true);
+            Vig.enabled.Override(true);
+        }
+       else
+        {
+            bloom.enabled.Override(false);
+            Vig.enabled.Override(false);
+        }
+
+        
+     
+
     }
 
     private void OnCollisionEnter(Collision other)
