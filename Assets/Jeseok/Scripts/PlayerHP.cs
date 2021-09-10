@@ -77,7 +77,11 @@ public class PlayerHP : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Destroy(other.gameObject);
+            if (other.gameObject.name.Contains("BeamBullet"))
+                other.gameObject.SetActive(false);
+            else
+                Destroy(other.gameObject);
+                
             //TODO 데미지 수치 적용
             --currentHP;
 
