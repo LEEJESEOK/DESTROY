@@ -315,6 +315,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1903575491}
     m_Modifications:
+    - target: {fileID: 3022519323535019157, guid: 4df66743b102b1f419e8b993d13b1eee, type: 3}
+      propertyPath: m_Radius
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5390832957287061059, guid: 4df66743b102b1f419e8b993d13b1eee, type: 3}
       propertyPath: m_Name
       value: BeamBullet
@@ -329,7 +333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5390832957287061087, guid: 4df66743b102b1f419e8b993d13b1eee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3394618
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5390832957287061087, guid: 4df66743b102b1f419e8b993d13b1eee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -363,8 +367,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5390832957287061057, guid: 4df66743b102b1f419e8b993d13b1eee, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df66743b102b1f419e8b993d13b1eee, type: 3}
 --- !u!1 &5390832956808084182 stripped
 GameObject:
@@ -392,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653374076131541568, guid: 28ffa3ab772abbf4a82b49d092c2cc93, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3653374076131541568, guid: 28ffa3ab772abbf4a82b49d092c2cc93, type: 3}
       propertyPath: m_IsActive

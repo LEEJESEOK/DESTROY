@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Vector3 dir = (aim.transform.position - transform.position);
+        dir.y = 0;
         Quaternion qDir = Quaternion.LookRotation(dir);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, qDir, rotateSpeed * Time.deltaTime);

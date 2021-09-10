@@ -60,19 +60,22 @@ public class BeamMove : MonoBehaviour
         float DistanceX = Player.transform.position.x - transform.position.x;
         float DistanceZ = Player.transform.position.z - transform.position.z;
         // if ((DistanceX <= 15 && DistanceZ <= 15) && (DistanceX > -15 && DistanceZ > -15))
-        if(Vector3.Distance(Player.transform.position, transform.position) <= 15)
+        if (Vector3.Distance(Player.transform.position, transform.position) <= 15)
         {
             currTime += Time.deltaTime;
 
             if (currTime > 2f)
             {
+                if (bullet.activeSelf == false)
+                    bullet.SetActive(true);
+
                 bullet.transform.position = firepos.transform.position;
-                
+
                 bullet.GetComponent<BeamBullet>().SetDest(aim.transform.position);
 
                 currTime = 0f;
                 state = ShotState.Shot;
-                
+
             }
         }
     }
@@ -97,7 +100,7 @@ public class BeamMove : MonoBehaviour
         beam.GetComponent<VolumetricLineBehavior>().
         SetStartAndEndPoints(Vector3.zero, one);
 
-        // ÃÑ¾ËÄÝ¶óÀÎ´õ »ý¼º 
+        // ï¿½Ñ¾ï¿½ï¿½Ý¶ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 
 
 

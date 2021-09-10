@@ -9453,6 +9453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4050284574885146717}
   - component: {fileID: 4050284574870981161}
+  - component: {fileID: -1569903116959621726}
   m_Layer: 0
   m_Name: PlayerDieExplosion
   m_TagString: Untagged
@@ -14194,3 +14195,16 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &-1569903116959621726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4050284574884786677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997e0678a36340245a4df239970a66de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyDeactivate: 0
