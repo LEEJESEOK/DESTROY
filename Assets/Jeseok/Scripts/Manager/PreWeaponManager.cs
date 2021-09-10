@@ -21,10 +21,6 @@ public class PreWeaponManager : MonoBehaviour
 
     IEnumerator checkAttackDelayCoroutine;
 
-    public GameObject weaponUI;
-    public Text weaponText;
-    public Image weaponGauge;
-
 
     private void Awake()
     {
