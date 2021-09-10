@@ -9,9 +9,13 @@ public class BeamMove : MonoBehaviour
 {
     float currTime;
     GameObject Player;
+    public GameObject bulletFactory;
+    public GameObject firepos;
     public GameObject beam;
     Vector3 one;
     Vector3 two;
+    public GameObject bullet;
+    public GameObject aim;
 
     float z = 70;
 
@@ -36,6 +40,7 @@ public class BeamMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         switch (state)
         {
             case ShotState.Idle:
@@ -61,8 +66,13 @@ public class BeamMove : MonoBehaviour
 
             if (currTime > 2f)
             {
+                bullet.transform.position = firepos.transform.position;
+                
+                bullet.GetComponent<BeamBullet>().SetDest(aim.transform.position);
+
                 currTime = 0f;
                 state = ShotState.Shot;
+                
             }
         }
     }
@@ -80,9 +90,17 @@ public class BeamMove : MonoBehaviour
 
         beam.SetActive(true);
         //transform.LookAt(Player.transform.position);
+        //one = Vector3.Lerp(one, new Vector3(0, -6, z), 10 * Time.deltaTime);
+        //beam.GetComponent<VolumetricLineBehavior>().
+        //SetStartAndEndPoints(one, new Vector3(0, 0, 0));
         one = Vector3.Lerp(one, new Vector3(0, -6, z), 10 * Time.deltaTime);
         beam.GetComponent<VolumetricLineBehavior>().
-        SetStartAndEndPoints(one, new Vector3(0, 0, 0));
+        SetStartAndEndPoints(Vector3.zero, one);
+
+        // 총알콜라인더 생성 
+
+
+
     }
 
     public void BeamBack()

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
+
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,12 +11,19 @@ public class PlayerHP : MonoBehaviour
 {
     public float explosionRange = 10f;
 
-    public int maxHP;
-    int currentHP;
+    public float maxHP;
+    float currentHP;
 
 
     public Image hpGauge;
     public Text hpTextUI;
+
+    PostProcessVolume Vol;
+    Bloom bloom;
+    Vignette Vig;
+    GameObject process;
+
+    float diff = 10f;
 
 
     // private void Awake() {
@@ -26,11 +35,40 @@ public class PlayerHP : MonoBehaviour
     {
         currentHP = maxHP;
         hpTextUI.text = "" + currentHP;
+        process = GameObject.Find("Post process Volume");
+        Vol = process.GetComponent<PostProcessVolume>();
+        Vol.profile.TryGetSettings<Bloom>(out bloom);
+        Vol.profile.TryGetSettings<Vignette>(out Vig);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if ((currentHP / maxHP) * 100 <= 20 && currentHP != 0)
+        {
+            //bloom
+            bloom.enabled.Override(true);
+            bloom.diffusion.value = 2;
+
+
+            //Vig
+            Vig.enabled.Override(true);
+        }
+        else if (currentHP <= 0)
+        {
+            bloom.diffusion.value = 10;
+
+
+        }
+        else
+        {
+            bloom.enabled.Override(false);
+            Vig.enabled.Override(false);
+        }
+
+
+
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -46,7 +84,9 @@ public class PlayerHP : MonoBehaviour
 
             if (currentHP <= 0)
             {
+
                 Die();
+
             }
         }
     }
