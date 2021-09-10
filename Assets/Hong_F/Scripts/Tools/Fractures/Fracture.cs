@@ -219,7 +219,6 @@ namespace Project.Scripts.Fractures
             rigibody.mass = mass;
 
             var mc = chunk.AddComponent<MeshCollider>();
-            mc.inflateMesh = true;
             mc.convex = true;
 
             return chunk;
