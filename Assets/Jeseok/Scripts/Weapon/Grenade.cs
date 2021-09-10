@@ -26,8 +26,8 @@ public class Grenade : Projectile
         LayerMask otherLayer = 1 << other.gameObject.layer;
 
         // 충돌한 오브젝트가 Enemy or Map(지형, 건물)에 해당
-        if ((otherLayer & (enemyLayer | mapLayer)) != 0)
-            transform.localScale = Vector3.one * damageRange;
+        // if ((otherLayer & (enemyLayer | mapLayer)) != 0)
+        //     transform.localScale = Vector3.one * damageRange;
 
         LayerMask layer = LayerMask.GetMask("Enemy");
 
