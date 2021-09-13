@@ -35,6 +35,7 @@ abstract public class Weapon : MonoBehaviour
     {
         // overheat cooldown
         currentOverheat -= Time.deltaTime * cooldownRate * 10;
+        currentOverheat = Mathf.Clamp(currentOverheat, 0, maxOverheat);
         UIManager.instance.currentOverheat = currentOverheat;
     }
 

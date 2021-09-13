@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    GameObject target;
+    public GameObject player;
 
     public int respawnCount;
     public float respawnDelay;
@@ -33,8 +33,6 @@ public class Respawn : MonoBehaviour
             enemyList.Add(enemy);
         }
 
-        target = GameObject.Find("Player");
-
         StartCoroutine(RandomRespawn_Coroutine());
     }
 
@@ -45,7 +43,7 @@ public class Respawn : MonoBehaviour
         Vector3 position = new Vector3(randPosition.x, 0, randPosition.y);
         position.Normalize();
 
-        return target.transform.position + position * 30f;
+        return player.transform.position + position * 30f;
     }
 
     public IEnumerator RandomRespawn_Coroutine()
