@@ -27,6 +27,7 @@ public class PlayerHP : MonoBehaviour
 
     float diff = 10f;
     float currTime;
+    GameObject fire;
 
 
 
@@ -43,6 +44,7 @@ public class PlayerHP : MonoBehaviour
         Vol = process.GetComponent<PostProcessVolume>();
         Vol.profile.TryGetSettings<Bloom>(out bloom);
         Vol.profile.TryGetSettings<Vignette>(out Vig);
+        fire = GameObject.Find("PlayerEffect");
     }
 
     // Update is called once per frame
@@ -52,8 +54,8 @@ public class PlayerHP : MonoBehaviour
         {
             //bloom
             bloom.enabled.Override(true);
-            bloom.intensity.value = 20;
-
+            bloom.intensity.value = 30;
+            fire.SetActive(true);
 
             //Vig
             Vig.enabled.Override(true);
@@ -61,8 +63,11 @@ public class PlayerHP : MonoBehaviour
         else //그외 평상시
         {
             bloom.enabled.Override(true);
-            bloom.intensity.value = 10;
+            bloom.intensity.value = 20;
             Vig.enabled.Override(false);
+            fire.SetActive(false);
+
+
         }
 
 
@@ -91,7 +96,9 @@ public class PlayerHP : MonoBehaviour
 
                 Die();
                 bloom.enabled.Override(true);
-                bloom.intensity.value = 40;
+                bloom.intensity.value = 50;
+                fire.SetActive(false);
+
 
 
 

@@ -27,10 +27,29 @@ public class Respawn : MonoBehaviour
         enemyList = new List<GameObject>();
         for (int i = 0; i < respawnCount; i++)
         {
-            rand = rng.Next(enemyObj.Length);
-            GameObject enemy = Instantiate(enemyObj[rand]);
+            // rand = rng.Next(enemyObj.Length);
+            rand = Random.Range(0, 100);
+            GameObject enemy;
+
+            if (rand > 0 && rand <= 60)
+            {
+                enemy = Instantiate(enemyObj[0]);
+
+
+            }
+            else if (rand >= 61 && rand <= 80)
+            {
+                enemy = Instantiate(enemyObj[1]);
+            }
+            else
+            {
+                enemy = Instantiate(enemyObj[2]);
+
+            }
             enemy.SetActive(false);
             enemyList.Add(enemy);
+
+
         }
 
         target = GameObject.Find("Player");
