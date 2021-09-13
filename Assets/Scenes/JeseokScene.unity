@@ -1220,7 +1220,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 6c9e8c0626a4d8245bfcf7714de5b805, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -1467,9 +1467,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 80
@@ -1818,7 +1818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2011097839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,6 +2086,14 @@ PrefabInstance:
     - target: {fileID: 9141301741845851311, guid: f236c8aef336e504ea621239ed389399, type: 3}
       propertyPath: m_Name
       value: WeaponUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141301742206667959, guid: f236c8aef336e504ea621239ed389399, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+    - target: {fileID: 9141301742206667959, guid: f236c8aef336e504ea621239ed389399, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f236c8aef336e504ea621239ed389399, type: 3}

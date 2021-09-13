@@ -6,12 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public enum GameState{
+    public enum GameState
+    {
         Idle,
         Play,
-        Die
+        Die,
+        Pause
     }
 
+    public GameState gameState;
 
     public GameObject floor;
     float xRange, zRange;
@@ -25,11 +28,16 @@ public class GameManager : MonoBehaviour
 
     public Material fractureMat;
 
+    bool pauseToggle = false;
 
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+
+            gameState = GameState.Idle;
+        }
         else
         {
             Destroy(gameObject);
@@ -57,11 +65,27 @@ public class GameManager : MonoBehaviour
             Vector3 randPos = new Vector3(Random.Range(-xRange, xRange) * 5, 0, Random.Range(-zRange, zRange) * 5);
             CreateBulletItem(randPos);
         }
+        gameState = GameState.Play;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Game Pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameState = GameState.Pause;
+
+            // resume
+            if (pauseToggle == true)
+                Time.timeScale = 1;
+            
+            // pause
+            else
+                Time.timeScale = 0;
+
+            pauseToggle = !pauseToggle;
+        }
 
     }
 
