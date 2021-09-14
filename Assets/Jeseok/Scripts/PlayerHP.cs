@@ -14,7 +14,6 @@ public class PlayerHP : MonoBehaviour
     public float maxHP;
     float currentHP;
 
-
     public Image hpGauge;
     public Text hpTextUI;
 
@@ -25,12 +24,8 @@ public class PlayerHP : MonoBehaviour
 
     public GameObject EffectDieExplosion;
 
-    float diff = 10f;
+    public GameObject fire;
 
-
-    // private void Awake() {
-    //     Die();
-    // }
 
     // Start is called before the first frame update
     void Start()
@@ -46,31 +41,23 @@ public class PlayerHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((currentHP / maxHP) * 100 <= 20 && currentHP != 0)
+        if ((currentHP / maxHP) * 100 <= 20 || currentHP! <= 0) //20프로 미만일때
         {
             //bloom
             bloom.enabled.Override(true);
-            bloom.diffusion.value = 2;
-
+            bloom.intensity.value = 30;
+            fire.SetActive(true);
 
             //Vig
             Vig.enabled.Override(true);
         }
-        else if (currentHP <= 0)
+        else //그외 평상시
         {
-            bloom.diffusion.value = 10;
-
-
-        }
-        else
-        {
-            bloom.enabled.Override(false);
+            bloom.enabled.Override(true);
+            bloom.intensity.value = 20;
             Vig.enabled.Override(false);
+            fire.SetActive(false);
         }
-
-
-
-
     }
 
     private void OnCollisionEnter(Collision other)
@@ -81,7 +68,7 @@ public class PlayerHP : MonoBehaviour
                 other.gameObject.SetActive(false);
             else
                 Destroy(other.gameObject);
-                
+
             //TODO 데미지 수치 적용
             --currentHP;
 
@@ -90,9 +77,10 @@ public class PlayerHP : MonoBehaviour
 
             if (currentHP <= 0)
             {
-
                 Die();
-
+                bloom.enabled.Override(true);
+                bloom.intensity.value = 50;
+                fire.SetActive(false);
             }
         }
     }

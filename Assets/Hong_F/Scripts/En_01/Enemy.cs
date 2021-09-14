@@ -5,14 +5,12 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-
-
     public Transform Target;
     NavMeshAgent nav;
     GameObject player;
-    // Start is called before the first frame update
 
-  
+
+    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
@@ -25,10 +23,5 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         nav.SetDestination(player.transform.position);
-
-
     }
-
-
-   
 }

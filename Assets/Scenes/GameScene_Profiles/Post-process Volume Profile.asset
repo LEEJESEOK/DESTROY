@@ -18,7 +18,7 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 14.59
+    value: 0
   threshold:
     overrideState: 1
     value: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     value: 65472
   diffusion:
     overrideState: 1
-    value: 7
+    value: 1.7
   anamorphicRatio:
     overrideState: 1
     value: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   mode:
     overrideState: 1
     value: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    GameObject target;
+    public GameObject player;
 
     public int respawnCount;
     public float respawnDelay;
@@ -27,13 +27,25 @@ public class Respawn : MonoBehaviour
         enemyList = new List<GameObject>();
         for (int i = 0; i < respawnCount; i++)
         {
-            rand = rng.Next(enemyObj.Length);
-            GameObject enemy = Instantiate(enemyObj[rand]);
+            // rand = rng.Next(enemyObj.Length);
+            rand = Random.Range(0, 100);
+            GameObject enemy;
+
+            if (rand > 0 && rand <= 60)
+            {
+                enemy = Instantiate(enemyObj[0]);
+            }
+            else if (rand >= 61 && rand <= 80)
+            {
+                enemy = Instantiate(enemyObj[1]);
+            }
+            else
+            {
+                enemy = Instantiate(enemyObj[2]);
+            }
             enemy.SetActive(false);
             enemyList.Add(enemy);
         }
-
-        target = GameObject.Find("Player");
 
         StartCoroutine(RandomRespawn_Coroutine());
     }
@@ -45,7 +57,7 @@ public class Respawn : MonoBehaviour
         Vector3 position = new Vector3(randPosition.x, 0, randPosition.y);
         position.Normalize();
 
-        return target.transform.position + position * 30f;
+        return player.transform.position + position * 30f;
     }
 
     public IEnumerator RandomRespawn_Coroutine()
@@ -62,7 +74,6 @@ public class Respawn : MonoBehaviour
 
                 enemyList.RemoveAt(0);
             }
-
         }
     }
 }

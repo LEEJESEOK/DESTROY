@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
 
         // overheat gauge
         overheatGauge.fillAmount = currentOverheat / maxOverheat;
+        overheatGauge.color = new Color(1f, 1f - overheatGauge.fillAmount, 0);
 
         // weapon bullet gauge
         weaponGauge.fillAmount = currentBullet / maxBullet;

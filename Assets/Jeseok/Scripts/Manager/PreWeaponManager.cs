@@ -77,6 +77,7 @@ public class PreWeaponManager : MonoBehaviour
         InitActiveWeapon();
     }
 
+    // TODO 장비 강화
     void UpdateProps(float speed, float range, int damage, float delay)
     {
 
@@ -94,6 +95,7 @@ public class PreWeaponManager : MonoBehaviour
         UIManager.instance.ChangeWeapon(weaponComponent);
     }
 
+    // bullet 획득, 추가 함수
     public void AddBullet(int bulletCnt)
     {
         weaponComponent.currentBulletCnt += bulletCnt;
