@@ -19,8 +19,6 @@ public class PreWeaponManager : MonoBehaviour
     bool isDelay = false;
     public GameObject defaultWeapon;
 
-    IEnumerator checkAttackDelayCoroutine;
-
 
     private void Awake()
     {
@@ -30,8 +28,6 @@ public class PreWeaponManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        checkAttackDelayCoroutine = CheckAttackDelay();
     }
 
     // Start is called before the first frame update
@@ -51,6 +47,7 @@ public class PreWeaponManager : MonoBehaviour
         if (isDelay == true)
             return;
 
+        print(weaponComponent.name);
         weaponComponent.Attack(transform.position);
 
         isDelay = true;
@@ -63,7 +60,7 @@ public class PreWeaponManager : MonoBehaviour
         activeWeaponIdx += (idx > 0 ? 1 : -1) + weaponsObj.Length;
         activeWeaponIdx %= weaponsObj.Length;
 
-        StopCoroutine(checkAttackDelayCoroutine);
+        StopCoroutine(CheckAttackDelay());
         InitActiveWeapon();
     }
 
@@ -73,7 +70,7 @@ public class PreWeaponManager : MonoBehaviour
 
         activeWeaponIdx = idx;
 
-        StopCoroutine(checkAttackDelayCoroutine);
+        StopCoroutine(CheckAttackDelay());
         InitActiveWeapon();
     }
 
@@ -89,7 +86,7 @@ public class PreWeaponManager : MonoBehaviour
 
         attackDelay = weaponComponent.delay;
 
-        StartCoroutine(checkAttackDelayCoroutine);
+        StartCoroutine(CheckAttackDelay());
         weaponsObj[activeWeaponIdx].SetActive(true);
 
         UIManager.instance.ChangeWeapon(weaponComponent);

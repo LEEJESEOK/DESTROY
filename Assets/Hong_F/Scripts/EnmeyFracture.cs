@@ -42,6 +42,9 @@ public class EnmeyFracture : MonoBehaviour
 
             Destroy(fractureObj, 3);
 
+            // TODO 획득점수 설정
+            ScoreManager.instance.AddScore(1);
+
             Destroy(gameObject);
         }
     }

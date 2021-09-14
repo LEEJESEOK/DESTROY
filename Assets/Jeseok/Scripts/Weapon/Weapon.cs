@@ -31,6 +31,13 @@ abstract public class Weapon : MonoBehaviour
     [HideInInspector]
     public bool isOverheat = false;
 
+    protected IEnumerator cooldownCoroutine;
+
+    private void Awake()
+    {
+        cooldownCoroutine = Cooldown(cooldownRate);
+    }
+
     private void Update()
     {
         // overheat cooldown
@@ -58,10 +65,10 @@ abstract public class Weapon : MonoBehaviour
         currentOverheat += spendBulletCnt;
         UIManager.instance.AddHeat(spendBulletCnt);
 
-        if (currentOverheat >= maxOverheat)
+        if (this.currentOverheat >= this.maxOverheat)
         {
             isOverheat = true;
-            StartCoroutine(Cooldown(cooldownRate));
+            StartCoroutine(cooldownCoroutine);
         }
     }
 
@@ -86,8 +93,8 @@ abstract public class Weapon : MonoBehaviour
         {
             // yield return new WaitForSeconds(maxOverheat / cooldownRate);
             yield return new WaitForSeconds(1f);
-            currentOverheat -= maxOverheat * cooldownRate;
+            this.currentOverheat -= this.maxOverheat * this.cooldownRate;
         }
-        isOverheat = false;
+        this.isOverheat = false;
     }
 }
