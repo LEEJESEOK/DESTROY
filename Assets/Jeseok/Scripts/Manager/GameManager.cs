@@ -237,6 +237,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // buildingSpawnTime 마다 building 생성    
     IEnumerator SpawnBuilding()
     {
         while (true)
@@ -247,6 +248,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // bulletSpawnTime 마다 bulletItem 생성    
     IEnumerator SpawnBulletItem()
     {
         while (true)

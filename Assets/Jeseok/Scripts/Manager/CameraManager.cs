@@ -28,11 +28,7 @@ public class CameraManager : MonoBehaviour
         // 카메라 위치
         transform.position = new Vector3(target.position.x, height, target.position.z - distance);
 
-        // target 방향 회전
-        // Vector3 dir = (target.transform.position - transform.position);
-        // dir.Normalize();
-        // transform.forward = Vector3.Lerp(transform.forward, dir, trackingSpeed * Time.deltaTime);
-
+        // target 방향으로 각도 회전
         Vector3 dir = target.transform.position - transform.position;
         dir.Normalize();
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), trackingSpeed * Time.deltaTime);

@@ -67,11 +67,16 @@ public class WeaponManager : MonoBehaviour
         isDelay = true;
     }
 
+    // bullet 획득, 추가 함수
     public void AddBullet(int bulletCnt)
     {
-        
+        // weaponComponent.currentBulletCnt += bulletCnt;
+        // weaponComponent.currentBulletCnt = Mathf.Min(weaponComponent.currentBulletCnt, weaponComponent.maxBulletCnt);
+
+        // UIManager.instance.currentBullet = weaponComponent.currentBulletCnt;
     }
 
+    // Weapon.attackDelay 이후에 isDelay 플래그 전환
     IEnumerator CheckAttackDelay()
     {
         while (true)

@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea75ee5b149bab4f9ae06c26f89e039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1819079147}
   respawnCount: 4
   respawnDelay: 0.25
   enemyObj:
@@ -690,11 +691,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a00ca161f364da41bddc092cc912bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
+  player: {fileID: 1819079147}
   floor: {fileID: 213304830}
-  buildingCnt: 500
+  initBuildingCnt: 0
   bulletItemObj: {fileID: 7675776622767142927, guid: f6288e8608ff3b448b65c62c6aeed1ba, type: 3}
+  buildingSpawnTime: 10
   initBulletItemCnt: 100
   explosionEffect: {fileID: 4050284574884786677, guid: 2d242b34797fef14085b6700ff26e06d, type: 3}
+  bulletSpawnTime: 5
   fractureMat: {fileID: 2100000, guid: 5f72648d5a3131f439e4b22b34628dd7, type: 2}
 --- !u!4 &1107123346
 Transform:

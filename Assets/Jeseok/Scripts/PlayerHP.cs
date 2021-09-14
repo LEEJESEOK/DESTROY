@@ -14,7 +14,6 @@ public class PlayerHP : MonoBehaviour
     public float maxHP;
     float currentHP;
 
-
     public Image hpGauge;
     public Text hpTextUI;
 
@@ -25,15 +24,8 @@ public class PlayerHP : MonoBehaviour
 
     public GameObject EffectDieExplosion;
 
-    float diff = 10f;
-    float currTime;
-    GameObject fire;
+    public GameObject fire;
 
-
-
-    // private void Awake() {
-    //     Die();
-    // }
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +36,6 @@ public class PlayerHP : MonoBehaviour
         Vol = process.GetComponent<PostProcessVolume>();
         Vol.profile.TryGetSettings<Bloom>(out bloom);
         Vol.profile.TryGetSettings<Vignette>(out Vig);
-        fire = GameObject.Find("PlayerEffect");
     }
 
     // Update is called once per frame
@@ -66,14 +57,7 @@ public class PlayerHP : MonoBehaviour
             bloom.intensity.value = 20;
             Vig.enabled.Override(false);
             fire.SetActive(false);
-
-
         }
-
-
-
-
-
     }
 
     private void OnCollisionEnter(Collision other)
@@ -93,15 +77,10 @@ public class PlayerHP : MonoBehaviour
 
             if (currentHP <= 0)
             {
-
                 Die();
                 bloom.enabled.Override(true);
                 bloom.intensity.value = 50;
                 fire.SetActive(false);
-
-
-
-
             }
         }
     }

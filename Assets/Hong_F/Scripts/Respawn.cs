@@ -34,8 +34,6 @@ public class Respawn : MonoBehaviour
             if (rand > 0 && rand <= 60)
             {
                 enemy = Instantiate(enemyObj[0]);
-
-
             }
             else if (rand >= 61 && rand <= 80)
             {
@@ -44,12 +42,9 @@ public class Respawn : MonoBehaviour
             else
             {
                 enemy = Instantiate(enemyObj[2]);
-
             }
             enemy.SetActive(false);
             enemyList.Add(enemy);
-
-
         }
 
         StartCoroutine(RandomRespawn_Coroutine());
@@ -79,7 +74,6 @@ public class Respawn : MonoBehaviour
 
                 enemyList.RemoveAt(0);
             }
-
         }
     }
 }
