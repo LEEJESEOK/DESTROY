@@ -15,7 +15,7 @@ public class Respawn : MonoBehaviour
     int idx;
     int rand;
     private System.Random rng = new System.Random();
-
+    
 
     // Start is called before the first frame update
     private void Awake()
@@ -34,14 +34,19 @@ public class Respawn : MonoBehaviour
             if (rand > 0 && rand <= 60)
             {
                 enemy = Instantiate(enemyObj[0]);
+                enemy.GetComponent<EnmeyFracture>().currScore = 5;
             }
             else if (rand >= 61 && rand <= 80)
             {
                 enemy = Instantiate(enemyObj[1]);
+                enemy.GetComponent<EnmeyFracture>().currScore = 10;
+
             }
             else
             {
                 enemy = Instantiate(enemyObj[2]);
+                enemy.GetComponent<EnmeyFracture>().currScore = 8;
+
             }
             enemy.SetActive(false);
             enemyList.Add(enemy);
