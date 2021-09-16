@@ -9,7 +9,6 @@ public class EnmeyFracture : MonoBehaviour
 {
     public float hp = 1;
     GameObject fractureObj;
-    public Text scoreText;
     public int currScore = 3;
 
 
@@ -17,7 +16,6 @@ public class EnmeyFracture : MonoBehaviour
     void Start()
     {
         fractureObj = FractureThis.GetInstance().CreateFracture(gameObject);
-        scoreText.text = "" + currScore;
 
     }
 
