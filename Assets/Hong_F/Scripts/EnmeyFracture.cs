@@ -10,13 +10,7 @@ public class EnmeyFracture : MonoBehaviour
     public float hp = 1;
     GameObject fractureObj;
     public Text scoreText;
-    GameObject Score;
     public int currScore = 3;
-
-
-
-
-
 
 
     // Start is called before the first frame update
