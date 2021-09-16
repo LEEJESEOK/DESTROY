@@ -8,7 +8,7 @@ public class StartButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,8 +19,19 @@ public class StartButton : MonoBehaviour
 
     public void startbutton()
     {
-        
-            SceneManager.LoadScene("SelectScene");
-        
-    }    
+        Buttonsound();
+        SceneManager.LoadScene("SelectScene");
+    }
+
+    public void Exitbutton()
+    {
+        Buttonsound();
+        Application.Quit();
+    }
+
+    public void Buttonsound()
+    {
+        AudioSource button = GetComponent<AudioSource>();
+        button.Play();
+    }
 }

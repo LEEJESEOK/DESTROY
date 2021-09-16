@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSelectRota : MonoBehaviour
 {
 
-  
+
 
     PlayerOnOff on;
 
@@ -29,7 +29,7 @@ public class PlayerSelectRota : MonoBehaviour
         if (num % 4 == 0)
         {
             dir = new Vector3(0, 0, -1);
-            if(dir == new Vector3(0, 0, -1))
+            if (dir == new Vector3(0, 0, -1))
             {
                 print("큐비");
                 PlayerPrefs.SetInt("CS", 0);
@@ -72,36 +72,49 @@ public class PlayerSelectRota : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
 
-       
+
     }
 
     public void ClikRight()
     {
+        AudioSource button = GameObject.Find("AudioManagers").GetComponent<AudioSource>();
+
         if (num == 0) num = 4;
         else num--;
-
+        button.Play();
     }
 
     public void ClikLeft()
     {
+        AudioSource button = GameObject.Find("AudioManagers").GetComponent<AudioSource>();
+
         if (num == 4) num = 0;
         else num++;
+        button.Play();
+
     }
 
     public void Select()
     {
-        
-            SceneManager.LoadScene("GameScene");
-        
+        AudioSource button = GameObject.Find("AudioManagers").GetComponent<AudioSource>();
+
+        button.Play();
+
+        SceneManager.LoadScene("GameScene");
+
         //게임씬으로 넘어가고 
         // 선택한 캐릭터를활성화
     }
 
     public void Back()
     {
-        
-            SceneManager.LoadScene("IntroScene");
-        
+        AudioSource button = GameObject.Find("AudioManagers").GetComponent<AudioSource>();
+
+        button.Play();
+
+
+        SceneManager.LoadScene("IntroScene");
+
     }
 
 
