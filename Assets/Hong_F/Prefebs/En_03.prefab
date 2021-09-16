@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
+  currScore: 10
 --- !u!1 &6149104154700101871
 GameObject:
   m_ObjectHideFlags: 0

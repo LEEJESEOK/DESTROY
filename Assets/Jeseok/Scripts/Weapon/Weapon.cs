@@ -11,7 +11,7 @@ abstract public class Weapon : MonoBehaviour
     public float speed;
     // 사거리, 이후에 인스턴스 제거
     public float remainTime;
-    // 데미지
+    // 대미지
     public int damage;
     // 공격 딜레이(속도)
     public float delay;
@@ -30,6 +30,13 @@ abstract public class Weapon : MonoBehaviour
     public float cooldownRate = .2f;
     [HideInInspector]
     public bool isOverheat = false;
+
+    protected IEnumerator cooldownCoroutine;
+
+    private void Awake()
+    {
+        cooldownCoroutine = Cooldown(cooldownRate);
+    }
 
     private void Update()
     {
@@ -58,16 +65,16 @@ abstract public class Weapon : MonoBehaviour
         currentOverheat += spendBulletCnt;
         UIManager.instance.AddHeat(spendBulletCnt);
 
-        if (currentOverheat >= maxOverheat)
+        if (this.currentOverheat >= this.maxOverheat)
         {
             isOverheat = true;
-            StartCoroutine(Cooldown(cooldownRate));
+            StartCoroutine(cooldownCoroutine);
         }
     }
 
     protected void InitBulletProps(GameObject bullet, float speed, int damage)
     {
-        // 총알의 속도, 데미지
+        // 총알의 속도, 대미지
         Projectile projectile = bullet.GetComponent<Projectile>();
         projectile.speed = speed;
         projectile.damage = damage;
@@ -86,8 +93,8 @@ abstract public class Weapon : MonoBehaviour
         {
             // yield return new WaitForSeconds(maxOverheat / cooldownRate);
             yield return new WaitForSeconds(1f);
-            currentOverheat -= maxOverheat * cooldownRate;
+            this.currentOverheat -= this.maxOverheat * this.cooldownRate;
         }
-        isOverheat = false;
+        this.isOverheat = false;
     }
 }

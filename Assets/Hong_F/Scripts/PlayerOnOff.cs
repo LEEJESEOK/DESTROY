@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerOnOff : MonoBehaviour
 {
-     GameObject Cube;
-     GameObject Dia;
-     GameObject Star;
+    GameObject Cube;
+    GameObject Dia;
+    GameObject Star;
     GameObject Heart;
 
     private void Awake()

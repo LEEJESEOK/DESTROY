@@ -40,6 +40,8 @@ public class BeamMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Play)
+            return;
 
         switch (state)
         {

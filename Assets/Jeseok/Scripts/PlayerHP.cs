@@ -69,7 +69,7 @@ public class PlayerHP : MonoBehaviour
             else
                 Destroy(other.gameObject);
 
-            //TODO 데미지 수치 적용
+            //TODO 대미지 수치 적용
             --currentHP;
 
             hpGauge.fillAmount = (float)currentHP / maxHP;
@@ -81,6 +81,9 @@ public class PlayerHP : MonoBehaviour
                 bloom.enabled.Override(true);
                 bloom.intensity.value = 50;
                 fire.SetActive(false);
+
+
+                GameManager.instance.gameState = GameManager.GameState.Die;
             }
         }
     }
@@ -92,6 +95,6 @@ public class PlayerHP : MonoBehaviour
         // GameManager.instance.ExploseWithEffect(transform.position, explosionRange, EffectDieExplosion, ~layer);
         GameManager.instance.ExploseInDie(transform.position, explosionRange, EffectDieExplosion, ~layer);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

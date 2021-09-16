@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     // 투사체 이동 속도
     public float speed = 3f;
     public int damage = 1;
-    // 데미지 판정을 적용할 범위
+    // 대미지 판정을 적용할 범위
     public float damageRange;
 
     protected new Rigidbody rigidbody;

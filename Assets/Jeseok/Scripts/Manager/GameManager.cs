@@ -43,8 +43,6 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
-            gameState = GameState.Ready;
         }
         else
         {
@@ -54,6 +52,8 @@ public class GameManager : MonoBehaviour
         // Enemy spawn Range
         xRange = floor.transform.localScale.x;
         zRange = floor.transform.localScale.z;
+
+        gameState = GameState.Ready;
     }
 
     // Start is called before the first frame update
@@ -110,17 +110,19 @@ public class GameManager : MonoBehaviour
         // create bullet item
         CreateBulletItems(initBulletItemCnt);
 
+        // 일정시간 마다 건물, 아이템 재생성
         StartCoroutine(SpawnBuilding());
         StartCoroutine(SpawnBulletItem());
 
-        player.SetActive(true);
+        if (player.gameObject.activeSelf == false)
+            player.SetActive(true);
 
         gameState = GameState.Play;
     }
 
     void Play()
     {
-        // 일정시간 마다 건물, 아이템 재생성
+
     }
 
     void Die()
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         // 인게임 메뉴
+
     }
 
 
@@ -143,6 +146,7 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         // 인게임 메뉴 제거
+
 
         Time.timeScale = 1;
     }
@@ -170,7 +174,7 @@ public class GameManager : MonoBehaviour
 
     void CreateBuilding(Vector3 position)
     {
-        float randHeight = (float)(rng.NextDouble() * (5));
+        float randHeight = (float)(rng.NextDouble() * (5) + 1);
 
         GameObject building = GameObject.CreatePrimitive(PrimitiveType.Cube);
         building.transform.localScale = new Vector3(1, randHeight, 1);
@@ -207,7 +211,7 @@ public class GameManager : MonoBehaviour
 
         Explose(position, explosionRange, layer);
     }
-    
+
     public void ExploseInDie(Vector3 position, float explosionRange, GameObject effectObj, LayerMask layer = new LayerMask())
     {
         GameObject explosion = Instantiate(effectObj);

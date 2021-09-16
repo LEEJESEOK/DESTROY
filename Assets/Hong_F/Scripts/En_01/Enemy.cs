@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Play)
+            return;
+            
         nav.SetDestination(player.transform.position);
     }
 }

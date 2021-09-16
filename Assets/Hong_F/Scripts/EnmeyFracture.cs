@@ -29,19 +29,16 @@ public class EnmeyFracture : MonoBehaviour
     {
         //Score = GameObject.Find("ScoreText");
         //scoreText = Score.GetComponent<Text>();
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
-        {
-            hp -= 4;
-
-            Scoresend();
-
-        }
+        // if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        // {
+        //     // TODO : 대미지 수치 적용
+        //     hp -= 4;
+        // }
     }
 
     public void OnHit(float damage)
     {
         hp -= damage;
-
 
         if (hp <= 0)
         {
@@ -50,21 +47,11 @@ public class EnmeyFracture : MonoBehaviour
             fractureObj.gameObject.GetComponentInChildren<Rigidbody>().AddExplosionForce(10000, fractureObj.transform.position, 1);
 
             Destroy(fractureObj, 3);
+            
+            // TODO 획득점수 설정
+            ScoreManager.instance.AddScore(currScore);
+
             Destroy(gameObject);
-
-
-
-
         }
-
     }
-
-    public void Scoresend()
-    {
-        ScoreUI ScoreUI = GameObject.FindObjectOfType<ScoreUI>();
-        ScoreUI.UpdateScore(currScore);
-        
-        
-    }
-
 }

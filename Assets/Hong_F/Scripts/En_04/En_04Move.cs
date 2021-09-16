@@ -24,13 +24,16 @@ public class En_04Move : MonoBehaviour
         axis.Normalize();
 
         rigidbody = GetComponent<Rigidbody>();
-       
+
         //�̵��ϴ� ������ �ٶ󺸰� �ϰ�
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Play)
+            return;
+
         // �ϴ� �÷��̾ �ִ� �������� �̵��Ҳ��� 
         transform.position += dir * Time.deltaTime;
 
