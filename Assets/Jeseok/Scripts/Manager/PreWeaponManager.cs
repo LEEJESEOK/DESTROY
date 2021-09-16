@@ -47,7 +47,6 @@ public class PreWeaponManager : MonoBehaviour
         if (isDelay == true)
             return;
 
-        print(weaponComponent.name);
         weaponComponent.Attack(transform.position);
 
         isDelay = true;

@@ -78,23 +78,23 @@ public class PlayerHP : MonoBehaviour
             if (currentHP <= 0)
             {
                 Die();
+
                 bloom.enabled.Override(true);
                 bloom.intensity.value = 50;
                 fire.SetActive(false);
-
-
-                GameManager.instance.gameState = GameManager.GameState.Die;
             }
         }
     }
 
     void Die()
     {
-        LayerMask layer = LayerMask.GetMask("Ground");
+        GameManager.instance.gameState = GameManager.GameState.Die;
+
 
         // GameManager.instance.ExploseWithEffect(transform.position, explosionRange, EffectDieExplosion, ~layer);
-        GameManager.instance.ExploseInDie(transform.position, explosionRange, EffectDieExplosion, ~layer);
+        GameManager.instance.ExploseInDie(transform.position, explosionRange);
 
+        GameManager.instance.Die();
         gameObject.SetActive(false);
     }
 }

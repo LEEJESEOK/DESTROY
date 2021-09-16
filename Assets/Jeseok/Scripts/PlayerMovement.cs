@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float rotateSpeed = 2f;
 
-    new Rigidbody rigidbody;
+    Rigidbody rigidbody;
     Vector3 velocity;
 
     public GameObject aim;
@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Play)
+            return;
+            
         Vector3 dir = (aim.transform.position - transform.position);
         dir.y = 0;
         Quaternion qDir = Quaternion.LookRotation(dir);

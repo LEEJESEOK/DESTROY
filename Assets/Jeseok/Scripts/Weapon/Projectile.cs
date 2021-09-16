@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     // 대미지 판정을 적용할 범위
     public float damageRange;
 
-    protected new Rigidbody rigidbody;
+    protected Rigidbody rigidbody;
     protected SphereCollider sphereCollider;
 
     // Enemy Layer 충돌

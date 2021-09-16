@@ -32,11 +32,16 @@ public class GameManager : MonoBehaviour
     public int initBulletItemCnt = 30;
 
     public GameObject explosionEffect;
+    public GameObject dieExplosionEffect;
+    float dieProcessTime;
+
+
     public float bulletSpawnTime = 5f;
 
     public Material fractureMat;
 
     bool pauseToggle = false;
+
 
     private void Awake()
     {
@@ -72,14 +77,13 @@ public class GameManager : MonoBehaviour
                 Ready();
                 break;
 
-            case GameState.Play:
-                Play();
-                break;
+            // case GameState.Play:
+            //     Play();
+            //     break;
 
             // Player 사망
-            case GameState.Die:
-                Die();
-                break;
+            // case GameState.Die:
+            //     break;
             default:
                 break;
         }
@@ -111,11 +115,13 @@ public class GameManager : MonoBehaviour
         CreateBulletItems(initBulletItemCnt);
 
         // 일정시간 마다 건물, 아이템 재생성
-        StartCoroutine(SpawnBuilding());
+        // StartCoroutine(SpawnBuilding());
         StartCoroutine(SpawnBulletItem());
 
         if (player.gameObject.activeSelf == false)
             player.SetActive(true);
+
+        ScoreManager.instance.initScoreManager();
 
         gameState = GameState.Play;
     }
@@ -125,9 +131,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void Die()
+    public void Die()
     {
-
+        StartCoroutine(WaitDieProcess());
     }
 
     // 게임 일시정지
@@ -212,13 +218,18 @@ public class GameManager : MonoBehaviour
         Explose(position, explosionRange, layer);
     }
 
-    public void ExploseInDie(Vector3 position, float explosionRange, GameObject effectObj, LayerMask layer = new LayerMask())
+    public void ExploseInDie(Vector3 position, float explosionRange)
     {
-        GameObject explosion = Instantiate(effectObj);
+
+        GameObject explosion = Instantiate(dieExplosionEffect);
         explosion.transform.position = position;
         explosion.transform.localScale *= explosionRange;
 
-        Explose(position, explosionRange * 5, layer);
+        dieProcessTime = explosion.GetComponent<ParticleSystem>().main.duration;
+
+        LayerMask layer = LayerMask.GetMask("Ground");
+
+        Explose(position, explosionRange * 5, ~layer);
     }
 
     public void Explose(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
@@ -262,5 +273,12 @@ public class GameManager : MonoBehaviour
 
             CreateBulletItem(PlayerAroundRandomPosition());
         }
+    }
+
+    IEnumerator WaitDieProcess()
+    {
+        yield return new WaitForSeconds(dieProcessTime);
+
+        SceneManager.LoadScene("GameoverScene");
     }
 }

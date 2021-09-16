@@ -7,43 +7,30 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSelectRota : MonoBehaviour
 {
-
-
-
-    PlayerOnOff on;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     Vector3 dir;
-    int num;
+    int num = 2;
 
     // Update is called once per frame
     void Update()
     {
-
-        on = FindObjectOfType<PlayerOnOff>();
+        print(num);
 
         if (num % 4 == 0)
         {
             dir = new Vector3(0, 0, -1);
             if (dir == new Vector3(0, 0, -1))
             {
-                print("큐비");
+                print("Cube");
                 PlayerPrefs.SetInt("CS", 0);
             }
-
         }
         else if (num % 4 == 1)
         {
             dir = new Vector3(1, 0, 0);
             if (dir == new Vector3(1, 0, 0))
             {
-                print("하트");
+                print("Heart");
                 PlayerPrefs.SetInt("CS", 1);
-
             }
         }
         else if (num % 4 == 2)
@@ -51,9 +38,8 @@ public class PlayerSelectRota : MonoBehaviour
             dir = new Vector3(0, 0, 1);
             if (dir == new Vector3(0, 0, 1))
             {
-                print("다이아몬드");
+                print("Diamond");
                 PlayerPrefs.SetInt("CS", 2);
-
             }
         }
         else if (num % 4 == 3)
@@ -61,26 +47,24 @@ public class PlayerSelectRota : MonoBehaviour
             dir = new Vector3(-1, 0, 0);
             if (dir == new Vector3(-1, 0, 0))
             {
-                print("별");
+                print("SoftStar");
                 PlayerPrefs.SetInt("CS", 3);
-
             }
         }
 
-
-
-
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
-
-
     }
 
     public void ClikRight()
     {
         AudioSource button = GameObject.Find("AudioManagers").GetComponent<AudioSource>();
 
-        if (num == 0) num = 4;
-        else num--;
+        // if (num == 0) num = 4;
+        // else num--;
+
+        // 4 : max of num
+        num = (num - 1 + 4) % 4;
+
         button.Play();
     }
 
@@ -88,10 +72,12 @@ public class PlayerSelectRota : MonoBehaviour
     {
         AudioSource button = GameObject.Find("AudioManagers").GetComponent<AudioSource>();
 
-        if (num == 4) num = 0;
-        else num++;
-        button.Play();
+        // if (num == 4) num = 0;
+        // else num++;
 
+        num = (num + 1) % 4;
+
+        button.Play();
     }
 
     public void Select()
@@ -101,9 +87,6 @@ public class PlayerSelectRota : MonoBehaviour
         button.Play();
 
         SceneManager.LoadScene("GameScene");
-
-        //게임씬으로 넘어가고 
-        // 선택한 캐릭터를활성화
     }
 
     public void Back()
@@ -112,11 +95,6 @@ public class PlayerSelectRota : MonoBehaviour
 
         button.Play();
 
-
         SceneManager.LoadScene("IntroScene");
-
     }
-
-
-
 }

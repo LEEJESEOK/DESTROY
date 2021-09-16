@@ -8,7 +8,7 @@ public class En_04Move : MonoBehaviour
     public GameObject target;
     public float rotspeed = 100f;
 
-    new Rigidbody rigidbody;
+    Rigidbody rigidbody;
 
     Vector3 dir;
 
