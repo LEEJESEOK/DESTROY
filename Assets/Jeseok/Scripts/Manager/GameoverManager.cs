@@ -107,6 +107,7 @@ public class GameoverManager : MonoBehaviour
     {
         if (scoreLoadFlag == true)
         {
+            refreshButton.SetActive(false);
             UpdateRankingboard();
         }
     }
@@ -114,7 +115,7 @@ public class GameoverManager : MonoBehaviour
     public void onClickRetry()
     {
         button.Play();
-        SceneManager.LoadScene("SelectScene");
+        SceneManager.LoadScene("IntroScene");
     }
 
     public void onClickExit()
@@ -126,13 +127,10 @@ public class GameoverManager : MonoBehaviour
     public void onClickRefresh()
     {
         RankingLoad();
-        refreshButton.SetActive(false);
     }
 
     void RankingUpload()
     {
-        refreshButton.SetActive(true);
-
         Record currentRecord = new Record(gameScore, gameDate);
         string json = JsonUtility.ToJson(currentRecord);
 
@@ -205,8 +203,10 @@ public class GameoverManager : MonoBehaviour
 
                 scoreLoadFlag = true;
             }
-
-
+            else if (task.IsCanceled)
+            {
+                refreshButton.SetActive(true);
+            }
         });
     }
 
@@ -220,12 +220,13 @@ public class GameoverManager : MonoBehaviour
         {
             GameObject scoreUI = Instantiate(scoreUIObj);
             scoreUI.transform.SetParent(rankingboard.transform);
-            SetScoreUI(scoreUI, sorted[i].score, sorted[i].date);
+            SetScoreUI(scoreUI, sorted[i].score, sorted[i].date, i + 1);
         }
     }
 
-    void SetScoreUI(GameObject scoreUI, int score, string date)
+    void SetScoreUI(GameObject scoreUI, int score, string date, int rank)
     {
+        scoreUI.transform.Find("Rank").GetComponent<Text>().text = rank.ToString();
         scoreUI.transform.Find("Score").GetComponent<Text>().text = score.ToString();
         scoreUI.transform.Find("Date").GetComponent<Text>().text = date;
     }
