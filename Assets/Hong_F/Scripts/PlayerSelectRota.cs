@@ -13,14 +13,11 @@ public class PlayerSelectRota : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(num);
-
         if (num % 4 == 0)
         {
             dir = new Vector3(0, 0, -1);
             if (dir == new Vector3(0, 0, -1))
             {
-                print("Cube");
                 PlayerPrefs.SetInt("CS", 0);
             }
         }
@@ -29,7 +26,6 @@ public class PlayerSelectRota : MonoBehaviour
             dir = new Vector3(1, 0, 0);
             if (dir == new Vector3(1, 0, 0))
             {
-                print("Heart");
                 PlayerPrefs.SetInt("CS", 1);
             }
         }
@@ -38,7 +34,6 @@ public class PlayerSelectRota : MonoBehaviour
             dir = new Vector3(0, 0, 1);
             if (dir == new Vector3(0, 0, 1))
             {
-                print("Diamond");
                 PlayerPrefs.SetInt("CS", 2);
             }
         }
@@ -47,7 +42,6 @@ public class PlayerSelectRota : MonoBehaviour
             dir = new Vector3(-1, 0, 0);
             if (dir == new Vector3(-1, 0, 0))
             {
-                print("SoftStar");
                 PlayerPrefs.SetInt("CS", 3);
             }
         }
