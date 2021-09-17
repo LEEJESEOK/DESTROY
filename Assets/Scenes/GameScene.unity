@@ -3070,7 +3070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRange: 5
-  maxHP: 10
+  maxHP: 3
   hpGauge: {fileID: 942505111}
   hpTextUI: {fileID: 1738186416}
   EffectDieExplosion: {fileID: 4050284574884786677, guid: 1e2a1f96036dc1b4cab60c06e794ca47, type: 3}

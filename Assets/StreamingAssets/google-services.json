@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "885568322822",
+    "firebase_url": "https://destroy-89ab5-default-rtdb.firebaseio.com/",
+    "project_id": "destroy-89ab5",
+    "storage_bucket": "destroy-89ab5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885568322822:android:04db8df7326da4c9b4b287",
+        "android_client_info": {
+          "package_name": "com.unity.Destroy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885568322822-egspmvp2ip3c8qh4n8r92fqgga3l9li9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASkjDhFj-An5j4j85InbiJHPYFg-2hnZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885568322822-egspmvp2ip3c8qh4n8r92fqgga3l9li9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
