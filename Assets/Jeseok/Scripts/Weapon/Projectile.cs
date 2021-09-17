@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddForce(transform.forward * speed, ForceMode.Impulse);
+       GameObject.Find("GunAudio").GetComponent<AudioSource>().Play();
 
         sphereCollider = GetComponent<SphereCollider>();
         transform.position += transform.forward * (sphereCollider.radius + 0.5f);
