@@ -2419,12 +2419,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1819079150}
     m_Modifications:
     - target: {fileID: 1733210584439236156, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
+      propertyPath: delay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1733210584439236156, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: maxBulletCnt
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1733210584439236156, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: currentBulletCnt
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336709544981469211, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
+      propertyPath: delay
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4336709544981469211, guid: 7e6101bc714e95e409bdd96413516a5e, type: 3}
       propertyPath: maxOverheat
