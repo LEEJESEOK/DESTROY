@@ -13,9 +13,13 @@ public class PlayerHP : MonoBehaviour
 
     public float maxHP;
     float currentHP;
+    float currentTime;
+    public float damageShowTime = 0.5f;
+    AudioSource DamageAudio;
 
     public Image hpGauge;
     public Text hpTextUI;
+    public Image damageUI;
 
     PostProcessVolume Vol;
     Bloom bloom;
@@ -36,6 +40,8 @@ public class PlayerHP : MonoBehaviour
         Vol = process.GetComponent<PostProcessVolume>();
         Vol.profile.TryGetSettings<Bloom>(out bloom);
         Vol.profile.TryGetSettings<Vignette>(out Vig);
+        DamageAudio = GameObject.Find("Damage").GetComponent<AudioSource>();
+        damageUI.enabled = false;
     }
 
     // Update is called once per frame
@@ -58,6 +64,18 @@ public class PlayerHP : MonoBehaviour
             Vig.enabled.Override(false);
             fire.SetActive(false);
         }
+
+        if(damageUI.enabled)
+        {
+            currentTime += Time.deltaTime;
+            if(currentTime > damageShowTime)
+            {
+                damageUI.enabled = false;
+                DamageAudio.Play();
+
+                currentTime = 0;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -71,6 +89,7 @@ public class PlayerHP : MonoBehaviour
 
             //TODO 대미지 수치 적용
             --currentHP;
+            damageUI.enabled = true;
 
             hpGauge.fillAmount = (float)currentHP / maxHP;
             hpTextUI.text = "" + currentHP;
@@ -78,7 +97,7 @@ public class PlayerHP : MonoBehaviour
             if (currentHP <= 0)
             {
                 Die();
-
+                GameObject.Find("DieAudio").GetComponent<AudioSource>().Play();
                 bloom.enabled.Override(true);
                 bloom.intensity.value = 50;
                 fire.SetActive(false);
@@ -97,4 +116,5 @@ public class PlayerHP : MonoBehaviour
         GameManager.instance.Die();
         gameObject.SetActive(false);
     }
+   
 }

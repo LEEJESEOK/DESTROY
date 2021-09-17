@@ -9,6 +9,7 @@ public class Grenade : Projectile
     LayerMask buildingLayer;
 
     public GameObject explosionEffect;
+    AudioSource exPloAudio;
 
 
     protected new void Awake()
@@ -20,7 +21,7 @@ public class Grenade : Projectile
         mapLayer = (groundLayer | buildingLayer);
     }
 
-    protected new void OnCollisionEnter(Collision other)
+    public new void OnCollisionEnter(Collision other)
     {
         // 충돌한 오브젝트의 레이어
         LayerMask otherLayer = 1 << other.gameObject.layer;
@@ -30,10 +31,14 @@ public class Grenade : Projectile
         //     transform.localScale = Vector3.one * damageRange;
 
         LayerMask layer = LayerMask.GetMask("Enemy");
-
+        
         GameManager.instance.ExploseWithEffect(transform.position, damageRange, layer);
+        if(explosionEffect)
+        {
+            GameObject.Find("ExploAudio").GetComponent<AudioSource>().Play();
 
-
+        }
+       
 
         //TODO 수류탄 폭발 효과
         Destroy(gameObject);

@@ -11,7 +11,7 @@ public class PlayerOnOff : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         Cube = GameObject.Find("CubieBeveled");
         Dia = GameObject.Find("Diamondo");
         Star = GameObject.Find("SoftStar");
