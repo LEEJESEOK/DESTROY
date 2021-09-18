@@ -91,8 +91,6 @@ public class GameManager : MonoBehaviour
         // Game Pause
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gameState = GameState.Pause;
-
             // resume
             if (pauseToggle == true)
                 Resume();
@@ -140,6 +138,7 @@ public class GameManager : MonoBehaviour
     // 인게임 메뉴
     public void Pause()
     {
+        gameState = GameState.Pause;
         Time.timeScale = 0;
 
         // 인게임 메뉴
@@ -151,6 +150,7 @@ public class GameManager : MonoBehaviour
     // 게임 재시작
     public void Resume()
     {
+        gameState = GameState.Play;
         // 인게임 메뉴 제거
 
 

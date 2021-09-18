@@ -77,6 +77,7 @@ public class GameoverManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            print(SystemInfo.deviceUniqueIdentifier);
         }
         else
             Destroy(gameObject);
@@ -100,7 +101,7 @@ public class GameoverManager : MonoBehaviour
             RankingUpload();
 
 
-        RankingLoad();
+        // RankingLoad();
     }
 
     private void LateUpdate()
@@ -131,44 +132,53 @@ public class GameoverManager : MonoBehaviour
 
     void RankingUpload()
     {
+
         Record currentRecord = new Record(gameScore, gameDate);
         string json = JsonUtility.ToJson(currentRecord);
 
-        Record pastRecord = new Record();
         // 본인 점수를 불러옴
         reference.Child("high_score").Child(currentRecord.userID).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted)
             {
-                print("error");
+                print("IsFaulted");
+            }
+            else if (task.IsCanceled)
+            {
+                print("IsCanceled");
+                refreshButton.SetActive(true);
             }
             else if (task.IsCompleted)
             {
-                DataSnapshot snapshots = task.Result;
-
-                // snapshot의 자식 개수
-                print(snapshots.ChildrenCount);
-
-                foreach (DataSnapshot snapshot in snapshots.Children)
+                try
                 {
+                    DataSnapshot snapshot = task.Result;
+
                     IDictionary record = (IDictionary)snapshot.Value;
 
-                    pastRecord = new Record(int.Parse(record["score"].ToString()), record["date"].ToString());
-                }
+                    int pastScore = int.Parse(record["score"].ToString());
 
-                scoreLoadFlag = true;
+                    print(pastScore + ", " + gameScore);
+
+                    // 현재점수와 비교해서 더 높으면 업데이트
+                    if (gameScore > pastScore)
+                    {
+                        UpdateScore(currentRecord);
+                    }
+                    else
+                    {
+                        RankingLoad();        
+                    }
+                }
+                catch
+                {
+                    print("error");
+                }
             }
         });
-
-
-        // 현재점수와 비교해서 더 높으면 업데이트
-        // reference.Child("high_score").Child(System.DateTime.Now.ToString()).SetRawJsonValueAsync(json);
-        // reference.Child("high_score").Child(SystemInfo.deviceUniqueIdentifier).SetRawJsonValueAsync(json);
-        if (gameScore > pastRecord.score)
-            WriteNewScore(currentRecord);
     }
 
-    void WriteNewScore(Record record)
+    async void UpdateScore(Record record)
     {
         string key = reference.Child("high_score").Child(record.userID).Push().Key;
 
@@ -177,23 +187,29 @@ public class GameoverManager : MonoBehaviour
         Dictionary<string, System.Object> childUpdates = new Dictionary<string, System.Object>();
 
         childUpdates["/high_score/" + record.userID] = recordValues;
-        reference.UpdateChildrenAsync(childUpdates);
+        await reference.UpdateChildrenAsync(childUpdates).ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                RankingLoad();
+            }
+            else
+            {
+                print("UpdateScore error");
+            }
+        });
     }
 
     public void RankingLoad()
     {
         reference.Child("high_score").GetValueAsync().ContinueWith(task =>
         {
-            if (task.IsFaulted)
-            {
-                print("error");
-            }
-            else if (task.IsCompleted)
+            if (task.IsCompleted)
             {
                 DataSnapshot snapshots = task.Result;
 
                 // snapshot의 자식 개수
-                print(snapshots.ChildrenCount);
+                // print(snapshots.ChildrenCount);
 
                 foreach (DataSnapshot snapshot in snapshots.Children)
                 {
@@ -203,8 +219,10 @@ public class GameoverManager : MonoBehaviour
 
                 scoreLoadFlag = true;
             }
-            else if (task.IsCanceled)
+            else
             {
+                print("error");
+                scoreLoadFlag = false;
                 refreshButton.SetActive(true);
             }
         });
