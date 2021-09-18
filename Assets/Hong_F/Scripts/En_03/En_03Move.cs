@@ -37,6 +37,8 @@ public class En_03Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Play)
+            return;
 
         currTime += Time.deltaTime;
 

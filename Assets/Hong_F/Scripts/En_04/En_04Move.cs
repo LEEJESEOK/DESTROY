@@ -8,7 +8,7 @@ public class En_04Move : MonoBehaviour
     public GameObject target;
     public float rotspeed = 100f;
 
-    new Rigidbody rigidbody;
+    Rigidbody rigidbody;
 
     Vector3 dir;
 
@@ -24,13 +24,16 @@ public class En_04Move : MonoBehaviour
         axis.Normalize();
 
         rigidbody = GetComponent<Rigidbody>();
-       
+
         //�̵��ϴ� ������ �ٶ󺸰� �ϰ�
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameState != GameManager.GameState.Play)
+            return;
+
         // �ϴ� �÷��̾ �ִ� �������� �̵��Ҳ��� 
         transform.position += dir * Time.deltaTime;
 

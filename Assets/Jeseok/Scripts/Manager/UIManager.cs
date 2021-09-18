@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     public Text weaponText;
     public Image weaponGauge;
 
+    public Text scoreText;
+
 
     private void Awake()
     {
@@ -61,5 +63,10 @@ public class UIManager : MonoBehaviour
         currentBullet = weaponComponent.currentBulletCnt;
         maxOverheat = weaponComponent.maxOverheat;
         currentOverheat = weaponComponent.currentOverheat;
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "" + ScoreManager.instance.currentScore;
     }
 }

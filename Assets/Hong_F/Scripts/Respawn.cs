@@ -66,6 +66,12 @@ public class Respawn : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnDelay);
 
+            if (GameManager.instance.gameState == GameManager.GameState.Die)
+            {
+                StopCoroutine(RandomRespawn_Coroutine());
+                break;
+            }
+
             if (enemyList.Count > 0)
             {
                 GameObject enemy = enemyList[0];

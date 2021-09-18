@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,19 +32,22 @@ public class GameManager : MonoBehaviour
     public int initBulletItemCnt = 30;
 
     public GameObject explosionEffect;
+    public GameObject dieExplosionEffect;
+    float dieProcessTime;
+
+
     public float bulletSpawnTime = 5f;
 
     public Material fractureMat;
 
     bool pauseToggle = false;
 
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-
-            gameState = GameState.Ready;
         }
         else
         {
@@ -53,6 +57,8 @@ public class GameManager : MonoBehaviour
         // Enemy spawn Range
         xRange = floor.transform.localScale.x;
         zRange = floor.transform.localScale.z;
+
+        gameState = GameState.Ready;
     }
 
     // Start is called before the first frame update
@@ -71,14 +77,13 @@ public class GameManager : MonoBehaviour
                 Ready();
                 break;
 
-            case GameState.Play:
-                Play();
-                break;
+            // case GameState.Play:
+            //     Play();
+            //     break;
 
             // Player 사망
-            case GameState.Die:
-                Die();
-                break;
+            // case GameState.Die:
+            //     break;
             default:
                 break;
         }
@@ -86,8 +91,6 @@ public class GameManager : MonoBehaviour
         // Game Pause
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gameState = GameState.Pause;
-
             // resume
             if (pauseToggle == true)
                 Resume();
@@ -109,31 +112,37 @@ public class GameManager : MonoBehaviour
         // create bullet item
         CreateBulletItems(initBulletItemCnt);
 
-        StartCoroutine(SpawnBuilding());
+        // 일정시간 마다 건물, 아이템 재생성
+        // StartCoroutine(SpawnBuilding());
         StartCoroutine(SpawnBulletItem());
 
-        player.SetActive(true);
+        if (player.gameObject.activeSelf == false)
+            player.SetActive(true);
+
+        ScoreManager.instance.initScoreManager();
 
         gameState = GameState.Play;
     }
 
     void Play()
     {
-        // 일정시간 마다 건물, 아이템 재생성
+
     }
 
-    void Die()
+    public void Die()
     {
-
+        StartCoroutine(WaitDieProcess());
     }
 
     // 게임 일시정지
     // 인게임 메뉴
     public void Pause()
     {
+        gameState = GameState.Pause;
         Time.timeScale = 0;
 
         // 인게임 메뉴
+
     }
 
 
@@ -141,7 +150,9 @@ public class GameManager : MonoBehaviour
     // 게임 재시작
     public void Resume()
     {
+        gameState = GameState.Play;
         // 인게임 메뉴 제거
+
 
         Time.timeScale = 1;
     }
@@ -169,7 +180,7 @@ public class GameManager : MonoBehaviour
 
     void CreateBuilding(Vector3 position)
     {
-        float randHeight = (float)(rng.NextDouble() * (5));
+        float randHeight = (float)(rng.NextDouble() * (5) + 1);
 
         GameObject building = GameObject.CreatePrimitive(PrimitiveType.Cube);
         building.transform.localScale = new Vector3(1, randHeight, 1);
@@ -206,14 +217,19 @@ public class GameManager : MonoBehaviour
 
         Explose(position, explosionRange, layer);
     }
-    
-    public void ExploseInDie(Vector3 position, float explosionRange, GameObject effectObj, LayerMask layer = new LayerMask())
+
+    public void ExploseInDie(Vector3 position, float explosionRange)
     {
-        GameObject explosion = Instantiate(effectObj);
+
+        GameObject explosion = Instantiate(dieExplosionEffect);
         explosion.transform.position = position;
         explosion.transform.localScale *= explosionRange;
 
-        Explose(position, explosionRange * 5, layer);
+        dieProcessTime = explosion.GetComponent<ParticleSystem>().main.duration;
+
+        LayerMask layer = LayerMask.GetMask("Ground");
+
+        Explose(position, explosionRange * 5, ~layer);
     }
 
     public void Explose(Vector3 position, float explosionRange, LayerMask layer = new LayerMask())
@@ -257,5 +273,12 @@ public class GameManager : MonoBehaviour
 
             CreateBulletItem(PlayerAroundRandomPosition());
         }
+    }
+
+    IEnumerator WaitDieProcess()
+    {
+        yield return new WaitForSeconds(dieProcessTime);
+
+        SceneManager.LoadScene("GameoverScene");
     }
 }

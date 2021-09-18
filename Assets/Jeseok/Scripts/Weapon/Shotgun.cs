@@ -12,7 +12,7 @@ public class Shotgun : Weapon
 
     public override void Attack(Vector3 position)
     {
-        if ((currentBulletCnt < spendBulletCnt) || isOverheat == true)
+        if ((currentBulletCnt < spendBulletCnt)/* || isOverheat == true*/)
             return;
 
         currentBulletCnt -= spendBulletCnt;
