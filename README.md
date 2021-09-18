@@ -1,4 +1,4 @@
-# DestroyAll
+# DESTROY
 
 ## Referece    
 디스트로폴리스   
